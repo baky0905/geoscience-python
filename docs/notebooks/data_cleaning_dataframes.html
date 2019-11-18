@@ -94,8 +94,14 @@
 <p class="caption"><span class="caption-text">Data Cleaning:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Cleaning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Dataset---NPD-well-data">Dataset - NPD well data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Modifying-columns">Modifying columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Readable-and-understandable-code---chaining">Readable and understandable code - chaining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Tabular-Dataset---NPD-well-data">Tabular Dataset - NPD well data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Cleaning-column-names">Cleaning column names</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#str_replace---replace-something-with-something">str_replace - replace something with something</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clean_names-(janitor-module)---unification-of-column-names">clean_names (janitor module) - unification of column names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Select-columns-with-regex---columns-that-start-with-…">Select columns with regex - columns that start with …</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest">query - filter the dataframe by a value/s from a column of interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Summary-statistic-(min,-max,-mean,-count,…)-per-group">Summary statistic (min, max, mean, count,…) per group</a></li>
 </ul>
 </li>
 </ul>
@@ -401,9 +407,73 @@ div.rendered_html tbody tr:hover {
 </ul>
 <p>I always take the easy way out so we will focus on a consistent and expressive approach utilizing <code class="docutils literal notranslate"><span class="pre">pyjanitor</span></code>.</p>
 <p>So lets define it… <code class="docutils literal notranslate"><span class="pre">pyjanitor</span></code> is a Python implementation of the R package janitor, and provides a clean API for cleaning data.</p>
-<p>Interestingly we import pyjanitor as janitor for a reson (?)</p>
-<div class="section" id="Dataset---NPD-well-data">
-<h2>Dataset - NPD well data<a class="headerlink" href="#Dataset---NPD-well-data" title="Permalink to this headline">¶</a></h2>
+<p>Interestingly we import pyjanitor as janitor for a reason.</p>
+<p>Afterwards we will inspect other methods two ways of doing things.</p>
+<p>I prefer having one way of doing common tasks rather then having a myriad of them which reduces fluency and introduces clutter.</p>
+<p>We are here to solve problems :)</p>
+<div class="section" id="Readable-and-understandable-code---chaining">
+<h2>Readable and understandable code - chaining<a class="headerlink" href="#Readable-and-understandable-code---chaining" title="Permalink to this headline">¶</a></h2>
+<p>I will always try to avoid the following two ways of writing code:</p>
+<p>** 1) MUTLIPLE OBJECT OPTION** eat(</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">slice</span><span class="p">(</span>
+
+    <span class="n">bake</span><span class="p">(</span>
+
+        <span class="n">put</span><span class="p">(</span>
+            <span class="n">pour</span><span class="p">(</span>
+
+                <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">),</span>
+
+                <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">),</span>
+
+                <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">),</span>
+
+            <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+
+        <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+    <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This first option is considered a “nested” option such that functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle1, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more
+difficult. To make things more readable, people often move to the following approach…</p>
+<p>** 2) NESTED OPTION**</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">pour</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">bake</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">eat</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it
+results in a global environment charlie foxtrot!</p>
+<p><strong>I WILL INSIST ON METHODS CHAINING (if and when python and pandas allows you)</strong></p>
+<p>To provide the same readability (or even better), we can use chaining of methods to string these arguments together without unnecessary object creation…</p>
+<p>The point of the chain is to help you write code in a way that is easier to read and understand. It is powerful tool for clearly expressing a sequence of multiple operations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ingredients</span>
+
+    <span class="o">.</span><span class="n">mix</span><span class="p">()</span>
+
+    <span class="o">.</span><span class="n">pour</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">bake</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">ear</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Tabular-Dataset---NPD-well-data">
+<h2>Tabular Dataset - NPD well data<a class="headerlink" href="#Tabular-Dataset---NPD-well-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -606,12 +676,12 @@ div.rendered_html tbody tr:hover {
 <p>5 rows × 87 columns</p>
 </div></div>
 </div>
-<div class="section" id="Modifying-columns">
-<h3>Modifying columns<a class="headerlink" href="#Modifying-columns" title="Permalink to this headline">¶</a></h3>
-<p><em>clean_names</em> method</p>
+</div>
+<div class="section" id="Cleaning-column-names">
+<h2>Cleaning column names<a class="headerlink" href="#Cleaning-column-names" title="Permalink to this headline">¶</a></h2>
 <p>Lets list our columns names:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -620,120 +690,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Index([&#39;wlbWellboreName&#39;, &#39;wlbWell&#39;, &#39;wlbDrillingOperator&#39;,
-       &#39;wlbProductionLicence&#39;, &#39;wlbPurpose&#39;, &#39;wlbStatus&#39;, &#39;wlbContent&#39;,
-       &#39;wlbWellType&#39;, &#39;wlbSubSea&#39;, &#39;wlbEntryDate&#39;, &#39;wlbCompletionDate&#39;,
-       &#39;wlbField&#39;, &#39;wlbDrillPermit&#39;, &#39;wlbDiscovery&#39;, &#39;wlbDiscoveryWellbore&#39;,
-       &#39;wlbBottomHoleTemperature&#39;, &#39;wlbSiteSurvey&#39;, &#39;wlbSeismicLocation&#39;,
-       &#39;wlbMaxInclation&#39;, &#39;wlbKellyBushElevation&#39;, &#39;wlbFinalVerticalDepth&#39;,
-       &#39;wlbTotalDepth&#39;, &#39;wlbWaterDepth&#39;, &#39;wlbKickOffPoint&#39;, &#39;wlbAgeAtTd&#39;,
-       &#39;wlbFormationAtTd&#39;, &#39;wlbMainArea&#39;, &#39;wlbDrillingFacility&#39;,
-       &#39;wlbFacilityTypeDrilling&#39;, &#39;wlbDrillingFacilityFixedOrMoveable&#39;,
-       &#39;wlbLicensingActivity&#39;, &#39;wlbMultilateral&#39;, &#39;wlbPurposePlanned&#39;,
-       &#39;wlbEntryYear&#39;, &#39;wlbCompletionYear&#39;, &#39;wlbReclassFromWellbore&#39;,
-       &#39;wlbReentryExplorationActivity&#39;, &#39;wlbPlotSymbol&#39;, &#39;wlbFormationWithHc1&#39;,
-       &#39;wlbAgeWithHc1&#39;, &#39;wlbFormationWithHc2&#39;, &#39;wlbAgeWithHc2&#39;,
-       &#39;wlbFormationWithHc3&#39;, &#39;wlbAgeWithHc3&#39;, &#39;wlbDrillingDays&#39;, &#39;wlbReentry&#39;,
-       &#39;wlbLicenceTargetName&#39;, &#39;wlbPluggedAbandonDate&#39;, &#39;wlbPluggedDate&#39;,
-       &#39;wlbGeodeticDatum&#39;, &#39;wlbNsDeg&#39;, &#39;wlbNsMin&#39;, &#39;wlbNsSec&#39;, &#39;wlbNsCode&#39;,
-       &#39;wlbEwDeg&#39;, &#39;wlbEwMin&#39;, &#39;wlbEwSec&#39;, &#39;wlbEwCode&#39;, &#39;wlbNsDecDeg&#39;,
-       &#39;wlbEwDesDeg&#39;, &#39;wlbNsUtm&#39;, &#39;wlbEwUtm&#39;, &#39;wlbUtmZone&#39;, &#39;wlbNamePart1&#39;,
-       &#39;wlbNamePart2&#39;, &#39;wlbNamePart3&#39;, &#39;wlbNamePart4&#39;, &#39;wlbNamePart5&#39;,
-       &#39;wlbNamePart6&#39;, &#39;wlbPressReleaseUrl&#39;, &#39;wlbFactPageUrl&#39;, &#39;wlbFactMapUrl&#39;,
-       &#39;wlbDiskosWellboreType&#39;, &#39;wlbDiskosWellboreParent&#39;, &#39;wlbWdssQcDate&#39;,
-       &#39;wlbReleasedDate&#39;, &#39;wlbDateReclass&#39;, &#39;wlbNpdidWellbore&#39;,
-       &#39;dscNpdidDiscovery&#39;, &#39;fldNpdidField&#39;, &#39;fclNpdidFacilityDrilling&#39;,
-       &#39;wlbNpdidWellboreReclass&#39;, &#39;prlNpdidProductionLicence&#39;,
-       &#39;wlbNpdidSiteSurvey&#39;, &#39;wlbDateUpdated&#39;, &#39;wlbDateUpdatedMax&#39;,
-       &#39;datesyncNPD&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-<p>We need to clean our column names so we make are subsequent workflows on dataframes as easy as it can get.</p>
-<p><strong>It is important that we wrap our chains of methods into parantheses</strong> (why?) The second approach would be to end each line with a backslash. I find the first approach more elegant so it will be applied.</p>
-<p>Remove wlb, fld, fcl prefixes.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;wlb&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fld&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fcl&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Index([&#39;WellboreName&#39;, &#39;Well&#39;, &#39;DrillingOperator&#39;, &#39;ProductionLicence&#39;,
-       &#39;Purpose&#39;, &#39;Status&#39;, &#39;Content&#39;, &#39;WellType&#39;, &#39;SubSea&#39;, &#39;EntryDate&#39;,
-       &#39;CompletionDate&#39;, &#39;Field&#39;, &#39;DrillPermit&#39;, &#39;Discovery&#39;,
-       &#39;DiscoveryWellbore&#39;, &#39;BottomHoleTemperature&#39;, &#39;SiteSurvey&#39;,
-       &#39;SeismicLocation&#39;, &#39;MaxInclation&#39;, &#39;KellyBushElevation&#39;,
-       &#39;FinalVerticalDepth&#39;, &#39;TotalDepth&#39;, &#39;WaterDepth&#39;, &#39;KickOffPoint&#39;,
-       &#39;AgeAtTd&#39;, &#39;FormationAtTd&#39;, &#39;MainArea&#39;, &#39;DrillingFacility&#39;,
-       &#39;FacilityTypeDrilling&#39;, &#39;DrillingFacilityFixedOrMoveable&#39;,
-       &#39;LicensingActivity&#39;, &#39;Multilateral&#39;, &#39;PurposePlanned&#39;, &#39;EntryYear&#39;,
-       &#39;CompletionYear&#39;, &#39;ReclassFromWellbore&#39;, &#39;ReentryExplorationActivity&#39;,
-       &#39;PlotSymbol&#39;, &#39;FormationWithHc1&#39;, &#39;AgeWithHc1&#39;, &#39;FormationWithHc2&#39;,
-       &#39;AgeWithHc2&#39;, &#39;FormationWithHc3&#39;, &#39;AgeWithHc3&#39;, &#39;DrillingDays&#39;,
-       &#39;Reentry&#39;, &#39;LicenceTargetName&#39;, &#39;PluggedAbandonDate&#39;, &#39;PluggedDate&#39;,
-       &#39;GeodeticDatum&#39;, &#39;NsDeg&#39;, &#39;NsMin&#39;, &#39;NsSec&#39;, &#39;NsCode&#39;, &#39;EwDeg&#39;, &#39;EwMin&#39;,
-       &#39;EwSec&#39;, &#39;EwCode&#39;, &#39;NsDecDeg&#39;, &#39;EwDesDeg&#39;, &#39;NsUtm&#39;, &#39;EwUtm&#39;, &#39;UtmZone&#39;,
-       &#39;NamePart1&#39;, &#39;NamePart2&#39;, &#39;NamePart3&#39;, &#39;NamePart4&#39;, &#39;NamePart5&#39;,
-       &#39;NamePart6&#39;, &#39;PressReleaseUrl&#39;, &#39;FactPageUrl&#39;, &#39;FactMapUrl&#39;,
-       &#39;DiskosWellboreType&#39;, &#39;DiskosWellboreParent&#39;, &#39;WdssQcDate&#39;,
-       &#39;ReleasedDate&#39;, &#39;DateReclass&#39;, &#39;NpdidWellbore&#39;, &#39;dscNpdidDiscovery&#39;,
-       &#39;NpdidField&#39;, &#39;NpdidFacilityDrilling&#39;, &#39;NpdidWellboreReclass&#39;,
-       &#39;prlNpdidProductionLicence&#39;, &#39;NpdidSiteSurvey&#39;, &#39;DateUpdated&#39;,
-       &#39;DateUpdatedMax&#39;, &#39;datesyncNPD&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-<p>Space out words by placing a snake between the words so it is nicer to look at the column names</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">clean_names</span><span class="p">(</span><span class="n">case_type</span><span class="o">=</span><span class="s2">&quot;snake&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -765,9 +722,130 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="section" id="str_replace---replace-something-with-something">
+<h3>str_replace - replace something with something<a class="headerlink" href="#str_replace---replace-something-with-something" title="Permalink to this headline">¶</a></h3>
+<p>We need to clean our column names so we make are subsequent workflows on dataframes as easy as it can get.</p>
+<p><strong>It is important that we wrap our chains of methods into parantheses</strong> (why?) The second approach would be to end each line with a backslash. I find the first approach more elegant so I will use it.</p>
+<p>Remove wlb, fld, fcl prefixes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;wlb&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fld&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fcl&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index([&#39;wellbore_name&#39;, &#39;well&#39;, &#39;drilling_operator&#39;, &#39;production_licence&#39;,
+       &#39;purpose&#39;, &#39;status&#39;, &#39;content&#39;, &#39;well_type&#39;, &#39;sub_sea&#39;, &#39;entry_date&#39;,
+       &#39;completion_date&#39;, &#39;field&#39;, &#39;drill_permit&#39;, &#39;discovery&#39;,
+       &#39;discovery_wellbore&#39;, &#39;bottom_hole_temperature&#39;, &#39;site_survey&#39;,
+       &#39;seismic_location&#39;, &#39;max_inclation&#39;, &#39;kelly_bush_elevation&#39;,
+       &#39;final_vertical_depth&#39;, &#39;total_depth&#39;, &#39;water_depth&#39;, &#39;kick_off_point&#39;,
+       &#39;age_at_td&#39;, &#39;formation_at_td&#39;, &#39;main_area&#39;, &#39;drilling_facility&#39;,
+       &#39;facility_type_drilling&#39;, &#39;drilling_facility_fixed_or_moveable&#39;,
+       &#39;licensing_activity&#39;, &#39;multilateral&#39;, &#39;purpose_planned&#39;, &#39;entry_year&#39;,
+       &#39;completion_year&#39;, &#39;reclass_from_wellbore&#39;,
+       &#39;reentry_exploration_activity&#39;, &#39;plot_symbol&#39;, &#39;formation_with_hc1&#39;,
+       &#39;age_with_hc1&#39;, &#39;formation_with_hc2&#39;, &#39;age_with_hc2&#39;,
+       &#39;formation_with_hc3&#39;, &#39;age_with_hc3&#39;, &#39;drilling_days&#39;, &#39;reentry&#39;,
+       &#39;licence_target_name&#39;, &#39;plugged_abandon_date&#39;, &#39;plugged_date&#39;,
+       &#39;geodetic_datum&#39;, &#39;ns_deg&#39;, &#39;ns_min&#39;, &#39;ns_sec&#39;, &#39;ns_code&#39;, &#39;ew_deg&#39;,
+       &#39;ew_min&#39;, &#39;ew_sec&#39;, &#39;ew_code&#39;, &#39;ns_dec_deg&#39;, &#39;ew_des_deg&#39;, &#39;ns_utm&#39;,
+       &#39;ew_utm&#39;, &#39;utm_zone&#39;, &#39;name_part1&#39;, &#39;name_part2&#39;, &#39;name_part3&#39;,
+       &#39;name_part4&#39;, &#39;name_part5&#39;, &#39;name_part6&#39;, &#39;press_release_url&#39;,
+       &#39;fact_page_url&#39;, &#39;fact_map_url&#39;, &#39;diskos_wellbore_type&#39;,
+       &#39;diskos_wellbore_parent&#39;, &#39;wdss_qc_date&#39;, &#39;released_date&#39;,
+       &#39;date_reclass&#39;, &#39;npdid_wellbore&#39;, &#39;dsc_npdid_discovery&#39;, &#39;npdid_field&#39;,
+       &#39;npdid_facility_drilling&#39;, &#39;npdid_wellbore_reclass&#39;,
+       &#39;prl_npdid_production_licence&#39;, &#39;npdid_site_survey&#39;, &#39;date_updated&#39;,
+       &#39;date_updated_max&#39;, &#39;datesync_npd&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="clean_names-(janitor-module)---unification-of-column-names">
+<h3>clean_names (janitor module) - unification of column names<a class="headerlink" href="#clean_names-(janitor-module)---unification-of-column-names" title="Permalink to this headline">¶</a></h3>
+<p>Space out words by placing a snake between the words so it is nicer to look at the column names</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">clean_names</span><span class="p">(</span><span class="n">case_type</span><span class="o">=</span><span class="s2">&quot;snake&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index([&#39;wellbore_name&#39;, &#39;well&#39;, &#39;drilling_operator&#39;, &#39;production_licence&#39;,
+       &#39;purpose&#39;, &#39;status&#39;, &#39;content&#39;, &#39;well_type&#39;, &#39;sub_sea&#39;, &#39;entry_date&#39;,
+       &#39;completion_date&#39;, &#39;field&#39;, &#39;drill_permit&#39;, &#39;discovery&#39;,
+       &#39;discovery_wellbore&#39;, &#39;bottom_hole_temperature&#39;, &#39;site_survey&#39;,
+       &#39;seismic_location&#39;, &#39;max_inclation&#39;, &#39;kelly_bush_elevation&#39;,
+       &#39;final_vertical_depth&#39;, &#39;total_depth&#39;, &#39;water_depth&#39;, &#39;kick_off_point&#39;,
+       &#39;age_at_td&#39;, &#39;formation_at_td&#39;, &#39;main_area&#39;, &#39;drilling_facility&#39;,
+       &#39;facility_type_drilling&#39;, &#39;drilling_facility_fixed_or_moveable&#39;,
+       &#39;licensing_activity&#39;, &#39;multilateral&#39;, &#39;purpose_planned&#39;, &#39;entry_year&#39;,
+       &#39;completion_year&#39;, &#39;reclass_from_wellbore&#39;,
+       &#39;reentry_exploration_activity&#39;, &#39;plot_symbol&#39;, &#39;formation_with_hc1&#39;,
+       &#39;age_with_hc1&#39;, &#39;formation_with_hc2&#39;, &#39;age_with_hc2&#39;,
+       &#39;formation_with_hc3&#39;, &#39;age_with_hc3&#39;, &#39;drilling_days&#39;, &#39;reentry&#39;,
+       &#39;licence_target_name&#39;, &#39;plugged_abandon_date&#39;, &#39;plugged_date&#39;,
+       &#39;geodetic_datum&#39;, &#39;ns_deg&#39;, &#39;ns_min&#39;, &#39;ns_sec&#39;, &#39;ns_code&#39;, &#39;ew_deg&#39;,
+       &#39;ew_min&#39;, &#39;ew_sec&#39;, &#39;ew_code&#39;, &#39;ns_dec_deg&#39;, &#39;ew_des_deg&#39;, &#39;ns_utm&#39;,
+       &#39;ew_utm&#39;, &#39;utm_zone&#39;, &#39;name_part1&#39;, &#39;name_part2&#39;, &#39;name_part3&#39;,
+       &#39;name_part4&#39;, &#39;name_part5&#39;, &#39;name_part6&#39;, &#39;press_release_url&#39;,
+       &#39;fact_page_url&#39;, &#39;fact_map_url&#39;, &#39;diskos_wellbore_type&#39;,
+       &#39;diskos_wellbore_parent&#39;, &#39;wdss_qc_date&#39;, &#39;released_date&#39;,
+       &#39;date_reclass&#39;, &#39;npdid_wellbore&#39;, &#39;dsc_npdid_discovery&#39;, &#39;npdid_field&#39;,
+       &#39;npdid_facility_drilling&#39;, &#39;npdid_wellbore_reclass&#39;,
+       &#39;prl_npdid_production_licence&#39;, &#39;npdid_site_survey&#39;, &#39;date_updated&#39;,
+       &#39;date_updated_max&#39;, &#39;datesync_npd&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Select-columns-with-regex---columns-that-start-with-…">
+<h3>Select columns with regex - columns that start with …<a class="headerlink" href="#Select-columns-with-regex---columns-that-start-with-…" title="Permalink to this headline">¶</a></h3>
 <p>Select columns that start with <em>well</em> by applying regex pattern.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -776,7 +854,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -785,7 +863,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -847,8 +925,11 @@ div.rendered_html tbody tr:hover {
 </table>
 </div></div>
 </div>
-<p>Filter dataframe by the elements from the list that is a part of the query argument.</p>
-<p>REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.</p>
+</div>
+<div class="section" id="query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest">
+<h3>query - filter the dataframe by a value/s from a column of interest<a class="headerlink" href="#query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest" title="Permalink to this headline">¶</a></h3>
+<p>Filter dataframe by the elements from the list that is a part of the query argument - a list of values.</p>
+<p><strong>REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -903,9 +984,9 @@ div.rendered_html tbody tr:hover {
 </table>
 </div></div>
 </div>
-<p>Filter dataframe by the elements from the list.</p>
+<p>Filter dataframe by the elements from predefined list that is outside of the function’s scope. In this case you need to use &#64; before the list name.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -919,7 +1000,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -960,10 +1041,13 @@ div.rendered_html tbody tr:hover {
 </table>
 </div></div>
 </div>
+</div>
+<div class="section" id="Summary-statistic-(min,-max,-mean,-count,…)-per-group">
+<h3>Summary statistic (min, max, mean, count,…) per group<a class="headerlink" href="#Summary-statistic-(min,-max,-mean,-count,…)-per-group" title="Permalink to this headline">¶</a></h3>
 <p>What is the minimum and maximum total_depth grouped by completion_year and sorted by entry_year?</p>
 <p>We see that well_bore name was silently dropped since it is a categorical column.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -981,7 +1065,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1039,18 +1123,39 @@ div.rendered_html tbody tr:hover {
       <td>840.0</td>
       <td>5765.0</td>
     </tr>
+    <tr>
+      <td>5</td>
+      <td>2014</td>
+      <td>1033.0</td>
+      <td>4889.0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2013</td>
+      <td>930.0</td>
+      <td>5634.0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2012</td>
+      <td>1640.0</td>
+      <td>5573.0</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2011</td>
+      <td>1339.0</td>
+      <td>5672.0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2010</td>
+      <td>1178.0</td>
+      <td>5738.0</td>
+    </tr>
   </tbody>
 </table>
 </div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
