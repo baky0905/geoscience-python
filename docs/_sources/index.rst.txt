@@ -14,10 +14,16 @@ Welcome to Geoscience with Python - the easy way!
    notebooks/quick_introduction.ipynb
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Data Cleaning:
 
    notebooks/data_cleaning_dataframes.ipynb
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Data Visualization:
+
+   notebooks/data_visualisation_dataframes.ipynb
 
 .. toctree::
    :maxdepth: 3
