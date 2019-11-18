@@ -51,7 +51,7 @@ jobs:
       deploy:
         provider: pages # deploy on github pages
         skip_cleanup: true
-        github_token: "$GITHUBTOKEN" # defined via the Travis interface
+        github_token: "$GITHUB_TOKEN" # defined via the Travis interface
         local_dir: build/html
 
 notifications:
