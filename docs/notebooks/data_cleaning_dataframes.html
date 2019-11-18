@@ -96,11 +96,12 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Cleaning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Readable-and-understandable-code---chaining">Readable and understandable code - chaining</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Tabular-Dataset---NPD-well-data">Tabular Dataset - NPD well data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Cleaning-column-names">Cleaning column names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Cleaning-the-dataframe">Cleaning the dataframe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#str_replace---replace-something-with-something">str_replace - replace something with something</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#clean_names-(janitor-module)---unification-of-column-names">clean_names (janitor module) - unification of column names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Select-columns-with-regex---columns-that-start-with-…">Select columns with regex - columns that start with …</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest">query - filter the dataframe by a value/s from a column of interest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Select-columns-with-regex">Select columns with regex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query---filter-the-dataframe">query - filter the dataframe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-dataframe-by-multiple-conditions">query dataframe by multiple conditions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Summary-statistic-(min,-max,-mean,-count,…)-per-group">Summary statistic (min, max, mean, count,…) per group</a></li>
 </ul>
 </li>
@@ -677,8 +678,8 @@ results in a global environment charlie foxtrot!</p>
 </div></div>
 </div>
 </div>
-<div class="section" id="Cleaning-column-names">
-<h2>Cleaning column names<a class="headerlink" href="#Cleaning-column-names" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Cleaning-the-dataframe">
+<h2>Cleaning the dataframe<a class="headerlink" href="#Cleaning-the-dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Lets list our columns names:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
@@ -841,8 +842,8 @@ results in a global environment charlie foxtrot!</p>
 </div>
 </div>
 </div>
-<div class="section" id="Select-columns-with-regex---columns-that-start-with-…">
-<h3>Select columns with regex - columns that start with …<a class="headerlink" href="#Select-columns-with-regex---columns-that-start-with-…" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Select-columns-with-regex">
+<h3>Select columns with regex<a class="headerlink" href="#Select-columns-with-regex" title="Permalink to this headline">¶</a></h3>
 <p>Select columns that start with <em>well</em> by applying regex pattern.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
@@ -926,8 +927,8 @@ results in a global environment charlie foxtrot!</p>
 </div></div>
 </div>
 </div>
-<div class="section" id="query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest">
-<h3>query - filter the dataframe by a value/s from a column of interest<a class="headerlink" href="#query---filter-the-dataframe-by-a-value/s-from-a-column-of-interest" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="query---filter-the-dataframe">
+<h3>query - filter the dataframe<a class="headerlink" href="#query---filter-the-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>Filter dataframe by the elements from the list that is a part of the query argument - a list of values.</p>
 <p><strong>REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.</strong></p>
 <div class="nbinput docutils container">
@@ -982,6 +983,464 @@ results in a global environment charlie foxtrot!</p>
     </tr>
   </tbody>
 </table>
+</div></div>
+</div>
+</div>
+<div class="section" id="query-dataframe-by-multiple-conditions">
+<h3>query dataframe by multiple conditions<a class="headerlink" href="#query-dataframe-by-multiple-conditions" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df</span>
+   <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;drilling_operator&quot;</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">])</span>
+   <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;drilling_operator in [&quot;A/S Norske Shell&quot;, &quot;Statoil Petroleum AS&quot;] &amp; </span><span class="se">\</span>
+<span class="s1">           purpose in &quot;WILDCAT&quot; &amp; </span><span class="se">\</span>
+<span class="s1">           1000 &lt; total_depth &lt; 2000&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>drilling_operator</th>
+      <th>purpose</th>
+      <th>total_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>298</td>
+      <td>A/S Norske Shell</td>
+      <td>WILDCAT</td>
+      <td>1971.0</td>
+    </tr>
+    <tr>
+      <td>788</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1890.0</td>
+    </tr>
+    <tr>
+      <td>1289</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1640.0</td>
+    </tr>
+    <tr>
+      <td>1537</td>
+      <td>A/S Norske Shell</td>
+      <td>WILDCAT</td>
+      <td>1920.0</td>
+    </tr>
+    <tr>
+      <td>1830</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1033.0</td>
+    </tr>
+    <tr>
+      <td>1849</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1594.0</td>
+    </tr>
+    <tr>
+      <td>1852</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1780.0</td>
+    </tr>
+    <tr>
+      <td>1859</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1855.0</td>
+    </tr>
+    <tr>
+      <td>1897</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1500.0</td>
+    </tr>
+    <tr>
+      <td>1900</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1540.0</td>
+    </tr>
+    <tr>
+      <td>1906</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1090.0</td>
+    </tr>
+    <tr>
+      <td>1915</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1100.0</td>
+    </tr>
+    <tr>
+      <td>1918</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1210.0</td>
+    </tr>
+    <tr>
+      <td>1920</td>
+      <td>Statoil Petroleum AS</td>
+      <td>WILDCAT</td>
+      <td>1540.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>production_licence</th>
+      <th>purpose</th>
+      <th>status</th>
+      <th>content</th>
+      <th>well_type</th>
+      <th>sub_sea</th>
+      <th>entry_date</th>
+      <th>...</th>
+      <th>npdid_wellbore</th>
+      <th>dsc_npdid_discovery</th>
+      <th>npdid_field</th>
+      <th>npdid_facility_drilling</th>
+      <th>npdid_wellbore_reclass</th>
+      <th>prl_npdid_production_licence</th>
+      <th>npdid_site_survey</th>
+      <th>date_updated</th>
+      <th>date_updated_max</th>
+      <th>datesync_npd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>1/2-1</td>
+      <td>Phillips Petroleum Norsk AS</td>
+      <td>143</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>20.03.1989</td>
+      <td>...</td>
+      <td>1382</td>
+      <td>43814.0</td>
+      <td>3437650.0</td>
+      <td>296245.0</td>
+      <td>0</td>
+      <td>21956.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>1/2-2</td>
+      <td>Paladin Resources Norge AS</td>
+      <td>143 CS</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.12.2005</td>
+      <td>...</td>
+      <td>5192</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>278245.0</td>
+      <td>0</td>
+      <td>2424919.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>1/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>06.07.1968</td>
+      <td>...</td>
+      <td>154</td>
+      <td>43820.0</td>
+      <td>NaN</td>
+      <td>288604.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-2</td>
+      <td>1/3-2</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.05.1969</td>
+      <td>...</td>
+      <td>165</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>288847.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-3</td>
+      <td>1/3-3</td>
+      <td>Elf Petroleum Norge AS</td>
+      <td>065</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>22.08.1982</td>
+      <td>...</td>
+      <td>87</td>
+      <td>43826.0</td>
+      <td>1028599.0</td>
+      <td>288334.0</td>
+      <td>0</td>
+      <td>21316.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>1916</td>
+      <td>7324/10-1</td>
+      <td>7324/10-1</td>
+      <td>Den norske stats oljeselskap a.s</td>
+      <td>162</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>03.06.1989</td>
+      <td>...</td>
+      <td>1411</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>294382.0</td>
+      <td>0</td>
+      <td>22108.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>1917</td>
+      <td>7325/1-1</td>
+      <td>7325/1-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>615</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>23.06.2014</td>
+      <td>...</td>
+      <td>7501</td>
+      <td>24689817.0</td>
+      <td>NaN</td>
+      <td>404201.0</td>
+      <td>0</td>
+      <td>20429544.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>1918</td>
+      <td>7325/4-1</td>
+      <td>7325/4-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>855</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL/GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>19.07.2017</td>
+      <td>...</td>
+      <td>8211</td>
+      <td>29469097.0</td>
+      <td>NaN</td>
+      <td>439972.0</td>
+      <td>0</td>
+      <td>28168828.0</td>
+      <td>NaN</td>
+      <td>13.11.2019</td>
+      <td>13.11.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>1919</td>
+      <td>7335/3-1</td>
+      <td>7335/3-1</td>
+      <td>Equinor Energy AS</td>
+      <td>859</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>13.05.2019</td>
+      <td>...</td>
+      <td>8735</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>415836.0</td>
+      <td>0</td>
+      <td>28169055.0</td>
+      <td>NaN</td>
+      <td>17.10.2019</td>
+      <td>NaN</td>
+      <td>18.11.2019</td>
+    </tr>
+    <tr>
+      <td>1920</td>
+      <td>7435/12-1</td>
+      <td>7435/12-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>859</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>09.08.2017</td>
+      <td>...</td>
+      <td>8228</td>
+      <td>29491696.0</td>
+      <td>NaN</td>
+      <td>439972.0</td>
+      <td>0</td>
+      <td>28169055.0</td>
+      <td>NaN</td>
+      <td>01.11.2019</td>
+      <td>03.10.2019</td>
+      <td>18.11.2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 87 columns</p>
 </div></div>
 </div>
 <p>Filter dataframe by the elements from predefined list that is outside of the function’s scope. In this case you need to use &#64; before the list name.</p>
