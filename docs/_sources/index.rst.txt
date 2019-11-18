@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Geoscience with Python's documentation!
+Welcome to Geoscience with Python - the easy way!
 ==================================================
 
 .. toctree::
@@ -12,6 +12,12 @@ Welcome to Geoscience with Python's documentation!
 
    additional/welcome.rst
    notebooks/quick_introduction.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Data Cleaning:
+
+   notebooks/data_cleaning_dataframes.ipynb
 
 .. toctree::
    :maxdepth: 3
