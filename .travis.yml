@@ -49,9 +49,9 @@ jobs:
       if: (NOT type IN (pull_request)) AND (branch = master) # only deploy if merging on master
       script: make html
       deploy:
-        provider: pages # deploy on github pages
+        provider: gh-pages # deploy on github pages
         skip_cleanup: true
-        github_token: "$GITHUB_TOKEN" # defined via the Travis interface
+        github_token: $GITHUB_TOKEN # defined via the Travis interface
         local_dir: build/html
 
 notifications:
