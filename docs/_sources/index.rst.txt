@@ -11,6 +11,7 @@ Welcome to Geoscience with Python's documentation!
    :caption: Introduction:
 
    additional/welcome.rst
+   notebooks/quick_introduction.ipynb
 
 .. toctree::
    :maxdepth: 3
