@@ -406,24 +406,25 @@ div.rendered_html tbody tr:hover {
 <h2>Readable and understandable code - chaining<a class="headerlink" href="#Readable-and-understandable-code---chaining" title="Permalink to this headline">¶</a></h2>
 <p>I will always try to avoid the following two ways of writing code:</p>
 <p><strong>1) MUTLIPLE OBJECT OPTION</strong></p>
-<p>eat(</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">slice</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eat</span><span class="p">(</span>
 
-    <span class="n">bake</span><span class="p">(</span>
+    <span class="nb">slice</span><span class="p">(</span>
 
-        <span class="n">put</span><span class="p">(</span>
-            <span class="n">pour</span><span class="p">(</span>
+        <span class="n">bake</span><span class="p">(</span>
 
-                <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">),</span>
+            <span class="n">put</span><span class="p">(</span>
+                <span class="n">pour</span><span class="p">(</span>
 
-                <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">),</span>
+                    <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">),</span>
 
-                <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">),</span>
+                    <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">),</span>
 
-            <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+                    <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">),</span>
 
-        <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
-    <span class="mi">1</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+
+            <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+        <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This first option is considered a “nested” option such that functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle1, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more
