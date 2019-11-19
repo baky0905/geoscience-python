@@ -10,14 +10,15 @@ What kind of code will we be using?
 * Personal automation
 * Consistent ways of writing code
 * Code that you are writing for yourself and you are the only person who is going to be using it
-* <s>Professional code<s>
-* <s>Checked in code<s>
-* <s>Reviewed code<s>
+* <del>Professional code<del>
+* <del>Checked in code<del>
+* <del>Reviewed code<del>
   
 You can some cut corners, write some crappy code and do some things that questionable but all of it is just fine -
 no one will ever see it and no one will ever know.
 
 **Main goal - solve your problem!**
+
 **Motivate you to maybe dive in deeper and become semi-professional one day!**
 
 
