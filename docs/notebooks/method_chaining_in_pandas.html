@@ -686,7 +686,12 @@ results in a global environment charlie foxtrot!</p>
 breaking the code. This needs to be addressed before starting to use long method chains in production or in notebooks.</p>
 <div class="section" id="How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?">
 <h3>How to track a changing of the dataframe shape along the chain?<a class="headerlink" href="#How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?" title="Permalink to this headline">¶</a></h3>
-<p>Two things to note in this function are the fn argument that can take in a lambda function and display function call. Lambda function lends flexibility and the display function call makes the display of data frames and plots pretty in a Jupyter lab or a notebook setting.</p>
+<p>Two things to note in this function are the:</p>
+<ul class="simple">
+<li><p>fn argument that can take in a lambda function</p></li>
+<li><p>display function call</p></li>
+</ul>
+<p>Lambda function lends flexibility and the display function call makes the display of data frames and plots pretty in a Jupyter lab or a notebook setting.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
@@ -1017,23 +1022,18 @@ breaking the code. This needs to be addressed before starting to use long method
 </table>
 </div></div>
 </div>
+<p>We can see how shape of the dataframe changed along the pipe in data processing pipeline:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1921</span><span class="p">,</span> <span class="mi">87</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1921</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="p">(</span>
-    <span class="n">wine</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color_intensity&quot;</span><span class="p">:</span> <span class="s2">&quot;ci&quot;</span><span class="p">})</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">color_filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">hue</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ci</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;alcohol &gt; 14&quot;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="s2">&quot;ci&quot;</span><span class="p">,</span> <span class="s2">&quot;hue&quot;</span><span class="p">]]</span>
-    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="p">)</span>
+<span></span>
 </pre></div>
 </div>
 </div>
