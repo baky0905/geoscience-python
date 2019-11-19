@@ -36,104 +36,6 @@
   },
   {
    "cell_type": "markdown",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "## Readable and understandable code - chaining"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "I will always try to avoid the following two ways of writing code:\n",
-    "\n",
-    "** 1) MUTLIPLE OBJECT OPTION**\n",
-    "\n",
-    "eat(\n",
-    "\n",
-    "    slice(\n",
-    "\n",
-    "        bake(\n",
-    "            \n",
-    "            put(\n",
-    "                pour(\n",
-    "\n",
-    "                    mix(ingredients),\n",
-    "\n",
-    "                    into=baking_form),\n",
-    "\n",
-    "                    into=oven),\n",
-    "\n",
-    "                time=30),\n",
-    "                \n",
-    "            pieces=6),\n",
-    "        1)\n",
-    "\n",
-    "This first option is considered a “nested” option such that functions are nested \n",
-    "within one another. Historically, this has been the traditional way of\n",
-    "integrating code; however, it becomes extremely difficult to read what \n",
-    "exactly the code is doing and it also becomes easier to make mistakes when \n",
-    "making updates to your code. Although not in violation of the DRY principle1, \n",
-    "it definitely violates the basic principle of readability and clarity, \n",
-    "which makes communication of your analysis more difficult. To make things\n",
-    "more readable, people often move to the following approach…\n",
-    "\n",
-    "** 2) NESTED OPTION**\n",
-    "\n",
-    "\n",
-    "    it = mix(ingredients)\n",
-    "\n",
-    "    it = pour(it, into=baking_form)\n",
-    "\n",
-    "    it = put(it, into=oven)\n",
-    "\n",
-    "    it = bake(it, time=30)\n",
-    "\n",
-    "    it = slice(it, pieces=6)\n",
-    "\n",
-    "    it = eat(it, 1)\n",
-    "\n",
-    "This second option helps in making the data wrangling steps more explicit \n",
-    "and obvious but definitely violates the DRY principle. By sequencing \n",
-    "multiple functions in this way you are likely saving multiple outputs \n",
-    "that are not very informative to you or others; rather, the only reason \n",
-    "you save them is to insert them into the next function to eventually get the\n",
-    "final output you desire. This inevitably creates unnecessary copies and wrecks \n",
-    "havoc on properly managing your objects…basically it results in a global \n",
-    "environment charlie foxtrot! \n",
-    "\n",
-    "**I WILL INSIST ON METHODS CHAINING (if and when python and pandas allows you)**\n",
-    "\n",
-    "To provide the same readability (or even better), we can use chaining of methods to string \n",
-    "these arguments together without unnecessary object creation…\n",
-    "\n",
-    "The point of the chain is to help you write code in a way that is easier to read and understand. \n",
-    "It is powerful tool for clearly expressing a sequence of multiple operations. \n",
-    "\n",
-    "    (ingredients\n",
-    "\n",
-    "        .mix()\n",
-    "\n",
-    "        .pour(into=baking_form)\n",
-    "\n",
-    "        .put(into=oven)\n",
-    "\n",
-    "        .bake(time=30)\n",
-    "\n",
-    "        .slice(pieces=6)\n",
-    "    \n",
-    "        .ear(1)\n",
-    "    )\n",
-    "\n",
-    "\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "metadata": {},
    "source": [
     "## Tabular Dataset - NPD well data"
@@ -996,14 +898,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 201,
+   "execution_count": 220,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": "Shallow Water    1373\nMidwater          546\nDeepwater           2\nName: water_depth_category, dtype: int64"
      },
-     "execution_count": 201,
+     "execution_count": 220,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1035,15 +937,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 219,
+   "execution_count": 223,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>water_depth</th>\n      <th>water_depth_category</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1331</td>\n      <td>35/10-4 A</td>\n      <td>3946.0</td>\n      <td>363.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1610</td>\n      <td>6507/5-2</td>\n      <td>3897.0</td>\n      <td>347.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1010</td>\n      <td>31/5-4 S</td>\n      <td>1909.0</td>\n      <td>316.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>923</td>\n      <td>30/10-3</td>\n      <td>2255.0</td>\n      <td>106.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1299</td>\n      <td>35/6-1 S</td>\n      <td>847.0</td>\n      <td>344.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1037</td>\n      <td>33/2-1</td>\n      <td>4459.0</td>\n      <td>381.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1566</td>\n      <td>6506/11-7</td>\n      <td>4977.5</td>\n      <td>356.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1576</td>\n      <td>6506/12-6</td>\n      <td>4741.0</td>\n      <td>272.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1153</td>\n      <td>34/7-26 S</td>\n      <td>4193.0</td>\n      <td>201.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1214</td>\n      <td>34/10-13</td>\n      <td>3392.0</td>\n      <td>214.0</td>\n      <td>Shallow Water</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
-      "text/plain": "     wellbore_name  total_depth  water_depth water_depth_category\n1331     35/10-4 A       3946.0        363.0             Midwater\n1610      6507/5-2       3897.0        347.0             Midwater\n1010      31/5-4 S       1909.0        316.0             Midwater\n923        30/10-3       2255.0        106.0        Shallow Water\n1299      35/6-1 S        847.0        344.0             Midwater\n1037        33/2-1       4459.0        381.0             Midwater\n1566     6506/11-7       4977.5        356.0             Midwater\n1576     6506/12-6       4741.0        272.0        Shallow Water\n1153     34/7-26 S       4193.0        201.0        Shallow Water\n1214      34/10-13       3392.0        214.0        Shallow Water"
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>water_depth</th>\n      <th>water_depth_category</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1388</td>\n      <td>6204/10-2 R</td>\n      <td>2095.0</td>\n      <td>172.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>320</td>\n      <td>15/3-3</td>\n      <td>5115.0</td>\n      <td>109.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>541</td>\n      <td>16/7-11</td>\n      <td>2650.0</td>\n      <td>80.5</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1425</td>\n      <td>6406/2-1</td>\n      <td>5292.0</td>\n      <td>278.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1878</td>\n      <td>7223/5-1 A</td>\n      <td>0.0</td>\n      <td>332.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>774</td>\n      <td>25/11-16</td>\n      <td>1945.0</td>\n      <td>120.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>518</td>\n      <td>16/4-8 S</td>\n      <td>2700.0</td>\n      <td>100.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>673</td>\n      <td>25/4-10 S</td>\n      <td>2912.0</td>\n      <td>123.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1345</td>\n      <td>35/11-10 A</td>\n      <td>3259.0</td>\n      <td>353.5</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1269</td>\n      <td>34/10-52 A</td>\n      <td>3520.0</td>\n      <td>134.0</td>\n      <td>Shallow Water</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "     wellbore_name  total_depth  water_depth water_depth_category\n1388   6204/10-2 R       2095.0        172.0        Shallow Water\n320         15/3-3       5115.0        109.0        Shallow Water\n541        16/7-11       2650.0         80.5        Shallow Water\n1425      6406/2-1       5292.0        278.0        Shallow Water\n1878    7223/5-1 A          0.0        332.0             Midwater\n774       25/11-16       1945.0        120.0        Shallow Water\n518       16/4-8 S       2700.0        100.0        Shallow Water\n673      25/4-10 S       2912.0        123.0        Shallow Water\n1345    35/11-10 A       3259.0        353.5             Midwater\n1269    34/10-52 A       3520.0        134.0        Shallow Water"
      },
-     "execution_count": 219,
+     "execution_count": 223,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1051,6 +953,13 @@
    "source": [
     "df_multiple.sample(10)"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {

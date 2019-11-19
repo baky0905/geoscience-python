@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Cleaning" href="data_cleaning_dataframes.html" />
+    <link rel="prev" title="Quick introduction on the approach" href="quick_introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,7 +89,19 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html">Welcome!!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html#what-will-you-learn-in-this-book">What will you learn in this book?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/tips_and_tricks.html#jupyter-notebook-keyboard-shortcuts">Jupyter Notebook keyboard shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_introduction.html">Quick introduction on the approach</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Method chaining concept:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How method chaining in pandas is and can be super effective</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Readable-and-understandable-code---chaining">Readable and understandable code - chaining</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?">How to track a changing of the dataframe shape along the chain?</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Data Cleaning:</span></p>
 <ul>
@@ -96,10 +110,6 @@
 <p class="caption"><span class="caption-text">Data Visualization:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data_visualisation_dataframes.html">Data Visualization - Dataframes</a></li>
-</ul>
-<p class="caption"><span class="caption-text">First Jupyter Notebook:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="first_notebook.html">Welcome to the first notebooks</a></li>
 </ul>
 
             
@@ -393,8 +403,69 @@ div.rendered_html tbody tr:hover {
 <p>Fluent Interface, a method of creating object-oriented API relies on method cascading (aka method chaining).</p>
 <p>Method chaining substantially increases the readability of the code.</p>
 <p>It is a top down approach.</p>
+<div class="section" id="Readable-and-understandable-code---chaining">
+<h2>Readable and understandable code - chaining<a class="headerlink" href="#Readable-and-understandable-code---chaining" title="Permalink to this headline">¶</a></h2>
+<p>I will always try to avoid the following two ways of writing code:</p>
+<p>** 1) MUTLIPLE OBJECT OPTION**</p>
+<p>eat(</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">slice</span><span class="p">(</span>
+
+    <span class="n">bake</span><span class="p">(</span>
+
+        <span class="n">put</span><span class="p">(</span>
+            <span class="n">pour</span><span class="p">(</span>
+
+                <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">),</span>
+
+                <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">),</span>
+
+                <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">),</span>
+
+            <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+
+        <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
+    <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This first option is considered a “nested” option such that functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle1, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more
+difficult. To make things more readable, people often move to the following approach…</p>
+<p>** 2) NESTED OPTION**</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">pour</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">bake</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">eat</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it
+results in a global environment charlie foxtrot!</p>
+<p><strong>I WILL INSIST ON METHODS CHAINING (if and when python and pandas allows you)</strong></p>
+<p>To provide the same readability (or even better), we can use chaining of methods to string these arguments together without unnecessary object creation…</p>
+<p>The point of the chain is to help you write code in a way that is easier to read and understand. It is powerful tool for clearly expressing a sequence of multiple operations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ingredients</span>
+
+    <span class="o">.</span><span class="n">mix</span><span class="p">()</span>
+
+    <span class="o">.</span><span class="n">pour</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">bake</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+    <span class="o">.</span><span class="n">ear</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -404,7 +475,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -413,7 +484,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -429,7 +500,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -438,7 +509,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -609,13 +680,363 @@ div.rendered_html tbody tr:hover {
 <p>5 rows × 87 columns</p>
 </div></div>
 </div>
+<p>Pandas doesn’t have a comprehensible list of methods to use in method chaining. But to make up for it, Pandas introduced Pipe function starting from version 0.16.2. Pipe enables user-defined methods in method chains.</p>
+<p>With the introduction of pipe, you can almost write anything in a method chain which begets the question, How much chaining is too much?. This is an entirely subjective question and must be left to the discretion of the programmer. Most people find the sweet spot to be around 7 or 8 methods in a single chain. I don’t use any hard limits on the number of methods in a chain. Instead, I try to represent a single coherent thought in a single method chain.</p>
+<p>Some of the critics of method chaining accuse it of increasing code readability at the cost of making debugging tricky, which is true. Imagine a chain that’s ten methods long that you are debugging after a month. The data frame structure or the column names have changed since then and now your chain starts throwing errors. Its impossible to now debug through the chain and see the changes it makes to the data frame as you move along the chain, albeit you can easily find which method call is
+breaking the code. This needs to be addressed before starting to use long method chains in production or in notebooks.</p>
+<div class="section" id="How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?">
+<h3>How to track a changing of the dataframe shape along the chain?<a class="headerlink" href="#How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?" title="Permalink to this headline">¶</a></h3>
+<p>Two things to note in this function are the fn argument that can take in a lambda function and display function call. Lambda function lends flexibility and the display function call makes the display of data frames and plots pretty in a Jupyter lab or a notebook setting.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">csnap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Custom Help function to print things in method chaining.</span>
+<span class="sd">        Returns back the df to further use in chaining.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span> <span class="c1"># check the dataframe shape</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;well&quot;</span><span class="p">,</span> <span class="s2">&quot;drilling_operator&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">])</span> <span class="c1"># select only 5 columns</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span> <span class="c1"># check the dataframe shape</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;water_depth &gt;= 1000&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span> <span class="c1"># check the dataframe shape</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1921, 87)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1921, 5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(30, 5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>water_depth</th>
+      <th>total_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1393</td>
+      <td>6302/6-1</td>
+      <td>6302/6-1</td>
+      <td>Statoil ASA (old)</td>
+      <td>1261.0</td>
+      <td>4234.0</td>
+    </tr>
+    <tr>
+      <td>1394</td>
+      <td>6304/3-1</td>
+      <td>6304/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>1235.3</td>
+      <td>3642.0</td>
+    </tr>
+    <tr>
+      <td>1396</td>
+      <td>6305/4-1</td>
+      <td>6305/4-1</td>
+      <td>Norsk Hydro Produksjon AS</td>
+      <td>1002.0</td>
+      <td>2975.0</td>
+    </tr>
+    <tr>
+      <td>1397</td>
+      <td>6305/4-2 S</td>
+      <td>6305/4-2</td>
+      <td>A/S Norske Shell</td>
+      <td>1086.0</td>
+      <td>2985.0</td>
+    </tr>
+    <tr>
+      <td>1413</td>
+      <td>6403/6-1</td>
+      <td>6403/6-1</td>
+      <td>Statoil ASA (old)</td>
+      <td>1721.0</td>
+      <td>4120.0</td>
+    </tr>
+    <tr>
+      <td>1414</td>
+      <td>6403/10-1</td>
+      <td>6403/10-1</td>
+      <td>Norsk Hydro Produksjon AS</td>
+      <td>1717.0</td>
+      <td>3400.0</td>
+    </tr>
+    <tr>
+      <td>1415</td>
+      <td>6404/11-1</td>
+      <td>6404/11-1</td>
+      <td>BP Amoco Norge AS</td>
+      <td>1495.0</td>
+      <td>3650.0</td>
+    </tr>
+    <tr>
+      <td>1416</td>
+      <td>6405/7-1</td>
+      <td>6405/7-1</td>
+      <td>Statoil ASA (old)</td>
+      <td>1206.0</td>
+      <td>4300.0</td>
+    </tr>
+    <tr>
+      <td>1550</td>
+      <td>6504/5-1 S</td>
+      <td>6504/5-1</td>
+      <td>Eni Norge AS</td>
+      <td>1190.0</td>
+      <td>4193.0</td>
+    </tr>
+    <tr>
+      <td>1675</td>
+      <td>6603/5-1 S</td>
+      <td>6603/5-1</td>
+      <td>A/S Norske Shell</td>
+      <td>1452.0</td>
+      <td>5254.0</td>
+    </tr>
+    <tr>
+      <td>1676</td>
+      <td>6603/12-1</td>
+      <td>6603/12-1</td>
+      <td>A/S Norske Shell</td>
+      <td>1376.0</td>
+      <td>3830.0</td>
+    </tr>
+    <tr>
+      <td>1677</td>
+      <td>6604/2-1</td>
+      <td>6604/2-1</td>
+      <td>BG Norge AS</td>
+      <td>1262.0</td>
+      <td>3551.0</td>
+    </tr>
+    <tr>
+      <td>1678</td>
+      <td>6604/5-1</td>
+      <td>6604/5-1</td>
+      <td>Wintershall Norge AS</td>
+      <td>1219.0</td>
+      <td>3858.0</td>
+    </tr>
+    <tr>
+      <td>1679</td>
+      <td>6604/10-1</td>
+      <td>6604/10-1</td>
+      <td>A/S Norske Shell</td>
+      <td>1354.0</td>
+      <td>3715.0</td>
+    </tr>
+    <tr>
+      <td>1680</td>
+      <td>6605/1-1</td>
+      <td>6605/1-1</td>
+      <td>StatoilHydro ASA</td>
+      <td>1157.0</td>
+      <td>3947.0</td>
+    </tr>
+    <tr>
+      <td>1742</td>
+      <td>6704/12-1</td>
+      <td>6704/12-1</td>
+      <td>Saga Petroleum ASA</td>
+      <td>1352.0</td>
+      <td>4103.0</td>
+    </tr>
+    <tr>
+      <td>1743</td>
+      <td>6705/7-1</td>
+      <td>6705/7-1</td>
+      <td>Repsol Norge AS</td>
+      <td>1404.0</td>
+      <td>3290.0</td>
+    </tr>
+    <tr>
+      <td>1744</td>
+      <td>6705/10-1</td>
+      <td>6705/10-1</td>
+      <td>StatoilHydro Petroleum AS</td>
+      <td>1335.0</td>
+      <td>3775.0</td>
+    </tr>
+    <tr>
+      <td>1745</td>
+      <td>6706/6-1</td>
+      <td>6706/6-1</td>
+      <td>Esso Exploration and Production Norway A/S</td>
+      <td>1298.0</td>
+      <td>3451.0</td>
+    </tr>
+    <tr>
+      <td>1746</td>
+      <td>6706/6-2 S</td>
+      <td>6706/6-2</td>
+      <td>Wintershall Norge AS</td>
+      <td>1214.0</td>
+      <td>3916.0</td>
+    </tr>
+    <tr>
+      <td>1747</td>
+      <td>6706/11-1</td>
+      <td>6706/11-1</td>
+      <td>Den norske stats oljeselskap a.s</td>
+      <td>1238.0</td>
+      <td>4317.0</td>
+    </tr>
+    <tr>
+      <td>1748</td>
+      <td>6706/11-2</td>
+      <td>6706/11-2</td>
+      <td>Statoil Petroleum AS</td>
+      <td>1272.0</td>
+      <td>2596.0</td>
+    </tr>
+    <tr>
+      <td>1749</td>
+      <td>6706/12-1</td>
+      <td>6706/12-1</td>
+      <td>StatoilHydro ASA</td>
+      <td>1262.0</td>
+      <td>3950.0</td>
+    </tr>
+    <tr>
+      <td>1750</td>
+      <td>6706/12-2</td>
+      <td>6706/12-2</td>
+      <td>Statoil Petroleum AS</td>
+      <td>1312.0</td>
+      <td>2754.0</td>
+    </tr>
+    <tr>
+      <td>1751</td>
+      <td>6706/12-3</td>
+      <td>6706/12-3</td>
+      <td>Statoil Petroleum AS</td>
+      <td>1287.0</td>
+      <td>3336.0</td>
+    </tr>
+    <tr>
+      <td>1752</td>
+      <td>6707/10-1</td>
+      <td>6707/10-1</td>
+      <td>BP Norway Limited U.A.</td>
+      <td>1274.0</td>
+      <td>5039.0</td>
+    </tr>
+    <tr>
+      <td>1753</td>
+      <td>6707/10-2 A</td>
+      <td>6707/10-2</td>
+      <td>StatoilHydro ASA</td>
+      <td>1248.0</td>
+      <td>4850.0</td>
+    </tr>
+    <tr>
+      <td>1754</td>
+      <td>6707/10-2 S</td>
+      <td>6707/10-2</td>
+      <td>StatoilHydro ASA</td>
+      <td>1248.0</td>
+      <td>3365.0</td>
+    </tr>
+    <tr>
+      <td>1755</td>
+      <td>6707/10-3 S</td>
+      <td>6707/10-3</td>
+      <td>Centrica Resources (Norge) AS</td>
+      <td>1421.0</td>
+      <td>4789.0</td>
+    </tr>
+    <tr>
+      <td>1758</td>
+      <td>7016/2-1</td>
+      <td>7016/2-1</td>
+      <td>Eni Norge AS</td>
+      <td>1366.0</td>
+      <td>4061.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="p">(</span>
+    <span class="n">wine</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color_intensity&quot;</span><span class="p">:</span> <span class="s2">&quot;ci&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">color_filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">hue</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ci</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;alcohol &gt; 14&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;alcohol&quot;</span><span class="p">,</span> <span class="s2">&quot;ci&quot;</span><span class="p">,</span> <span class="s2">&quot;hue&quot;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -625,6 +1046,15 @@ div.rendered_html tbody tr:hover {
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data_cleaning_dataframes.html" class="btn btn-neutral float-right" title="Data Cleaning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quick_introduction.html" class="btn btn-neutral float-left" title="Quick introduction on the approach" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

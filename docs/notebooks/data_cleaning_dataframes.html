@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Visualization - Dataframes" href="data_visualisation_dataframes.html" />
-    <link rel="prev" title="Quick introduction on the approach" href="quick_introduction.html" /> 
+    <link rel="prev" title="How method chaining in pandas is and can be super effective" href="method_chaining_in_pandas.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,12 +89,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html">Welcome!!</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html#what-will-you-learn-in-this-book">What will you learn in this book?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/tips_and_tricks.html#jupyter-notebook-keyboard-shortcuts">Jupyter Notebook keyboard shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quick_introduction.html">Quick introduction on the approach</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Method chaining concept:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="method_chaining_in_pandas.html">How method chaining in pandas is and can be super effective</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Cleaning:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Cleaning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Readable-and-understandable-code---chaining">Readable and understandable code - chaining</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Tabular-Dataset---NPD-well-data">Tabular Dataset - NPD well data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Cleaning-the-dataframe">Cleaning the dataframe</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#str_replace---replace-something-with-something">str_replace - replace something with something</a></li>
@@ -118,10 +123,6 @@
 <p class="caption"><span class="caption-text">Data Visualization:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data_visualisation_dataframes.html">Data Visualization - Dataframes</a></li>
-</ul>
-<p class="caption"><span class="caption-text">First Jupyter Notebook:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="first_notebook.html">Welcome to the first notebooks</a></li>
 </ul>
 
             
@@ -423,68 +424,6 @@ div.rendered_html tbody tr:hover {
 <p>Afterwards we will inspect other methods two ways of doing things.</p>
 <p>I prefer having one way of doing common tasks rather then having a myriad of them which reduces fluency and introduces clutter.</p>
 <p>We are here to solve problems :)</p>
-<div class="section" id="Readable-and-understandable-code---chaining">
-<h2>Readable and understandable code - chaining<a class="headerlink" href="#Readable-and-understandable-code---chaining" title="Permalink to this headline">¶</a></h2>
-<p>I will always try to avoid the following two ways of writing code:</p>
-<p>** 1) MUTLIPLE OBJECT OPTION**</p>
-<p>eat(</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">slice</span><span class="p">(</span>
-
-    <span class="n">bake</span><span class="p">(</span>
-
-        <span class="n">put</span><span class="p">(</span>
-            <span class="n">pour</span><span class="p">(</span>
-
-                <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">),</span>
-
-                <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">),</span>
-
-                <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">),</span>
-
-            <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
-
-        <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">),</span>
-    <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This first option is considered a “nested” option such that functions are nested within one another. Historically, this has been the traditional way of integrating code; however, it becomes extremely difficult to read what exactly the code is doing and it also becomes easier to make mistakes when making updates to your code. Although not in violation of the DRY principle1, it definitely violates the basic principle of readability and clarity, which makes communication of your analysis more
-difficult. To make things more readable, people often move to the following approach…</p>
-<p>** 2) NESTED OPTION**</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">ingredients</span><span class="p">)</span>
-
-<span class="n">it</span> <span class="o">=</span> <span class="n">pour</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
-
-<span class="n">it</span> <span class="o">=</span> <span class="n">put</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
-
-<span class="n">it</span> <span class="o">=</span> <span class="n">bake</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-<span class="n">it</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-
-<span class="n">it</span> <span class="o">=</span> <span class="n">eat</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This second option helps in making the data wrangling steps more explicit and obvious but definitely violates the DRY principle. By sequencing multiple functions in this way you are likely saving multiple outputs that are not very informative to you or others; rather, the only reason you save them is to insert them into the next function to eventually get the final output you desire. This inevitably creates unnecessary copies and wrecks havoc on properly managing your objects…basically it
-results in a global environment charlie foxtrot!</p>
-<p><strong>I WILL INSIST ON METHODS CHAINING (if and when python and pandas allows you)</strong></p>
-<p>To provide the same readability (or even better), we can use chaining of methods to string these arguments together without unnecessary object creation…</p>
-<p>The point of the chain is to help you write code in a way that is easier to read and understand. It is powerful tool for clearly expressing a sequence of multiple operations.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ingredients</span>
-
-    <span class="o">.</span><span class="n">mix</span><span class="p">()</span>
-
-    <span class="o">.</span><span class="n">pour</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">baking_form</span><span class="p">)</span>
-
-    <span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">into</span><span class="o">=</span><span class="n">oven</span><span class="p">)</span>
-
-    <span class="o">.</span><span class="n">bake</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-    <span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">pieces</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-
-    <span class="o">.</span><span class="n">ear</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="Tabular-Dataset---NPD-well-data">
 <h2>Tabular Dataset - NPD well data<a class="headerlink" href="#Tabular-Dataset---NPD-well-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
@@ -2250,7 +2189,7 @@ results in a global environment charlie foxtrot!</p>
 <p>If you would like to caculate a column where, for example, each of the conditions will be re-mapped into a category, you can handle it with <code class="docutils literal notranslate"><span class="pre">np.select()</span></code></p>
 <p>I would like to calculate a column <code class="docutils literal notranslate"><span class="pre">water_depth_category</span></code> has 4 categories, between 0 and 305 m, between 306 and 1524 m, between 1525 and 2133 m and more than 2134m. Each of these categories is classified into Shallow Water, Midwater, Deepwater and Ultra-Deepwater - respectively. Otherwise it is Unknown.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[201]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[220]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2280,7 +2219,7 @@ results in a global environment charlie foxtrot!</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[201]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[220]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -2292,7 +2231,7 @@ Name: water_depth_category, dtype: int64
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[219]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[223]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2301,7 +2240,7 @@ Name: water_depth_category, dtype: int64
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[219]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[223]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2331,78 +2270,87 @@ Name: water_depth_category, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <td>1331</td>
-      <td>35/10-4 A</td>
-      <td>3946.0</td>
-      <td>363.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>1610</td>
-      <td>6507/5-2</td>
-      <td>3897.0</td>
-      <td>347.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>1010</td>
-      <td>31/5-4 S</td>
-      <td>1909.0</td>
-      <td>316.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>923</td>
-      <td>30/10-3</td>
-      <td>2255.0</td>
-      <td>106.0</td>
+      <td>1388</td>
+      <td>6204/10-2 R</td>
+      <td>2095.0</td>
+      <td>172.0</td>
       <td>Shallow Water</td>
     </tr>
     <tr>
-      <td>1299</td>
-      <td>35/6-1 S</td>
-      <td>847.0</td>
-      <td>344.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>1037</td>
-      <td>33/2-1</td>
-      <td>4459.0</td>
-      <td>381.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>1566</td>
-      <td>6506/11-7</td>
-      <td>4977.5</td>
-      <td>356.0</td>
-      <td>Midwater</td>
-    </tr>
-    <tr>
-      <td>1576</td>
-      <td>6506/12-6</td>
-      <td>4741.0</td>
-      <td>272.0</td>
+      <td>320</td>
+      <td>15/3-3</td>
+      <td>5115.0</td>
+      <td>109.0</td>
       <td>Shallow Water</td>
     </tr>
     <tr>
-      <td>1153</td>
-      <td>34/7-26 S</td>
-      <td>4193.0</td>
-      <td>201.0</td>
+      <td>541</td>
+      <td>16/7-11</td>
+      <td>2650.0</td>
+      <td>80.5</td>
       <td>Shallow Water</td>
     </tr>
     <tr>
-      <td>1214</td>
-      <td>34/10-13</td>
-      <td>3392.0</td>
-      <td>214.0</td>
+      <td>1425</td>
+      <td>6406/2-1</td>
+      <td>5292.0</td>
+      <td>278.0</td>
+      <td>Shallow Water</td>
+    </tr>
+    <tr>
+      <td>1878</td>
+      <td>7223/5-1 A</td>
+      <td>0.0</td>
+      <td>332.0</td>
+      <td>Midwater</td>
+    </tr>
+    <tr>
+      <td>774</td>
+      <td>25/11-16</td>
+      <td>1945.0</td>
+      <td>120.0</td>
+      <td>Shallow Water</td>
+    </tr>
+    <tr>
+      <td>518</td>
+      <td>16/4-8 S</td>
+      <td>2700.0</td>
+      <td>100.0</td>
+      <td>Shallow Water</td>
+    </tr>
+    <tr>
+      <td>673</td>
+      <td>25/4-10 S</td>
+      <td>2912.0</td>
+      <td>123.0</td>
+      <td>Shallow Water</td>
+    </tr>
+    <tr>
+      <td>1345</td>
+      <td>35/11-10 A</td>
+      <td>3259.0</td>
+      <td>353.5</td>
+      <td>Midwater</td>
+    </tr>
+    <tr>
+      <td>1269</td>
+      <td>34/10-52 A</td>
+      <td>3520.0</td>
+      <td>134.0</td>
       <td>Shallow Water</td>
     </tr>
   </tbody>
 </table>
 </div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -2419,7 +2367,7 @@ Name: water_depth_category, dtype: int64
         <a href="data_visualisation_dataframes.html" class="btn btn-neutral float-right" title="Data Visualization - Dataframes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quick_introduction.html" class="btn btn-neutral float-left" title="Quick introduction on the approach" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="method_chaining_in_pandas.html" class="btn btn-neutral float-left" title="How method chaining in pandas is and can be super effective" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

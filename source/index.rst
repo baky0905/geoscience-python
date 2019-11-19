@@ -11,7 +11,14 @@ Welcome to Geoscience with Python - the easy way!
    :caption: Introduction:
 
    additional/welcome.rst
+   additional/tips_and_tricks.rst
    notebooks/quick_introduction.ipynb
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Method chaining concept:
+
+   notebooks/method_chaining_in_pandas.ipynb
 
 .. toctree::
    :maxdepth: 3
@@ -25,11 +32,6 @@ Welcome to Geoscience with Python - the easy way!
 
    notebooks/data_visualisation_dataframes.ipynb
 
-.. toctree::
-   :maxdepth: 3
-   :caption: First Jupyter Notebook:
-
-   notebooks/first_notebook.ipynb
 
 Indices and tables
 ==================
