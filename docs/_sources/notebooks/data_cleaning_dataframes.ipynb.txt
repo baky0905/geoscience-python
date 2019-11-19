@@ -955,6 +955,166 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Converting columns to date and time, and calculating difference"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 308,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>well</th>\n      <th>entry_date</th>\n      <th>completion_date</th>\n      <th>days_of_drilling</th>\n      <th>days_of_drilling_int</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1989-03-20</td>\n      <td>1989-04-06</td>\n      <td>17 days</td>\n      <td>17.0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>2005-12-14</td>\n      <td>2006-02-02</td>\n      <td>50 days</td>\n      <td>50.0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1968-06-07</td>\n      <td>1968-11-11</td>\n      <td>157 days</td>\n      <td>157.0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1969-05-14</td>\n      <td>1969-07-27</td>\n      <td>74 days</td>\n      <td>74.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1982-08-22</td>\n      <td>1983-03-24</td>\n      <td>214 days</td>\n      <td>214.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "    well entry_date completion_date days_of_drilling  days_of_drilling_int\n0  1/2-1 1989-03-20      1989-04-06          17 days                  17.0\n1  1/2-2 2005-12-14      2006-02-02          50 days                  50.0\n2  1/3-1 1968-06-07      1968-11-11         157 days                 157.0\n3  1/3-2 1969-05-14      1969-07-27          74 days                  74.0\n4  1/3-3 1982-08-22      1983-03-24         214 days                 214.0"
+     },
+     "execution_count": 308,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.columns\n",
+    "\n",
+    "df_days = (df\n",
+    "    .filter(items = ['well', 'entry_date','completion_date'])\n",
+    "    .assign(\n",
+    "        entry_date=pd.to_datetime(df['entry_date']),\n",
+    "        completion_date=pd.to_datetime(df['completion_date']),\n",
+    "        days_of_drilling = lambda x: x[\"completion_date\"] - x[\"entry_date\"],\n",
+    "        days_of_drilling_int = df_days[\"days_of_drilling\"].dt.days\n",
+    "        )\n",
+    "    )\n",
+    "df_days.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 263,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>production_licence</th>\n      <th>purpose</th>\n      <th>status</th>\n      <th>content</th>\n      <th>well_type</th>\n      <th>sub_sea</th>\n      <th>entry_date</th>\n      <th>...</th>\n      <th>npdid_wellbore</th>\n      <th>dsc_npdid_discovery</th>\n      <th>npdid_field</th>\n      <th>npdid_facility_drilling</th>\n      <th>npdid_wellbore_reclass</th>\n      <th>prl_npdid_production_licence</th>\n      <th>npdid_site_survey</th>\n      <th>date_updated</th>\n      <th>date_updated_max</th>\n      <th>datesync_npd</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>7324/10-1</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>162</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>03.06.1989</td>\n      <td>...</td>\n      <td>1411</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>294382.0</td>\n      <td>0</td>\n      <td>22108.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>7325/1-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>615</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>23.06.2014</td>\n      <td>...</td>\n      <td>7501</td>\n      <td>24689817.0</td>\n      <td>NaN</td>\n      <td>404201.0</td>\n      <td>0</td>\n      <td>20429544.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>7325/4-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>855</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL/GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>19.07.2017</td>\n      <td>...</td>\n      <td>8211</td>\n      <td>29469097.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28168828.0</td>\n      <td>NaN</td>\n      <td>13.11.2019</td>\n      <td>13.11.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>7335/3-1</td>\n      <td>Equinor Energy AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>13.05.2019</td>\n      <td>...</td>\n      <td>8735</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>415836.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>17.10.2019</td>\n      <td>NaN</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>7435/12-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>09.08.2017</td>\n      <td>...</td>\n      <td>8228</td>\n      <td>29491696.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>01.11.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 87 columns</p>\n</div>",
+      "text/plain": "     wellbore_name       well                 drilling_operator  \\\n0            1/2-1      1/2-1       Phillips Petroleum Norsk AS   \n1            1/2-2      1/2-2        Paladin Resources Norge AS   \n2            1/3-1      1/3-1                  A/S Norske Shell   \n3            1/3-2      1/3-2                  A/S Norske Shell   \n4            1/3-3      1/3-3            Elf Petroleum Norge AS   \n...            ...        ...                               ...   \n1916     7324/10-1  7324/10-1  Den norske stats oljeselskap a.s   \n1917      7325/1-1   7325/1-1              Statoil Petroleum AS   \n1918      7325/4-1   7325/4-1              Statoil Petroleum AS   \n1919      7335/3-1   7335/3-1                 Equinor Energy AS   \n1920     7435/12-1  7435/12-1              Statoil Petroleum AS   \n\n     production_licence  purpose status    content    well_type sub_sea  \\\n0                  143   WILDCAT    P&A        OIL  EXPLORATION      NO   \n1                143 CS  WILDCAT    P&A  OIL SHOWS  EXPLORATION      NO   \n2                  011   WILDCAT    P&A        GAS  EXPLORATION      NO   \n3                  011   WILDCAT    P&A        DRY  EXPLORATION      NO   \n4                  065   WILDCAT    P&A        OIL  EXPLORATION      NO   \n...                 ...      ...    ...        ...          ...     ...   \n1916               162   WILDCAT    P&A      SHOWS  EXPLORATION      NO   \n1917               615   WILDCAT    P&A        GAS  EXPLORATION      NO   \n1918               855   WILDCAT    P&A    OIL/GAS  EXPLORATION      NO   \n1919               859   WILDCAT    P&A        DRY  EXPLORATION      NO   \n1920               859   WILDCAT    P&A        GAS  EXPLORATION      NO   \n\n      entry_date  ... npdid_wellbore dsc_npdid_discovery npdid_field  \\\n0     20.03.1989  ...           1382             43814.0   3437650.0   \n1     14.12.2005  ...           5192                 NaN         NaN   \n2     06.07.1968  ...            154             43820.0         NaN   \n3     14.05.1969  ...            165                 NaN         NaN   \n4     22.08.1982  ...             87             43826.0   1028599.0   \n...          ...  ...            ...                 ...         ...   \n1916  03.06.1989  ...           1411                 NaN         NaN   \n1917  23.06.2014  ...           7501          24689817.0         NaN   \n1918  19.07.2017  ...           8211          29469097.0         NaN   \n1919  13.05.2019  ...           8735                 NaN         NaN   \n1920  09.08.2017  ...           8228          29491696.0         NaN   \n\n     npdid_facility_drilling npdid_wellbore_reclass  \\\n0                   296245.0                      0   \n1                   278245.0                      0   \n2                   288604.0                      0   \n3                   288847.0                      0   \n4                   288334.0                      0   \n...                      ...                    ...   \n1916                294382.0                      0   \n1917                404201.0                      0   \n1918                439972.0                      0   \n1919                415836.0                      0   \n1920                439972.0                      0   \n\n      prl_npdid_production_licence npdid_site_survey date_updated  \\\n0                          21956.0               NaN   03.10.2019   \n1                        2424919.0               NaN   03.10.2019   \n2                          20844.0               NaN   03.10.2019   \n3                          20844.0               NaN   03.10.2019   \n4                          21316.0               NaN   03.10.2019   \n...                            ...               ...          ...   \n1916                       22108.0               NaN   03.10.2019   \n1917                    20429544.0               NaN   03.10.2019   \n1918                    28168828.0               NaN   13.11.2019   \n1919                    28169055.0               NaN   17.10.2019   \n1920                    28169055.0               NaN   01.11.2019   \n\n      date_updated_max  datesync_npd  \n0           03.10.2019    19.11.2019  \n1           03.10.2019    19.11.2019  \n2           03.10.2019    19.11.2019  \n3           03.10.2019    19.11.2019  \n4           03.10.2019    19.11.2019  \n...                ...           ...  \n1916        03.10.2019    19.11.2019  \n1917        03.10.2019    19.11.2019  \n1918        13.11.2019    19.11.2019  \n1919               NaN    19.11.2019  \n1920        03.10.2019    19.11.2019  \n\n[1921 rows x 87 columns]"
+     },
+     "execution_count": 263,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### pivot_table from long to wide dataframe format"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Let’s use the pivot method to reshape this data so that the `purpose` of the wells become the columns and the `water_depth` becomes the values."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Guidance — Consider using only pivot_table and not pivot.\n",
+    "\n",
+    "pivot_table can accomplish all of what pivot can do. In the case that you do not need to perform an aggregation, you still must provide an aggregation function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 316,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th>purpose</th>\n      <th>wellbore_name</th>\n      <th>APPRAISAL</th>\n      <th>WILDCAT</th>\n      <th>WILDCAT-CCS</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>NaN</td>\n      <td>72.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>NaN</td>\n      <td>74.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>NaN</td>\n      <td>71.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-10</td>\n      <td>72.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-10 A</td>\n      <td>72.0</td>\n      <td>NaN</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>9/4-2</td>\n      <td>NaN</td>\n      <td>70.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>9/4-3</td>\n      <td>NaN</td>\n      <td>72.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>9/4-4</td>\n      <td>NaN</td>\n      <td>78.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>9/4-5</td>\n      <td>NaN</td>\n      <td>77.0</td>\n      <td>NaN</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>9/8-1</td>\n      <td>NaN</td>\n      <td>68.0</td>\n      <td>NaN</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 4 columns</p>\n</div>",
+      "text/plain": "purpose wellbore_name  APPRAISAL  WILDCAT  WILDCAT-CCS\n0               1/2-1        NaN     72.0          NaN\n1               1/2-2        NaN     74.0          NaN\n2               1/3-1        NaN     71.0          NaN\n3              1/3-10       72.0      NaN          NaN\n4            1/3-10 A       72.0      NaN          NaN\n...               ...        ...      ...          ...\n1916            9/4-2        NaN     70.0          NaN\n1917            9/4-3        NaN     72.0          NaN\n1918            9/4-4        NaN     78.0          NaN\n1919            9/4-5        NaN     77.0          NaN\n1920            9/8-1        NaN     68.0          NaN\n\n[1921 rows x 4 columns]"
+     },
+     "execution_count": 316,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_pivoted = (df\n",
+    "    .filter(items=[\"wellbore_name\", \"purpose\", \"water_depth\"])\n",
+    "    .pivot_table(\n",
+    "        index=\"wellbore_name\",\n",
+    "        columns=\"purpose\",\n",
+    "        values=\"water_depth\",\n",
+    "        aggfunc=\"mean\"\n",
+    "    )\n",
+    "    .reset_index()\n",
+    "    #.filter(items=[\"wellbore_name\", \"APPRAISAL\", \"WILDCAT\", \"WILDCAT-CCS\"])\n",
+    "    )\n",
+    "df_pivoted"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Melt from wide to long dataframe format"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 319,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>purpose</th>\n      <th>value</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>3</td>\n      <td>1/3-10</td>\n      <td>APPRAISAL</td>\n      <td>72.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-10 A</td>\n      <td>APPRAISAL</td>\n      <td>72.0</td>\n    </tr>\n    <tr>\n      <td>12</td>\n      <td>1/3-7</td>\n      <td>APPRAISAL</td>\n      <td>72.0</td>\n    </tr>\n    <tr>\n      <td>14</td>\n      <td>1/3-9 S</td>\n      <td>APPRAISAL</td>\n      <td>68.0</td>\n    </tr>\n    <tr>\n      <td>22</td>\n      <td>1/6-3</td>\n      <td>APPRAISAL</td>\n      <td>69.0</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>3838</td>\n      <td>9/4-3</td>\n      <td>WILDCAT</td>\n      <td>72.0</td>\n    </tr>\n    <tr>\n      <td>3839</td>\n      <td>9/4-4</td>\n      <td>WILDCAT</td>\n      <td>78.0</td>\n    </tr>\n    <tr>\n      <td>3840</td>\n      <td>9/4-5</td>\n      <td>WILDCAT</td>\n      <td>77.0</td>\n    </tr>\n    <tr>\n      <td>3841</td>\n      <td>9/8-1</td>\n      <td>WILDCAT</td>\n      <td>68.0</td>\n    </tr>\n    <tr>\n      <td>4760</td>\n      <td>31/5-7</td>\n      <td>WILDCAT-CCS</td>\n      <td>307.0</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 3 columns</p>\n</div>",
+      "text/plain": "     wellbore_name      purpose  value\n3           1/3-10    APPRAISAL   72.0\n4         1/3-10 A    APPRAISAL   72.0\n12           1/3-7    APPRAISAL   72.0\n14         1/3-9 S    APPRAISAL   68.0\n22           1/6-3    APPRAISAL   69.0\n...            ...          ...    ...\n3838         9/4-3      WILDCAT   72.0\n3839         9/4-4      WILDCAT   78.0\n3840         9/4-5      WILDCAT   77.0\n3841         9/8-1      WILDCAT   68.0\n4760        31/5-7  WILDCAT-CCS  307.0\n\n[1921 rows x 3 columns]"
+     },
+     "execution_count": 319,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df_pivoted\n",
+    "    .melt(\n",
+    "    id_vars='wellbore_name', \n",
+    "    value_vars=['APPRAISAL', 'WILDCAT', 'WILDCAT-CCS']\n",
+    "    )\n",
+    "    .dropna(subset=[\"value\"])\n",
+    "    )"
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": null,
    "metadata": {},

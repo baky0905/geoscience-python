@@ -475,11 +475,13 @@ results in a global environment charlie foxtrot!</p>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.246&amp;CultureCode=en&quot;</span><span class="p">)</span>
+<span></span><span class="n">df_original</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.246&amp;CultureCode=en&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.246&amp;CultureCode=en&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -709,7 +711,7 @@ breaking the code. This needs to be addressed before starting to use long method
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -726,10 +728,182 @@ breaking the code. This needs to be addressed before starting to use long method
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(1921, 87)
-</pre></div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Before
+After
+</pre></div></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>production_licence</th>
+      <th>purpose</th>
+      <th>status</th>
+      <th>content</th>
+      <th>well_type</th>
+      <th>sub_sea</th>
+      <th>entry_date</th>
+      <th>...</th>
+      <th>npdid_wellbore</th>
+      <th>dsc_npdid_discovery</th>
+      <th>npdid_field</th>
+      <th>npdid_facility_drilling</th>
+      <th>npdid_wellbore_reclass</th>
+      <th>prl_npdid_production_licence</th>
+      <th>npdid_site_survey</th>
+      <th>date_updated</th>
+      <th>date_updated_max</th>
+      <th>datesync_npd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>1/2-1</td>
+      <td>Phillips Petroleum Norsk AS</td>
+      <td>143</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>20.03.1989</td>
+      <td>...</td>
+      <td>1382</td>
+      <td>43814.0</td>
+      <td>3437650.0</td>
+      <td>296245.0</td>
+      <td>0</td>
+      <td>21956.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>1/2-2</td>
+      <td>Paladin Resources Norge AS</td>
+      <td>143 CS</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.12.2005</td>
+      <td>...</td>
+      <td>5192</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>278245.0</td>
+      <td>0</td>
+      <td>2424919.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>1/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>06.07.1968</td>
+      <td>...</td>
+      <td>154</td>
+      <td>43820.0</td>
+      <td>NaN</td>
+      <td>288604.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-2</td>
+      <td>1/3-2</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.05.1969</td>
+      <td>...</td>
+      <td>165</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>288847.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-3</td>
+      <td>1/3-3</td>
+      <td>Elf Petroleum Norge AS</td>
+      <td>065</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>22.08.1982</td>
+      <td>...</td>
+      <td>87</td>
+      <td>43826.0</td>
+      <td>1028599.0</td>
+      <td>288334.0</td>
+      <td>0</td>
+      <td>21316.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 87 columns</p>
+</div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -742,13 +916,79 @@ breaking the code. This needs to be addressed before starting to use long method
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>(30, 5)
-</pre></div>
-</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>water_depth</th>
+      <th>total_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1393</td>
+      <td>6302/6-1</td>
+      <td>6302/6-1</td>
+      <td>Statoil ASA (old)</td>
+      <td>1261.0</td>
+      <td>4234.0</td>
+    </tr>
+    <tr>
+      <td>1394</td>
+      <td>6304/3-1</td>
+      <td>6304/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>1235.3</td>
+      <td>3642.0</td>
+    </tr>
+    <tr>
+      <td>1396</td>
+      <td>6305/4-1</td>
+      <td>6305/4-1</td>
+      <td>Norsk Hydro Produksjon AS</td>
+      <td>1002.0</td>
+      <td>2975.0</td>
+    </tr>
+    <tr>
+      <td>1397</td>
+      <td>6305/4-2 S</td>
+      <td>6305/4-2</td>
+      <td>A/S Norske Shell</td>
+      <td>1086.0</td>
+      <td>2985.0</td>
+    </tr>
+    <tr>
+      <td>1413</td>
+      <td>6403/6-1</td>
+      <td>6403/6-1</td>
+      <td>Statoil ASA (old)</td>
+      <td>1721.0</td>
+      <td>4120.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1027,6 +1267,597 @@ breaking the code. This needs to be addressed before starting to use long method
 <span class="p">(</span><span class="mi">1921</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>Let’s look at the other custom pipe functions. setcols is used to set column names in a chain. Usually when we read data from an external source the column name will contain a mix of upper and lower cases along with space and special characters. These issues can be fixed like this,</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">setcols</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">fnc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">),</span> <span class="n">cols</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sets the column of the data frame to the passed column list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cols</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">cols</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">fnc</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df_original</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">setcols</span><span class="p">,</span>
+        <span class="n">fnc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;wlb&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;fld&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">csnap</span><span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1921, 87)
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(1921, 87)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellborename</th>
+      <th>well</th>
+      <th>drillingoperator</th>
+      <th>productionlicence</th>
+      <th>purpose</th>
+      <th>status</th>
+      <th>content</th>
+      <th>welltype</th>
+      <th>subsea</th>
+      <th>entrydate</th>
+      <th>...</th>
+      <th>npdidwellbore</th>
+      <th>dscnpdiddiscovery</th>
+      <th>npdidfield</th>
+      <th>fclnpdidfacilitydrilling</th>
+      <th>npdidwellborereclass</th>
+      <th>prlnpdidproductionlicence</th>
+      <th>npdidsitesurvey</th>
+      <th>dateupdated</th>
+      <th>dateupdatedmax</th>
+      <th>datesyncnpd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>1/2-1</td>
+      <td>Phillips Petroleum Norsk AS</td>
+      <td>143</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>20.03.1989</td>
+      <td>...</td>
+      <td>1382</td>
+      <td>43814.0</td>
+      <td>3437650.0</td>
+      <td>296245.0</td>
+      <td>0</td>
+      <td>21956.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>1/2-2</td>
+      <td>Paladin Resources Norge AS</td>
+      <td>143 CS</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.12.2005</td>
+      <td>...</td>
+      <td>5192</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>278245.0</td>
+      <td>0</td>
+      <td>2424919.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>1/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>06.07.1968</td>
+      <td>...</td>
+      <td>154</td>
+      <td>43820.0</td>
+      <td>NaN</td>
+      <td>288604.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-2</td>
+      <td>1/3-2</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.05.1969</td>
+      <td>...</td>
+      <td>165</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>288847.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-3</td>
+      <td>1/3-3</td>
+      <td>Elf Petroleum Norge AS</td>
+      <td>065</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>22.08.1982</td>
+      <td>...</td>
+      <td>87</td>
+      <td>43826.0</td>
+      <td>1028599.0</td>
+      <td>288334.0</td>
+      <td>0</td>
+      <td>21316.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>1916</td>
+      <td>7324/10-1</td>
+      <td>7324/10-1</td>
+      <td>Den norske stats oljeselskap a.s</td>
+      <td>162</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>03.06.1989</td>
+      <td>...</td>
+      <td>1411</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>294382.0</td>
+      <td>0</td>
+      <td>22108.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1917</td>
+      <td>7325/1-1</td>
+      <td>7325/1-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>615</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>23.06.2014</td>
+      <td>...</td>
+      <td>7501</td>
+      <td>24689817.0</td>
+      <td>NaN</td>
+      <td>404201.0</td>
+      <td>0</td>
+      <td>20429544.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1918</td>
+      <td>7325/4-1</td>
+      <td>7325/4-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>855</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL/GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>19.07.2017</td>
+      <td>...</td>
+      <td>8211</td>
+      <td>29469097.0</td>
+      <td>NaN</td>
+      <td>439972.0</td>
+      <td>0</td>
+      <td>28168828.0</td>
+      <td>NaN</td>
+      <td>13.11.2019</td>
+      <td>13.11.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1919</td>
+      <td>7335/3-1</td>
+      <td>7335/3-1</td>
+      <td>Equinor Energy AS</td>
+      <td>859</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>13.05.2019</td>
+      <td>...</td>
+      <td>8735</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>415836.0</td>
+      <td>0</td>
+      <td>28169055.0</td>
+      <td>NaN</td>
+      <td>17.10.2019</td>
+      <td>NaN</td>
+      <td>19.11.2019</td>
+    </tr>
+    <tr>
+      <td>1920</td>
+      <td>7435/12-1</td>
+      <td>7435/12-1</td>
+      <td>Statoil Petroleum AS</td>
+      <td>859</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>09.08.2017</td>
+      <td>...</td>
+      <td>8228</td>
+      <td>29491696.0</td>
+      <td>NaN</td>
+      <td>439972.0</td>
+      <td>0</td>
+      <td>28169055.0</td>
+      <td>NaN</td>
+      <td>01.11.2019</td>
+      <td>03.10.2019</td>
+      <td>19.11.2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 87 columns</p>
+</div></div>
+</div>
+<p>Unlike the csnap function setcols function creates a copy of the data frame, which makes the function call costly. But this is necessary to make sure that we are not writing on the global copy of the data frame. Most of the pandas function works similarly with an in-place flag to either return the new data frame or reassign the top level reference.</p>
+<p>Jeff Reback says, There is no guarantee that an in-place operation is actually faster. Often, they are the same operation that works on a copy, but the top-level reference is reassigned.</p>
+<p>Let’s wrap this section with one final example. R has a versatile select function to select/deselect columns in a wide data frame instead of listing out everything. cfilter helps us achieve the same versatility using lambda function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">cfilter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;rows&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Custom Filters based on a condition and returns the df.</span>
+<span class="sd">        function - a lambda function that returns a binary vector</span>
+<span class="sd">        thats similar in shape to the dataframe</span>
+<span class="sd">        axis = rows or columns to be filtered.</span>
+<span class="sd">        A single level indexing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;rows&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">fn</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;columns&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">fn</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span>
+
+<span class="p">(</span><span class="n">df</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">cfilter</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;well&quot;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellborename</th>
+      <th>well</th>
+      <th>welltype</th>
+      <th>discoverywellbore</th>
+      <th>reclassfromwellbore</th>
+      <th>diskoswellboretype</th>
+      <th>diskoswellboreparent</th>
+      <th>npdidwellbore</th>
+      <th>npdidwellborereclass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>1/2-1</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>1382</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>1/2-2</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>5192</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>1/3-1</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>154</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-2</td>
+      <td>1/3-2</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>165</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-3</td>
+      <td>1/3-3</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>87</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>1916</td>
+      <td>7324/10-1</td>
+      <td>7324/10-1</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>1411</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1917</td>
+      <td>7325/1-1</td>
+      <td>7325/1-1</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>7501</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1918</td>
+      <td>7325/4-1</td>
+      <td>7325/4-1</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>8211</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1919</td>
+      <td>7335/3-1</td>
+      <td>7335/3-1</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>8735</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1920</td>
+      <td>7435/12-1</td>
+      <td>7435/12-1</td>
+      <td>EXPLORATION</td>
+      <td>YES</td>
+      <td>NaN</td>
+      <td>initial</td>
+      <td></td>
+      <td>8228</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 9 columns</p>
+</div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+
+            setTimeout(function() {
+                var nbb_cell_id = 61;
+                var nbb_formatted_code = "def cfilter(df, fn, axis=\"rows\"):\n    \"\"\" Custom Filters based on a condition and returns the df.\n        function - a lambda function that returns a binary vector\n        thats similar in shape to the dataframe\n        axis = rows or columns to be filtered.\n        A single level indexing\n    \"\"\"\n    if axis == \"rows\":\n        return df[fn(df)]\n    elif axis == \"columns\":\n        return df.iloc[:, fn(df)]\n\n\n(df.pipe(cfilter, lambda x: x.columns.str.contains(\"well\"), axis=\"columns\"))";
+                var nbb_cells = Jupyter.notebook.get_cells();
+                for (var i = 0; i < nbb_cells.length; ++i) {
+                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {
+                        nbb_cells[i].set_text(nbb_formatted_code);
+                        break;
+                    }
+                }
+            }, 500);
+
+</script></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
