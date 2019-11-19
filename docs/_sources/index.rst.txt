@@ -32,6 +32,10 @@ Welcome to Geoscience with Python - the easy way!
 
    notebooks/data_visualisation_dataframes.ipynb
 
+.. toctree::
+   :maxdepth: 3
+   :caption: Exploratory Data Analysis (EDA) case studies
+
 
 Indices and tables
 ==================
