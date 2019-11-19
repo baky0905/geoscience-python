@@ -981,15 +981,29 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "If you would like to caculate a column where, for example, each of the conditions will be re-mapped into a category, you can\n",
+    "handle it with `np.select()`\n",
+    "\n",
+    "I would like to calculate a column `water_depth_category` has 4 categories, between 0 and 305 m, between 306 and 1524 m, between 1525 and 2133 m and more than 2134m.\n",
+    "Each of these categories is classified into Shallow Water, Midwater, Deepwater and Ultra-Deepwater - respectively. Otherwise it is Unknown.\n",
+    "\n"
+   ]
+  },
+  {
    "cell_type": "code",
-   "execution_count": 169,
+   "execution_count": 201,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/plain": "Shallow Water    1371\nMidwater          547\nDeepwater           2\nUnknown             1\nName: water_depth_category, dtype: int64"
+      "text/plain": "Shallow Water    1373\nMidwater          546\nDeepwater           2\nName: water_depth_category, dtype: int64"
      },
-     "execution_count": 169,
+     "execution_count": 201,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1000,10 +1014,10 @@
     "    .assign(\n",
     "        water_depth_category = lambda x: np.select(\n",
     "            condlist = [\n",
-    "                x[\"water_depth\"].between(0, 305, inclusive=False),\n",
-    "                x[\"water_depth\"].between(300, 1524, inclusive=True),\n",
-    "                x[\"water_depth\"].between(1000, 2133, inclusive=True),\n",
-    "                x[\"water_depth\"].between(2133, np.max(x[\"water_depth\"]), inclusive=True)\n",
+    "                x[\"water_depth\"].between(0, 305, inclusive=True),\n",
+    "                x[\"water_depth\"].between(306, 1524, inclusive=True),\n",
+    "                x[\"water_depth\"].between(1525, 2133, inclusive=True),\n",
+    "                x[\"water_depth\"].between(2134, np.max(x[\"water_depth\"]), inclusive=True)\n",
     "                ],\n",
     "            choicelist = [ \n",
     "                \"Shallow Water\",\n",
@@ -1021,29 +1035,22 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 170,
+   "execution_count": 219,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>water_depth</th>\n      <th>water_depth_category</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>3574.0</td>\n      <td>72.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>3434.0</td>\n      <td>74.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>4877.0</td>\n      <td>71.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>4297.0</td>\n      <td>73.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>4876.0</td>\n      <td>68.0</td>\n      <td>Shallow Water</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
-      "text/plain": "  wellbore_name  total_depth  water_depth water_depth_category\n0         1/2-1       3574.0         72.0        Shallow Water\n1         1/2-2       3434.0         74.0        Shallow Water\n2         1/3-1       4877.0         71.0        Shallow Water\n3         1/3-2       4297.0         73.0        Shallow Water\n4         1/3-3       4876.0         68.0        Shallow Water"
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>water_depth</th>\n      <th>water_depth_category</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1331</td>\n      <td>35/10-4 A</td>\n      <td>3946.0</td>\n      <td>363.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1610</td>\n      <td>6507/5-2</td>\n      <td>3897.0</td>\n      <td>347.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1010</td>\n      <td>31/5-4 S</td>\n      <td>1909.0</td>\n      <td>316.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>923</td>\n      <td>30/10-3</td>\n      <td>2255.0</td>\n      <td>106.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1299</td>\n      <td>35/6-1 S</td>\n      <td>847.0</td>\n      <td>344.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1037</td>\n      <td>33/2-1</td>\n      <td>4459.0</td>\n      <td>381.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1566</td>\n      <td>6506/11-7</td>\n      <td>4977.5</td>\n      <td>356.0</td>\n      <td>Midwater</td>\n    </tr>\n    <tr>\n      <td>1576</td>\n      <td>6506/12-6</td>\n      <td>4741.0</td>\n      <td>272.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1153</td>\n      <td>34/7-26 S</td>\n      <td>4193.0</td>\n      <td>201.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1214</td>\n      <td>34/10-13</td>\n      <td>3392.0</td>\n      <td>214.0</td>\n      <td>Shallow Water</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "     wellbore_name  total_depth  water_depth water_depth_category\n1331     35/10-4 A       3946.0        363.0             Midwater\n1610      6507/5-2       3897.0        347.0             Midwater\n1010      31/5-4 S       1909.0        316.0             Midwater\n923        30/10-3       2255.0        106.0        Shallow Water\n1299      35/6-1 S        847.0        344.0             Midwater\n1037        33/2-1       4459.0        381.0             Midwater\n1566     6506/11-7       4977.5        356.0             Midwater\n1576     6506/12-6       4741.0        272.0        Shallow Water\n1153     34/7-26 S       4193.0        201.0        Shallow Water\n1214      34/10-13       3392.0        214.0        Shallow Water"
      },
-     "execution_count": 170,
+     "execution_count": 219,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "df_multiple.head()"
+    "df_multiple.sample(10)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
