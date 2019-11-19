@@ -171,6 +171,22 @@
     ")\n",
     "sns.distplot(data, kde=False, rug=True);"
    ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "How many wells were drilled within a certain window of Total Depth and Drilling Days?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {},

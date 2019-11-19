@@ -52,6 +52,7 @@
     "I will always try to avoid the following two ways of writing code:\n",
     "\n",
     "** 1) MUTLIPLE OBJECT OPTION**\n",
+    "\n",
     "eat(\n",
     "\n",
     "    slice(\n",
@@ -140,7 +141,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 51,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -152,7 +153,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 52,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -161,15 +162,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 53,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wlbWellboreName</th>\n      <th>wlbWell</th>\n      <th>wlbDrillingOperator</th>\n      <th>wlbProductionLicence</th>\n      <th>wlbPurpose</th>\n      <th>wlbStatus</th>\n      <th>wlbContent</th>\n      <th>wlbWellType</th>\n      <th>wlbSubSea</th>\n      <th>wlbEntryDate</th>\n      <th>...</th>\n      <th>wlbNpdidWellbore</th>\n      <th>dscNpdidDiscovery</th>\n      <th>fldNpdidField</th>\n      <th>fclNpdidFacilityDrilling</th>\n      <th>wlbNpdidWellboreReclass</th>\n      <th>prlNpdidProductionLicence</th>\n      <th>wlbNpdidSiteSurvey</th>\n      <th>wlbDateUpdated</th>\n      <th>wlbDateUpdatedMax</th>\n      <th>datesyncNPD</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>5 rows × 87 columns</p>\n</div>",
-      "text/plain": "  wlbWellboreName wlbWell          wlbDrillingOperator wlbProductionLicence  \\\n0           1/2-1   1/2-1  Phillips Petroleum Norsk AS                 143    \n1           1/2-2   1/2-2   Paladin Resources Norge AS               143 CS   \n2           1/3-1   1/3-1             A/S Norske Shell                 011    \n3           1/3-2   1/3-2             A/S Norske Shell                 011    \n4           1/3-3   1/3-3       Elf Petroleum Norge AS                 065    \n\n  wlbPurpose wlbStatus wlbContent  wlbWellType wlbSubSea wlbEntryDate  ...  \\\n0    WILDCAT       P&A        OIL  EXPLORATION        NO   20.03.1989  ...   \n1    WILDCAT       P&A  OIL SHOWS  EXPLORATION        NO   14.12.2005  ...   \n2    WILDCAT       P&A        GAS  EXPLORATION        NO   06.07.1968  ...   \n3    WILDCAT       P&A        DRY  EXPLORATION        NO   14.05.1969  ...   \n4    WILDCAT       P&A        OIL  EXPLORATION        NO   22.08.1982  ...   \n\n  wlbNpdidWellbore dscNpdidDiscovery fldNpdidField fclNpdidFacilityDrilling  \\\n0             1382           43814.0     3437650.0                 296245.0   \n1             5192               NaN           NaN                 278245.0   \n2              154           43820.0           NaN                 288604.0   \n3              165               NaN           NaN                 288847.0   \n4               87           43826.0     1028599.0                 288334.0   \n\n  wlbNpdidWellboreReclass  prlNpdidProductionLicence wlbNpdidSiteSurvey  \\\n0                       0                    21956.0                NaN   \n1                       0                  2424919.0                NaN   \n2                       0                    20844.0                NaN   \n3                       0                    20844.0                NaN   \n4                       0                    21316.0                NaN   \n\n  wlbDateUpdated  wlbDateUpdatedMax  datesyncNPD  \n0     03.10.2019         03.10.2019   18.11.2019  \n1     03.10.2019         03.10.2019   18.11.2019  \n2     03.10.2019         03.10.2019   18.11.2019  \n3     03.10.2019         03.10.2019   18.11.2019  \n4     03.10.2019         03.10.2019   18.11.2019  \n\n[5 rows x 87 columns]"
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wlbWellboreName</th>\n      <th>wlbWell</th>\n      <th>wlbDrillingOperator</th>\n      <th>wlbProductionLicence</th>\n      <th>wlbPurpose</th>\n      <th>wlbStatus</th>\n      <th>wlbContent</th>\n      <th>wlbWellType</th>\n      <th>wlbSubSea</th>\n      <th>wlbEntryDate</th>\n      <th>...</th>\n      <th>wlbNpdidWellbore</th>\n      <th>dscNpdidDiscovery</th>\n      <th>fldNpdidField</th>\n      <th>fclNpdidFacilityDrilling</th>\n      <th>wlbNpdidWellboreReclass</th>\n      <th>prlNpdidProductionLicence</th>\n      <th>wlbNpdidSiteSurvey</th>\n      <th>wlbDateUpdated</th>\n      <th>wlbDateUpdatedMax</th>\n      <th>datesyncNPD</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>5 rows × 87 columns</p>\n</div>",
+      "text/plain": "  wlbWellboreName wlbWell          wlbDrillingOperator wlbProductionLicence  \\\n0           1/2-1   1/2-1  Phillips Petroleum Norsk AS                 143    \n1           1/2-2   1/2-2   Paladin Resources Norge AS               143 CS   \n2           1/3-1   1/3-1             A/S Norske Shell                 011    \n3           1/3-2   1/3-2             A/S Norske Shell                 011    \n4           1/3-3   1/3-3       Elf Petroleum Norge AS                 065    \n\n  wlbPurpose wlbStatus wlbContent  wlbWellType wlbSubSea wlbEntryDate  ...  \\\n0    WILDCAT       P&A        OIL  EXPLORATION        NO   20.03.1989  ...   \n1    WILDCAT       P&A  OIL SHOWS  EXPLORATION        NO   14.12.2005  ...   \n2    WILDCAT       P&A        GAS  EXPLORATION        NO   06.07.1968  ...   \n3    WILDCAT       P&A        DRY  EXPLORATION        NO   14.05.1969  ...   \n4    WILDCAT       P&A        OIL  EXPLORATION        NO   22.08.1982  ...   \n\n  wlbNpdidWellbore dscNpdidDiscovery fldNpdidField fclNpdidFacilityDrilling  \\\n0             1382           43814.0     3437650.0                 296245.0   \n1             5192               NaN           NaN                 278245.0   \n2              154           43820.0           NaN                 288604.0   \n3              165               NaN           NaN                 288847.0   \n4               87           43826.0     1028599.0                 288334.0   \n\n  wlbNpdidWellboreReclass  prlNpdidProductionLicence wlbNpdidSiteSurvey  \\\n0                       0                    21956.0                NaN   \n1                       0                  2424919.0                NaN   \n2                       0                    20844.0                NaN   \n3                       0                    20844.0                NaN   \n4                       0                    21316.0                NaN   \n\n  wlbDateUpdated  wlbDateUpdatedMax  datesyncNPD  \n0     03.10.2019         03.10.2019   19.11.2019  \n1     03.10.2019         03.10.2019   19.11.2019  \n2     03.10.2019         03.10.2019   19.11.2019  \n3     03.10.2019         03.10.2019   19.11.2019  \n4     03.10.2019         03.10.2019   19.11.2019  \n\n[5 rows x 87 columns]"
      },
-     "execution_count": 5,
+     "execution_count": 53,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -207,14 +208,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": 54,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/plain": "Index(['wellbore_name', 'well', 'drilling_operator', 'production_licence',\n       'purpose', 'status', 'content', 'well_type', 'sub_sea', 'entry_date',\n       'completion_date', 'field', 'drill_permit', 'discovery',\n       'discovery_wellbore', 'bottom_hole_temperature', 'site_survey',\n       'seismic_location', 'max_inclation', 'kelly_bush_elevation',\n       'final_vertical_depth', 'total_depth', 'water_depth', 'kick_off_point',\n       'age_at_td', 'formation_at_td', 'main_area', 'drilling_facility',\n       'facility_type_drilling', 'drilling_facility_fixed_or_moveable',\n       'licensing_activity', 'multilateral', 'purpose_planned', 'entry_year',\n       'completion_year', 'reclass_from_wellbore',\n       'reentry_exploration_activity', 'plot_symbol', 'formation_with_hc1',\n       'age_with_hc1', 'formation_with_hc2', 'age_with_hc2',\n       'formation_with_hc3', 'age_with_hc3', 'drilling_days', 'reentry',\n       'licence_target_name', 'plugged_abandon_date', 'plugged_date',\n       'geodetic_datum', 'ns_deg', 'ns_min', 'ns_sec', 'ns_code', 'ew_deg',\n       'ew_min', 'ew_sec', 'ew_code', 'ns_dec_deg', 'ew_des_deg', 'ns_utm',\n       'ew_utm', 'utm_zone', 'name_part1', 'name_part2', 'name_part3',\n       'name_part4', 'name_part5', 'name_part6', 'press_release_url',\n       'fact_page_url', 'fact_map_url', 'diskos_wellbore_type',\n       'diskos_wellbore_parent', 'wdss_qc_date', 'released_date',\n       'date_reclass', 'npdid_wellbore', 'dsc_npdid_discovery', 'npdid_field',\n       'npdid_facility_drilling', 'npdid_wellbore_reclass',\n       'prl_npdid_production_licence', 'npdid_site_survey', 'date_updated',\n       'date_updated_max', 'datesync_npd'],\n      dtype='object')"
+      "text/plain": "Index(['wlbWellboreName', 'wlbWell', 'wlbDrillingOperator',\n       'wlbProductionLicence', 'wlbPurpose', 'wlbStatus', 'wlbContent',\n       'wlbWellType', 'wlbSubSea', 'wlbEntryDate', 'wlbCompletionDate',\n       'wlbField', 'wlbDrillPermit', 'wlbDiscovery', 'wlbDiscoveryWellbore',\n       'wlbBottomHoleTemperature', 'wlbSiteSurvey', 'wlbSeismicLocation',\n       'wlbMaxInclation', 'wlbKellyBushElevation', 'wlbFinalVerticalDepth',\n       'wlbTotalDepth', 'wlbWaterDepth', 'wlbKickOffPoint', 'wlbAgeAtTd',\n       'wlbFormationAtTd', 'wlbMainArea', 'wlbDrillingFacility',\n       'wlbFacilityTypeDrilling', 'wlbDrillingFacilityFixedOrMoveable',\n       'wlbLicensingActivity', 'wlbMultilateral', 'wlbPurposePlanned',\n       'wlbEntryYear', 'wlbCompletionYear', 'wlbReclassFromWellbore',\n       'wlbReentryExplorationActivity', 'wlbPlotSymbol', 'wlbFormationWithHc1',\n       'wlbAgeWithHc1', 'wlbFormationWithHc2', 'wlbAgeWithHc2',\n       'wlbFormationWithHc3', 'wlbAgeWithHc3', 'wlbDrillingDays', 'wlbReentry',\n       'wlbLicenceTargetName', 'wlbPluggedAbandonDate', 'wlbPluggedDate',\n       'wlbGeodeticDatum', 'wlbNsDeg', 'wlbNsMin', 'wlbNsSec', 'wlbNsCode',\n       'wlbEwDeg', 'wlbEwMin', 'wlbEwSec', 'wlbEwCode', 'wlbNsDecDeg',\n       'wlbEwDesDeg', 'wlbNsUtm', 'wlbEwUtm', 'wlbUtmZone', 'wlbNamePart1',\n       'wlbNamePart2', 'wlbNamePart3', 'wlbNamePart4', 'wlbNamePart5',\n       'wlbNamePart6', 'wlbPressReleaseUrl', 'wlbFactPageUrl', 'wlbFactMapUrl',\n       'wlbDiskosWellboreType', 'wlbDiskosWellboreParent', 'wlbWdssQcDate',\n       'wlbReleasedDate', 'wlbDateReclass', 'wlbNpdidWellbore',\n       'dscNpdidDiscovery', 'fldNpdidField', 'fclNpdidFacilityDrilling',\n       'wlbNpdidWellboreReclass', 'prlNpdidProductionLicence',\n       'wlbNpdidSiteSurvey', 'wlbDateUpdated', 'wlbDateUpdatedMax',\n       'datesyncNPD'],\n      dtype='object')"
      },
-     "execution_count": 21,
+     "execution_count": 54,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -248,7 +249,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": 55,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -262,14 +263,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": 56,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/plain": "Index(['wellbore_name', 'well', 'drilling_operator', 'production_licence',\n       'purpose', 'status', 'content', 'well_type', 'sub_sea', 'entry_date',\n       'completion_date', 'field', 'drill_permit', 'discovery',\n       'discovery_wellbore', 'bottom_hole_temperature', 'site_survey',\n       'seismic_location', 'max_inclation', 'kelly_bush_elevation',\n       'final_vertical_depth', 'total_depth', 'water_depth', 'kick_off_point',\n       'age_at_td', 'formation_at_td', 'main_area', 'drilling_facility',\n       'facility_type_drilling', 'drilling_facility_fixed_or_moveable',\n       'licensing_activity', 'multilateral', 'purpose_planned', 'entry_year',\n       'completion_year', 'reclass_from_wellbore',\n       'reentry_exploration_activity', 'plot_symbol', 'formation_with_hc1',\n       'age_with_hc1', 'formation_with_hc2', 'age_with_hc2',\n       'formation_with_hc3', 'age_with_hc3', 'drilling_days', 'reentry',\n       'licence_target_name', 'plugged_abandon_date', 'plugged_date',\n       'geodetic_datum', 'ns_deg', 'ns_min', 'ns_sec', 'ns_code', 'ew_deg',\n       'ew_min', 'ew_sec', 'ew_code', 'ns_dec_deg', 'ew_des_deg', 'ns_utm',\n       'ew_utm', 'utm_zone', 'name_part1', 'name_part2', 'name_part3',\n       'name_part4', 'name_part5', 'name_part6', 'press_release_url',\n       'fact_page_url', 'fact_map_url', 'diskos_wellbore_type',\n       'diskos_wellbore_parent', 'wdss_qc_date', 'released_date',\n       'date_reclass', 'npdid_wellbore', 'dsc_npdid_discovery', 'npdid_field',\n       'npdid_facility_drilling', 'npdid_wellbore_reclass',\n       'prl_npdid_production_licence', 'npdid_site_survey', 'date_updated',\n       'date_updated_max', 'datesync_npd'],\n      dtype='object')"
+      "text/plain": "Index(['WellboreName', 'Well', 'DrillingOperator', 'ProductionLicence',\n       'Purpose', 'Status', 'Content', 'WellType', 'SubSea', 'EntryDate',\n       'CompletionDate', 'Field', 'DrillPermit', 'Discovery',\n       'DiscoveryWellbore', 'BottomHoleTemperature', 'SiteSurvey',\n       'SeismicLocation', 'MaxInclation', 'KellyBushElevation',\n       'FinalVerticalDepth', 'TotalDepth', 'WaterDepth', 'KickOffPoint',\n       'AgeAtTd', 'FormationAtTd', 'MainArea', 'DrillingFacility',\n       'FacilityTypeDrilling', 'DrillingFacilityFixedOrMoveable',\n       'LicensingActivity', 'Multilateral', 'PurposePlanned', 'EntryYear',\n       'CompletionYear', 'ReclassFromWellbore', 'ReentryExplorationActivity',\n       'PlotSymbol', 'FormationWithHc1', 'AgeWithHc1', 'FormationWithHc2',\n       'AgeWithHc2', 'FormationWithHc3', 'AgeWithHc3', 'DrillingDays',\n       'Reentry', 'LicenceTargetName', 'PluggedAbandonDate', 'PluggedDate',\n       'GeodeticDatum', 'NsDeg', 'NsMin', 'NsSec', 'NsCode', 'EwDeg', 'EwMin',\n       'EwSec', 'EwCode', 'NsDecDeg', 'EwDesDeg', 'NsUtm', 'EwUtm', 'UtmZone',\n       'NamePart1', 'NamePart2', 'NamePart3', 'NamePart4', 'NamePart5',\n       'NamePart6', 'PressReleaseUrl', 'FactPageUrl', 'FactMapUrl',\n       'DiskosWellboreType', 'DiskosWellboreParent', 'WdssQcDate',\n       'ReleasedDate', 'DateReclass', 'NpdidWellbore', 'dscNpdidDiscovery',\n       'NpdidField', 'NpdidFacilityDrilling', 'NpdidWellboreReclass',\n       'prlNpdidProductionLicence', 'NpdidSiteSurvey', 'DateUpdated',\n       'DateUpdatedMax', 'datesyncNPD'],\n      dtype='object')"
      },
-     "execution_count": 23,
+     "execution_count": 56,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -296,7 +297,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 57,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -307,14 +308,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": 58,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": "Index(['wellbore_name', 'well', 'drilling_operator', 'production_licence',\n       'purpose', 'status', 'content', 'well_type', 'sub_sea', 'entry_date',\n       'completion_date', 'field', 'drill_permit', 'discovery',\n       'discovery_wellbore', 'bottom_hole_temperature', 'site_survey',\n       'seismic_location', 'max_inclation', 'kelly_bush_elevation',\n       'final_vertical_depth', 'total_depth', 'water_depth', 'kick_off_point',\n       'age_at_td', 'formation_at_td', 'main_area', 'drilling_facility',\n       'facility_type_drilling', 'drilling_facility_fixed_or_moveable',\n       'licensing_activity', 'multilateral', 'purpose_planned', 'entry_year',\n       'completion_year', 'reclass_from_wellbore',\n       'reentry_exploration_activity', 'plot_symbol', 'formation_with_hc1',\n       'age_with_hc1', 'formation_with_hc2', 'age_with_hc2',\n       'formation_with_hc3', 'age_with_hc3', 'drilling_days', 'reentry',\n       'licence_target_name', 'plugged_abandon_date', 'plugged_date',\n       'geodetic_datum', 'ns_deg', 'ns_min', 'ns_sec', 'ns_code', 'ew_deg',\n       'ew_min', 'ew_sec', 'ew_code', 'ns_dec_deg', 'ew_des_deg', 'ns_utm',\n       'ew_utm', 'utm_zone', 'name_part1', 'name_part2', 'name_part3',\n       'name_part4', 'name_part5', 'name_part6', 'press_release_url',\n       'fact_page_url', 'fact_map_url', 'diskos_wellbore_type',\n       'diskos_wellbore_parent', 'wdss_qc_date', 'released_date',\n       'date_reclass', 'npdid_wellbore', 'dsc_npdid_discovery', 'npdid_field',\n       'npdid_facility_drilling', 'npdid_wellbore_reclass',\n       'prl_npdid_production_licence', 'npdid_site_survey', 'date_updated',\n       'date_updated_max', 'datesync_npd'],\n      dtype='object')"
      },
-     "execution_count": 25,
+     "execution_count": 58,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -341,7 +342,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": 59,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -350,7 +351,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": 60,
    "metadata": {},
    "outputs": [
     {
@@ -358,7 +359,7 @@
       "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>well_type</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>EXPLORATION</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
       "text/plain": "  wellbore_name   well    well_type\n0         1/2-1  1/2-1  EXPLORATION\n1         1/2-2  1/2-2  EXPLORATION\n2         1/3-1  1/3-1  EXPLORATION\n3         1/3-2  1/3-2  EXPLORATION\n4         1/3-3  1/3-3  EXPLORATION"
      },
-     "execution_count": 27,
+     "execution_count": 60,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -373,13 +374,16 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### query - filter the dataframe "
+    "### Select columns and query a dataframe "
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "You select columns in dataframe by using .filter function --- a bit non-inuitive since we use\n",
+    "it to selec columns by a columns name, and we filter the columns by a condition by using .query function.\n",
+    "\n",
     "Filter dataframe by the elements from the list that is a part of the query argument - a list of values. \n",
     "\n",
     "**REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.**"
@@ -387,7 +391,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 61,
    "metadata": {},
    "outputs": [
     {
@@ -395,7 +399,7 @@
       "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well_type</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
       "text/plain": "     wellbore_name    well_type\n0            1/2-1  EXPLORATION\n1916     7324/10-1  EXPLORATION"
      },
-     "execution_count": 13,
+     "execution_count": 61,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -413,12 +417,12 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### query dataframe by multiple conditions"
+    "### Query dataframe by multiple conditions"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 44,
+   "execution_count": 62,
    "metadata": {},
    "outputs": [
     {
@@ -426,7 +430,7 @@
       "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>drilling_operator</th>\n      <th>purpose</th>\n      <th>total_depth</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>298</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>1971.0</td>\n    </tr>\n    <tr>\n      <td>788</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1890.0</td>\n    </tr>\n    <tr>\n      <td>1289</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1640.0</td>\n    </tr>\n    <tr>\n      <td>1537</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>1920.0</td>\n    </tr>\n    <tr>\n      <td>1830</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1033.0</td>\n    </tr>\n    <tr>\n      <td>1849</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1594.0</td>\n    </tr>\n    <tr>\n      <td>1852</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1780.0</td>\n    </tr>\n    <tr>\n      <td>1859</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1855.0</td>\n    </tr>\n    <tr>\n      <td>1897</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1500.0</td>\n    </tr>\n    <tr>\n      <td>1900</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1540.0</td>\n    </tr>\n    <tr>\n      <td>1906</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1090.0</td>\n    </tr>\n    <tr>\n      <td>1915</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1100.0</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1210.0</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1540.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
       "text/plain": "         drilling_operator  purpose  total_depth\n298       A/S Norske Shell  WILDCAT       1971.0\n788   Statoil Petroleum AS  WILDCAT       1890.0\n1289  Statoil Petroleum AS  WILDCAT       1640.0\n1537      A/S Norske Shell  WILDCAT       1920.0\n1830  Statoil Petroleum AS  WILDCAT       1033.0\n1849  Statoil Petroleum AS  WILDCAT       1594.0\n1852  Statoil Petroleum AS  WILDCAT       1780.0\n1859  Statoil Petroleum AS  WILDCAT       1855.0\n1897  Statoil Petroleum AS  WILDCAT       1500.0\n1900  Statoil Petroleum AS  WILDCAT       1540.0\n1906  Statoil Petroleum AS  WILDCAT       1090.0\n1915  Statoil Petroleum AS  WILDCAT       1100.0\n1918  Statoil Petroleum AS  WILDCAT       1210.0\n1920  Statoil Petroleum AS  WILDCAT       1540.0"
      },
-     "execution_count": 44,
+     "execution_count": 62,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -440,22 +444,172 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Query dataframe by a predefine list"
+   ]
+  },
+  {
    "cell_type": "code",
-   "execution_count": 37,
+   "execution_count": 174,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "operators_top_10 = ['Norsk Hydro Produksjon AS',\n",
+    " 'Statoil Petroleum AS',\n",
+    " 'Saga Petroleum ASA',\n",
+    " 'Lundin Norway AS',\n",
+    " 'Esso Exploration and Production Norway A/S',\n",
+    " 'A/S Norske Shell',\n",
+    " 'Elf Petroleum Norge AS',\n",
+    " 'Phillips Petroleum Company Norway',\n",
+    " 'Statoil ASA (old)']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "You can refer to variables in the environment by prefixing them with an ‘@’ character like for example \n",
+    "**@operators_top_10**, i.e.\n",
+    "\n",
+    ".query(\"drilling_operator == **@operators_top_10**\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 188,
    "metadata": {},
    "outputs": [
     {
      "data": {
-      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>production_licence</th>\n      <th>purpose</th>\n      <th>status</th>\n      <th>content</th>\n      <th>well_type</th>\n      <th>sub_sea</th>\n      <th>entry_date</th>\n      <th>...</th>\n      <th>npdid_wellbore</th>\n      <th>dsc_npdid_discovery</th>\n      <th>npdid_field</th>\n      <th>npdid_facility_drilling</th>\n      <th>npdid_wellbore_reclass</th>\n      <th>prl_npdid_production_licence</th>\n      <th>npdid_site_survey</th>\n      <th>date_updated</th>\n      <th>date_updated_max</th>\n      <th>datesync_npd</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>7324/10-1</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>162</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>03.06.1989</td>\n      <td>...</td>\n      <td>1411</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>294382.0</td>\n      <td>0</td>\n      <td>22108.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>7325/1-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>615</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>23.06.2014</td>\n      <td>...</td>\n      <td>7501</td>\n      <td>24689817.0</td>\n      <td>NaN</td>\n      <td>404201.0</td>\n      <td>0</td>\n      <td>20429544.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>7325/4-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>855</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL/GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>19.07.2017</td>\n      <td>...</td>\n      <td>8211</td>\n      <td>29469097.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28168828.0</td>\n      <td>NaN</td>\n      <td>13.11.2019</td>\n      <td>13.11.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>7335/3-1</td>\n      <td>Equinor Energy AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>13.05.2019</td>\n      <td>...</td>\n      <td>8735</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>415836.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>17.10.2019</td>\n      <td>NaN</td>\n      <td>18.11.2019</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>7435/12-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>09.08.2017</td>\n      <td>...</td>\n      <td>8228</td>\n      <td>29491696.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>01.11.2019</td>\n      <td>03.10.2019</td>\n      <td>18.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 87 columns</p>\n</div>",
-      "text/plain": "     wellbore_name       well                 drilling_operator  \\\n0            1/2-1      1/2-1       Phillips Petroleum Norsk AS   \n1            1/2-2      1/2-2        Paladin Resources Norge AS   \n2            1/3-1      1/3-1                  A/S Norske Shell   \n3            1/3-2      1/3-2                  A/S Norske Shell   \n4            1/3-3      1/3-3            Elf Petroleum Norge AS   \n...            ...        ...                               ...   \n1916     7324/10-1  7324/10-1  Den norske stats oljeselskap a.s   \n1917      7325/1-1   7325/1-1              Statoil Petroleum AS   \n1918      7325/4-1   7325/4-1              Statoil Petroleum AS   \n1919      7335/3-1   7335/3-1                 Equinor Energy AS   \n1920     7435/12-1  7435/12-1              Statoil Petroleum AS   \n\n     production_licence  purpose status    content    well_type sub_sea  \\\n0                  143   WILDCAT    P&A        OIL  EXPLORATION      NO   \n1                143 CS  WILDCAT    P&A  OIL SHOWS  EXPLORATION      NO   \n2                  011   WILDCAT    P&A        GAS  EXPLORATION      NO   \n3                  011   WILDCAT    P&A        DRY  EXPLORATION      NO   \n4                  065   WILDCAT    P&A        OIL  EXPLORATION      NO   \n...                 ...      ...    ...        ...          ...     ...   \n1916               162   WILDCAT    P&A      SHOWS  EXPLORATION      NO   \n1917               615   WILDCAT    P&A        GAS  EXPLORATION      NO   \n1918               855   WILDCAT    P&A    OIL/GAS  EXPLORATION      NO   \n1919               859   WILDCAT    P&A        DRY  EXPLORATION      NO   \n1920               859   WILDCAT    P&A        GAS  EXPLORATION      NO   \n\n      entry_date  ... npdid_wellbore dsc_npdid_discovery npdid_field  \\\n0     20.03.1989  ...           1382             43814.0   3437650.0   \n1     14.12.2005  ...           5192                 NaN         NaN   \n2     06.07.1968  ...            154             43820.0         NaN   \n3     14.05.1969  ...            165                 NaN         NaN   \n4     22.08.1982  ...             87             43826.0   1028599.0   \n...          ...  ...            ...                 ...         ...   \n1916  03.06.1989  ...           1411                 NaN         NaN   \n1917  23.06.2014  ...           7501          24689817.0         NaN   \n1918  19.07.2017  ...           8211          29469097.0         NaN   \n1919  13.05.2019  ...           8735                 NaN         NaN   \n1920  09.08.2017  ...           8228          29491696.0         NaN   \n\n     npdid_facility_drilling npdid_wellbore_reclass  \\\n0                   296245.0                      0   \n1                   278245.0                      0   \n2                   288604.0                      0   \n3                   288847.0                      0   \n4                   288334.0                      0   \n...                      ...                    ...   \n1916                294382.0                      0   \n1917                404201.0                      0   \n1918                439972.0                      0   \n1919                415836.0                      0   \n1920                439972.0                      0   \n\n      prl_npdid_production_licence npdid_site_survey date_updated  \\\n0                          21956.0               NaN   03.10.2019   \n1                        2424919.0               NaN   03.10.2019   \n2                          20844.0               NaN   03.10.2019   \n3                          20844.0               NaN   03.10.2019   \n4                          21316.0               NaN   03.10.2019   \n...                            ...               ...          ...   \n1916                       22108.0               NaN   03.10.2019   \n1917                    20429544.0               NaN   03.10.2019   \n1918                    28168828.0               NaN   13.11.2019   \n1919                    28169055.0               NaN   17.10.2019   \n1920                    28169055.0               NaN   01.11.2019   \n\n      date_updated_max  datesync_npd  \n0           03.10.2019    18.11.2019  \n1           03.10.2019    18.11.2019  \n2           03.10.2019    18.11.2019  \n3           03.10.2019    18.11.2019  \n4           03.10.2019    18.11.2019  \n...                ...           ...  \n1916        03.10.2019    18.11.2019  \n1917        03.10.2019    18.11.2019  \n1918        13.11.2019    18.11.2019  \n1919               NaN    18.11.2019  \n1920        03.10.2019    18.11.2019  \n\n[1921 rows x 87 columns]"
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>drilling_operator</th>\n      <th>drilling_days</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>2</td>\n      <td>A/S Norske Shell</td>\n      <td>129</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>A/S Norske Shell</td>\n      <td>75</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>216</td>\n    </tr>\n    <tr>\n      <td>5</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>83</td>\n    </tr>\n    <tr>\n      <td>6</td>\n      <td>A/S Norske Shell</td>\n      <td>134</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "        drilling_operator  drilling_days\n2        A/S Norske Shell            129\n3        A/S Norske Shell             75\n4  Elf Petroleum Norge AS            216\n5  Elf Petroleum Norge AS             83\n6        A/S Norske Shell            134"
      },
-     "execution_count": 37,
+     "execution_count": 188,
      "metadata": {},
      "output_type": "execute_result"
     }
    ],
    "source": [
-    "df"
+    "(df\n",
+    "    .query(\"drilling_operator == @operators_top_10\")\n",
+    "    .filter(items=['drilling_operator', \"drilling_days\"])\n",
+    "    .head()\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Rename column names"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Before:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>drilling_operator</th>\n      <th>purpose</th>\n      <th>total_depth</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>WILDCAT</td>\n      <td>3574.0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>WILDCAT</td>\n      <td>3434.0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4877.0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4297.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>WILDCAT</td>\n      <td>4876.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "             drilling_operator  purpose  total_depth\n0  Phillips Petroleum Norsk AS  WILDCAT       3574.0\n1   Paladin Resources Norge AS  WILDCAT       3434.0\n2             A/S Norske Shell  WILDCAT       4877.0\n3             A/S Norske Shell  WILDCAT       4297.0\n4       Elf Petroleum Norge AS  WILDCAT       4876.0"
+     },
+     "execution_count": 63,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df\n",
+    "   .filter(items=[\"drilling_operator\", \"purpose\", \"total_depth\"])\n",
+    ").head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "After:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>drilling_operator</th>\n      <th>well_purpose</th>\n      <th>total_depth</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>WILDCAT</td>\n      <td>3574.0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>WILDCAT</td>\n      <td>3434.0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4877.0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4297.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>WILDCAT</td>\n      <td>4876.0</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>WILDCAT</td>\n      <td>2919.0</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>2865.0</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1210.0</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>Equinor Energy AS</td>\n      <td>WILDCAT</td>\n      <td>4300.0</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1540.0</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 3 columns</p>\n</div>",
+      "text/plain": "                     drilling_operator well_purpose  total_depth\n0          Phillips Petroleum Norsk AS      WILDCAT       3574.0\n1           Paladin Resources Norge AS      WILDCAT       3434.0\n2                     A/S Norske Shell      WILDCAT       4877.0\n3                     A/S Norske Shell      WILDCAT       4297.0\n4               Elf Petroleum Norge AS      WILDCAT       4876.0\n...                                ...          ...          ...\n1916  Den norske stats oljeselskap a.s      WILDCAT       2919.0\n1917              Statoil Petroleum AS      WILDCAT       2865.0\n1918              Statoil Petroleum AS      WILDCAT       1210.0\n1919                 Equinor Energy AS      WILDCAT       4300.0\n1920              Statoil Petroleum AS      WILDCAT       1540.0\n\n[1921 rows x 3 columns]"
+     },
+     "execution_count": 64,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df\n",
+    "   .filter(items=[\"drilling_operator\", \"purpose\", \"total_depth\"])\n",
+    "   .rename(columns={\"purpose\":\"well_purpose\"}) ##  \"old_name\":\"new_name\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Rename multiple columns by predefining a dictionary"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 65,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>DRILLING_COMPANY</th>\n      <th>WELL_PURPOSE</th>\n      <th>TOTAL_DEPTH_METERS</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>WILDCAT</td>\n      <td>3574.0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>WILDCAT</td>\n      <td>3434.0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4877.0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>A/S Norske Shell</td>\n      <td>WILDCAT</td>\n      <td>4297.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>WILDCAT</td>\n      <td>4876.0</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>WILDCAT</td>\n      <td>2919.0</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>2865.0</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1210.0</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>Equinor Energy AS</td>\n      <td>WILDCAT</td>\n      <td>4300.0</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>Statoil Petroleum AS</td>\n      <td>WILDCAT</td>\n      <td>1540.0</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 3 columns</p>\n</div>",
+      "text/plain": "                      DRILLING_COMPANY WELL_PURPOSE  TOTAL_DEPTH_METERS\n0          Phillips Petroleum Norsk AS      WILDCAT              3574.0\n1           Paladin Resources Norge AS      WILDCAT              3434.0\n2                     A/S Norske Shell      WILDCAT              4877.0\n3                     A/S Norske Shell      WILDCAT              4297.0\n4               Elf Petroleum Norge AS      WILDCAT              4876.0\n...                                ...          ...                 ...\n1916  Den norske stats oljeselskap a.s      WILDCAT              2919.0\n1917              Statoil Petroleum AS      WILDCAT              2865.0\n1918              Statoil Petroleum AS      WILDCAT              1210.0\n1919                 Equinor Energy AS      WILDCAT              4300.0\n1920              Statoil Petroleum AS      WILDCAT              1540.0\n\n[1921 rows x 3 columns]"
+     },
+     "execution_count": 65,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# d\n",
+    "new_column_names = {\n",
+    "    \"drilling_operator\" : \"DRILLING_COMPANY\", \n",
+    "    \"purpose\" : \"WELL_PURPOSE\",\n",
+    "    \"total_depth\" : \"TOTAL_DEPTH_METERS\"\n",
+    "}\n",
+    "\n",
+    "(df\n",
+    "   .filter(items=[\"drilling_operator\", \"purpose\", \"total_depth\"])\n",
+    "   .rename(columns=new_column_names) ##  \"old_name\":\"new_name\"\n",
+    ")"
    ]
   },
   {
@@ -470,7 +624,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 66,
    "metadata": {},
    "outputs": [
     {
@@ -478,7 +632,7 @@
       "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well_type</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>EXPLORATION</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
       "text/plain": "     wellbore_name    well_type\n0            1/2-1  EXPLORATION\n1916     7324/10-1  EXPLORATION"
      },
-     "execution_count": 28,
+     "execution_count": 66,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -498,7 +652,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Summary statistic (min, max, mean, count,...) per group"
+    "### Calculate summary statistic (min, max, mean, count,...) per group"
    ]
   },
   {
@@ -523,7 +677,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": 67,
    "metadata": {},
    "outputs": [
     {
@@ -531,7 +685,7 @@
       "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>entry_year</th>\n      <th>total_depth_min</th>\n      <th>total_depth_max</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>2019</td>\n      <td>0.0</td>\n      <td>6068.0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>2018</td>\n      <td>381.0</td>\n      <td>6100.0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>2017</td>\n      <td>508.0</td>\n      <td>7811.0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>2016</td>\n      <td>488.0</td>\n      <td>7126.0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>2015</td>\n      <td>840.0</td>\n      <td>5765.0</td>\n    </tr>\n    <tr>\n      <td>5</td>\n      <td>2014</td>\n      <td>1033.0</td>\n      <td>4889.0</td>\n    </tr>\n    <tr>\n      <td>6</td>\n      <td>2013</td>\n      <td>930.0</td>\n      <td>5634.0</td>\n    </tr>\n    <tr>\n      <td>7</td>\n      <td>2012</td>\n      <td>1640.0</td>\n      <td>5573.0</td>\n    </tr>\n    <tr>\n      <td>8</td>\n      <td>2011</td>\n      <td>1339.0</td>\n      <td>5672.0</td>\n    </tr>\n    <tr>\n      <td>9</td>\n      <td>2010</td>\n      <td>1178.0</td>\n      <td>5738.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
       "text/plain": "   entry_year  total_depth_min  total_depth_max\n0        2019              0.0           6068.0\n1        2018            381.0           6100.0\n2        2017            508.0           7811.0\n3        2016            488.0           7126.0\n4        2015            840.0           5765.0\n5        2014           1033.0           4889.0\n6        2013            930.0           5634.0\n7        2012           1640.0           5573.0\n8        2011           1339.0           5672.0\n9        2010           1178.0           5738.0"
      },
-     "execution_count": 29,
+     "execution_count": 67,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -548,6 +702,294 @@
     "  .reset_index()\n",
     "  ).head(10)"
    ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### What is a named function?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def add_ten(x):\n",
+    "    return x + 10"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 69,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "20"
+     },
+     "execution_count": 69,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "add_ten(10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### What is lambda or anonymus function?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "In Python, lambda expressions (or lambda forms) are utilized to construct anonymous functions. To do so, you will use the lambda keyword (just as you use def to define normal functions).\n",
+    "\n",
+    "Every anonymous function you define in Python will have 3 essential parts:\n",
+    "\n",
+    "The lambda keyword.\n",
+    "The parameters (or bound variables), and\n",
+    "The function body.\n",
+    "A lambda function can have any number of parameters, but the function body can only contain one expression.\n",
+    "\n",
+    "Moreover, a lambda is written in a single line of code and can also be invoked immediately. You will see all this in action in the upcoming examples."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "The formal syntax to write a lambda function is as given below:\n",
+    "\n",
+    "lambda p1, p2: expression "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 70,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "add_ten = lambda x: x + 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 71,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "11"
+     },
+     "execution_count": 71,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "add_ten(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 77,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "Index(['wellbore_name', 'well', 'drilling_operator', 'production_licence',\n       'purpose', 'status', 'content', 'well_type', 'sub_sea', 'entry_date',\n       'completion_date', 'field', 'drill_permit', 'discovery',\n       'discovery_wellbore', 'bottom_hole_temperature', 'site_survey',\n       'seismic_location', 'max_inclation', 'kelly_bush_elevation',\n       'final_vertical_depth', 'total_depth', 'water_depth', 'kick_off_point',\n       'age_at_td', 'formation_at_td', 'main_area', 'drilling_facility',\n       'facility_type_drilling', 'drilling_facility_fixed_or_moveable',\n       'licensing_activity', 'multilateral', 'purpose_planned', 'entry_year',\n       'completion_year', 'reclass_from_wellbore',\n       'reentry_exploration_activity', 'plot_symbol', 'formation_with_hc1',\n       'age_with_hc1', 'formation_with_hc2', 'age_with_hc2',\n       'formation_with_hc3', 'age_with_hc3', 'drilling_days', 'reentry',\n       'licence_target_name', 'plugged_abandon_date', 'plugged_date',\n       'geodetic_datum', 'ns_deg', 'ns_min', 'ns_sec', 'ns_code', 'ew_deg',\n       'ew_min', 'ew_sec', 'ew_code', 'ns_dec_deg', 'ew_des_deg', 'ns_utm',\n       'ew_utm', 'utm_zone', 'name_part1', 'name_part2', 'name_part3',\n       'name_part4', 'name_part5', 'name_part6', 'press_release_url',\n       'fact_page_url', 'fact_map_url', 'diskos_wellbore_type',\n       'diskos_wellbore_parent', 'wdss_qc_date', 'released_date',\n       'date_reclass', 'npdid_wellbore', 'dsc_npdid_discovery', 'npdid_field',\n       'npdid_facility_drilling', 'npdid_wellbore_reclass',\n       'prl_npdid_production_licence', 'npdid_site_survey', 'date_updated',\n       'date_updated_max', 'datesync_npd'],\n      dtype='object')"
+     },
+     "execution_count": 77,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 85,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "31    1423\n32     335\n34      64\n35      50\n33      43\n36       4\n37       2\nName: utm_zone, dtype: int64"
+     },
+     "execution_count": 85,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df[\"utm_zone\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Add a new calculated column"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 103,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>utm_zone</th>\n      <th>depth_flag</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>3574.0</td>\n      <td>31</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>3434.0</td>\n      <td>31</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>4877.0</td>\n      <td>31</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>4297.0</td>\n      <td>31</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>4876.0</td>\n      <td>31</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>2919.0</td>\n      <td>35</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>2865.0</td>\n      <td>35</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>1210.0</td>\n      <td>35</td>\n      <td>shallow</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>4300.0</td>\n      <td>37</td>\n      <td>deep</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>1540.0</td>\n      <td>37</td>\n      <td>shallow</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 4 columns</p>\n</div>",
+      "text/plain": "     wellbore_name  total_depth  utm_zone depth_flag\n0            1/2-1       3574.0        31       deep\n1            1/2-2       3434.0        31       deep\n2            1/3-1       4877.0        31       deep\n3            1/3-2       4297.0        31       deep\n4            1/3-3       4876.0        31       deep\n...            ...          ...       ...        ...\n1916     7324/10-1       2919.0        35       deep\n1917      7325/1-1       2865.0        35       deep\n1918      7325/4-1       1210.0        35    shallow\n1919      7335/3-1       4300.0        37       deep\n1920     7435/12-1       1540.0        37    shallow\n\n[1921 rows x 4 columns]"
+     },
+     "execution_count": 103,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df\n",
+    "    .filter(items=[\"wellbore_name\", \"total_depth\", \"utm_zone\"])\n",
+    "    .assign(depth_flag=lambda x: np.where(x[\"total_depth\"] > 2000, \"deep\", \"shallow\"))  \n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": 140,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Add calculated columns that are dependent on each other"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "In Python 3.6+, you can create multiple columns within the same assign where one of the columns depends on another one defined within the same assign:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 137,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>utm_zone</th>\n      <th>completion_year</th>\n      <th>drilling_depth_flag</th>\n      <th>depth_age_flag</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>3574.0</td>\n      <td>31</td>\n      <td>1989</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>3434.0</td>\n      <td>31</td>\n      <td>2006</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>4877.0</td>\n      <td>31</td>\n      <td>1968</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>4297.0</td>\n      <td>31</td>\n      <td>1969</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>4876.0</td>\n      <td>31</td>\n      <td>1983</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>2919.0</td>\n      <td>35</td>\n      <td>1989</td>\n      <td>deep</td>\n      <td>deep_and_old</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>2865.0</td>\n      <td>35</td>\n      <td>2014</td>\n      <td>deep</td>\n      <td>deep_and_new</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>1210.0</td>\n      <td>35</td>\n      <td>2017</td>\n      <td>shallow</td>\n      <td>deep_and_new</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>4300.0</td>\n      <td>37</td>\n      <td>2019</td>\n      <td>deep</td>\n      <td>deep_and_new</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>1540.0</td>\n      <td>37</td>\n      <td>2017</td>\n      <td>shallow</td>\n      <td>deep_and_new</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 6 columns</p>\n</div>",
+      "text/plain": "     wellbore_name  total_depth  utm_zone  completion_year  \\\n0            1/2-1       3574.0        31             1989   \n1            1/2-2       3434.0        31             2006   \n2            1/3-1       4877.0        31             1968   \n3            1/3-2       4297.0        31             1969   \n4            1/3-3       4876.0        31             1983   \n...            ...          ...       ...              ...   \n1916     7324/10-1       2919.0        35             1989   \n1917      7325/1-1       2865.0        35             2014   \n1918      7325/4-1       1210.0        35             2017   \n1919      7335/3-1       4300.0        37             2019   \n1920     7435/12-1       1540.0        37             2017   \n\n     drilling_depth_flag depth_age_flag  \n0                   deep   deep_and_old  \n1                   deep   deep_and_old  \n2                   deep   deep_and_old  \n3                   deep   deep_and_old  \n4                   deep   deep_and_old  \n...                  ...            ...  \n1916                deep   deep_and_old  \n1917                deep   deep_and_new  \n1918             shallow   deep_and_new  \n1919                deep   deep_and_new  \n1920             shallow   deep_and_new  \n\n[1921 rows x 6 columns]"
+     },
+     "execution_count": 137,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df\n",
+    "    .filter(items=[\"wellbore_name\", \"total_depth\", \"utm_zone\", \"completion_year\"])\n",
+    "    .assign(\n",
+    "        drilling_depth_flag=lambda x: np.where(x[\"total_depth\"] > 2000, \"deep\", \"shallow\"),\n",
+    "        depth_age_flag=lambda x: np.where(\n",
+    "            (x[\"drilling_depth_flag\"] == \"deep\") & (x[\"completion_year\"] <= 2010),   # drilling_depth_flag has been created in previous step \n",
+    "            \"deep_and_old\", \"deep_and_new\")\n",
+    "        )  \n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### Calculated column - define multiple cases with np.select"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 169,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "Shallow Water    1371\nMidwater          547\nDeepwater           2\nUnknown             1\nName: water_depth_category, dtype: int64"
+     },
+     "execution_count": 169,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_multiple = (df\n",
+    "    .filter(items=[\"wellbore_name\", \"total_depth\", \"water_depth\"])\n",
+    "    .assign(\n",
+    "        water_depth_category = lambda x: np.select(\n",
+    "            condlist = [\n",
+    "                x[\"water_depth\"].between(0, 305, inclusive=False),\n",
+    "                x[\"water_depth\"].between(300, 1524, inclusive=True),\n",
+    "                x[\"water_depth\"].between(1000, 2133, inclusive=True),\n",
+    "                x[\"water_depth\"].between(2133, np.max(x[\"water_depth\"]), inclusive=True)\n",
+    "                ],\n",
+    "            choicelist = [ \n",
+    "                \"Shallow Water\",\n",
+    "                \"Midwater\",\n",
+    "                \"Deepwater\",\n",
+    "                \"Ultra-Deepwater\"\n",
+    "            ],\n",
+    "            default=\"Unknown\" \n",
+    "        )\n",
+    "    )\n",
+    ")\n",
+    "df_multiple[\"water_depth_category\"].value_counts()    \n",
+    "#df_multiple.query(\"water_depth_category == 'Ultra Deep'\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 170,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>total_depth</th>\n      <th>water_depth</th>\n      <th>water_depth_category</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>3574.0</td>\n      <td>72.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>3434.0</td>\n      <td>74.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>4877.0</td>\n      <td>71.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>4297.0</td>\n      <td>73.0</td>\n      <td>Shallow Water</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>4876.0</td>\n      <td>68.0</td>\n      <td>Shallow Water</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "  wellbore_name  total_depth  water_depth water_depth_category\n0         1/2-1       3574.0         72.0        Shallow Water\n1         1/2-2       3434.0         74.0        Shallow Water\n2         1/3-1       4877.0         71.0        Shallow Water\n3         1/3-2       4297.0         73.0        Shallow Water\n4         1/3-3       4876.0         68.0        Shallow Water"
+     },
+     "execution_count": 170,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_multiple.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {

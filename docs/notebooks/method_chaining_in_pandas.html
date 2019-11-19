@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data Visualization - Dataframes &mdash; Geoscience with Python 2019 documentation</title>
+  <title>How method chaining in pandas is and can be super effective &mdash; Geoscience with Python 2019 documentation</title>
   
 
   
@@ -35,9 +35,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Welcome to the first notebooks" href="first_notebook.html" />
-    <link rel="prev" title="Data Cleaning" href="data_cleaning_dataframes.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,12 +94,8 @@
 <li class="toctree-l1"><a class="reference internal" href="data_cleaning_dataframes.html">Data Cleaning</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Data Visualization:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Visualization - Dataframes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Scatter-plot---Seaborn">Scatter plot - Seaborn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Histogram---Seaborn">Histogram - Seaborn</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_visualisation_dataframes.html">Data Visualization - Dataframes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">First Jupyter Notebook:</span></p>
 <ul>
@@ -151,13 +145,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Data Visualization - Dataframes</li>
+      <li>How method chaining in pandas is and can be super effective</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/notebooks/data_visualisation_dataframes.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/notebooks/method_chaining_in_pandas.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -392,39 +386,59 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Data-Visualization---Dataframes">
-<h1>Data Visualization - Dataframes<a class="headerlink" href="#Data-Visualization---Dataframes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Scatter-plot---Seaborn">
-<h2>Scatter plot - Seaborn<a class="headerlink" href="#Scatter-plot---Seaborn" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="How-method-chaining-in-pandas-is-and-can-be-super-effective">
+<h1>How method chaining in pandas is and can be super effective<a class="headerlink" href="#How-method-chaining-in-pandas-is-and-can-be-super-effective" title="Permalink to this headline">¶</a></h1>
+<p>Method chaining is a programmatic style of invoking multiple method calls sequentially with each call performing an action on the same object and returning it.</p>
+<p>It eliminates the cognitive burden of naming variables at each intermediate step.</p>
+<p>Fluent Interface, a method of creating object-oriented API relies on method cascading (aka method chaining).</p>
+<p>Method chaining substantially increases the readability of the code.</p>
+<p>It is a top down approach.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>import pandas as pd
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">janitor</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>df = pd.read_csv(&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.246&amp;CultureCode=en&quot;)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.246&amp;CultureCode=en&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># initial column name cleaning step</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;wlb&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fld&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;fcl&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">clean_names</span><span class="p">(</span><span class="n">case_type</span><span class="o">=</span><span class="s2">&quot;snake&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>df.head()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -446,27 +460,27 @@ div.rendered_html tbody tr:hover {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>wlbWellboreName</th>
-      <th>wlbWell</th>
-      <th>wlbDrillingOperator</th>
-      <th>wlbProductionLicence</th>
-      <th>wlbPurpose</th>
-      <th>wlbStatus</th>
-      <th>wlbContent</th>
-      <th>wlbWellType</th>
-      <th>wlbSubSea</th>
-      <th>wlbEntryDate</th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>production_licence</th>
+      <th>purpose</th>
+      <th>status</th>
+      <th>content</th>
+      <th>well_type</th>
+      <th>sub_sea</th>
+      <th>entry_date</th>
       <th>...</th>
-      <th>wlbNpdidWellbore</th>
-      <th>dscNpdidDiscovery</th>
-      <th>fldNpdidField</th>
-      <th>fclNpdidFacilityDrilling</th>
-      <th>wlbNpdidWellboreReclass</th>
-      <th>prlNpdidProductionLicence</th>
-      <th>wlbNpdidSiteSurvey</th>
-      <th>wlbDateUpdated</th>
-      <th>wlbDateUpdatedMax</th>
-      <th>datesyncNPD</th>
+      <th>npdid_wellbore</th>
+      <th>dsc_npdid_discovery</th>
+      <th>npdid_field</th>
+      <th>npdid_facility_drilling</th>
+      <th>npdid_wellbore_reclass</th>
+      <th>prl_npdid_production_licence</th>
+      <th>npdid_site_survey</th>
+      <th>date_updated</th>
+      <th>date_updated_max</th>
+      <th>datesync_npd</th>
     </tr>
   </thead>
   <tbody>
@@ -492,7 +506,7 @@ div.rendered_html tbody tr:hover {
       <td>NaN</td>
       <td>03.10.2019</td>
       <td>03.10.2019</td>
-      <td>18.11.2019</td>
+      <td>19.11.2019</td>
     </tr>
     <tr>
       <td>1</td>
@@ -516,7 +530,7 @@ div.rendered_html tbody tr:hover {
       <td>NaN</td>
       <td>03.10.2019</td>
       <td>03.10.2019</td>
-      <td>18.11.2019</td>
+      <td>19.11.2019</td>
     </tr>
     <tr>
       <td>2</td>
@@ -540,7 +554,7 @@ div.rendered_html tbody tr:hover {
       <td>NaN</td>
       <td>03.10.2019</td>
       <td>03.10.2019</td>
-      <td>18.11.2019</td>
+      <td>19.11.2019</td>
     </tr>
     <tr>
       <td>3</td>
@@ -564,7 +578,7 @@ div.rendered_html tbody tr:hover {
       <td>NaN</td>
       <td>03.10.2019</td>
       <td>03.10.2019</td>
-      <td>18.11.2019</td>
+      <td>19.11.2019</td>
     </tr>
     <tr>
       <td>4</td>
@@ -588,7 +602,7 @@ div.rendered_html tbody tr:hover {
       <td>NaN</td>
       <td>03.10.2019</td>
       <td>03.10.2019</td>
-      <td>18.11.2019</td>
+      <td>19.11.2019</td>
     </tr>
   </tbody>
 </table>
@@ -596,105 +610,12 @@ div.rendered_html tbody tr:hover {
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-%matplotlib inline
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(16, 6))
-sns.scatterplot(x=&quot;wlbDrillingDays&quot;,
-                y=&quot;wlbTotalDepth&quot;,
-                hue=&quot;wlbPurpose&quot;,
-                data=df)
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x16852823608&gt;
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/notebooks_data_visualisation_dataframes_6_1.svg" src="../_images/notebooks_data_visualisation_dataframes_6_1.svg" /></div>
-</div>
-</div>
-<div class="section" id="Histogram---Seaborn">
-<h2>Histogram - Seaborn<a class="headerlink" href="#Histogram---Seaborn" title="Permalink to this headline">¶</a></h2>
-<p>What is the distribution of number of drilling days for all exploration wells for top 10 drilling opperators</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>operators_top_10 = list(df[&quot;wlbDrillingOperator&quot;].value_counts().index[1:10])
-operators_top_10
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>[&#39;Norsk Hydro Produksjon AS&#39;,
- &#39;Statoil Petroleum AS&#39;,
- &#39;Saga Petroleum ASA&#39;,
- &#39;Lundin Norway AS&#39;,
- &#39;Esso Exploration and Production Norway A/S&#39;,
- &#39;A/S Norske Shell&#39;,
- &#39;Elf Petroleum Norge AS&#39;,
- &#39;Phillips Petroleum Company Norway&#39;,
- &#39;Statoil ASA (old)&#39;]
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
-</pre></div>
-</div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>data = (df
-        .query(&quot;wlbDrillingOperator == @operators_top_10&quot;)
-        .filter(items=[&#39;wlbDrillingDays&#39;])
-)
-sns.distplot(data, kde=False, rug=True);
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/notebooks_data_visualisation_dataframes_10_0.svg" src="../_images/notebooks_data_visualisation_dataframes_10_0.svg" /></div>
-</div>
-<p>How many wells were drilled within a certain window of Total Depth and Drilling Days?</p>
-<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -704,15 +625,6 @@ sns.distplot(data, kde=False, rug=True);
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="first_notebook.html" class="btn btn-neutral float-right" title="Welcome to the first notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="data_cleaning_dataframes.html" class="btn btn-neutral float-left" title="Data Cleaning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
