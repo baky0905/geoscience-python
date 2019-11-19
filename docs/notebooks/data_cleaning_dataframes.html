@@ -102,6 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#Select-columns-with-regex">Select columns with regex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Select-columns-and-query-a-dataframe">Select columns and query a dataframe</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Query-dataframe-by-multiple-conditions">Query dataframe by multiple conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Sort-dataframe-by-values-in-a-column-or-columns">Sort dataframe by values in a column or columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Rename-column-names">Rename column names</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group">Calculate summary statistic (min, max, mean, count,…) per group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#What-is-a-named-function?">What is a named function?</a></li>
@@ -1221,6 +1222,242 @@ results in a global environment charlie foxtrot!</p>
 </div></div>
 </div>
 </div>
+<div class="section" id="Sort-dataframe-by-values-in-a-column-or-columns">
+<h3>Sort dataframe by values in a column or columns<a class="headerlink" href="#Sort-dataframe-by-values-in-a-column-or-columns" title="Permalink to this headline">¶</a></h3>
+<p>Sort by one column:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[192]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;drilling_operator&#39;</span><span class="p">,</span> <span class="s2">&quot;drilling_days&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;total_depth&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[192]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>drilling_operator</th>
+      <th>drilling_days</th>
+      <th>total_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1257</td>
+      <td>Statoil ASA (old)</td>
+      <td>49</td>
+      <td>7928.0</td>
+    </tr>
+    <tr>
+      <td>1276</td>
+      <td>Statoil Petroleum AS</td>
+      <td>32</td>
+      <td>7811.0</td>
+    </tr>
+    <tr>
+      <td>1260</td>
+      <td>Statoil ASA (old)</td>
+      <td>27</td>
+      <td>7725.0</td>
+    </tr>
+    <tr>
+      <td>1258</td>
+      <td>Statoil ASA (old)</td>
+      <td>67</td>
+      <td>7594.0</td>
+    </tr>
+    <tr>
+      <td>293</td>
+      <td>Den norske stats oljeselskap a.s</td>
+      <td>203</td>
+      <td>7584.0</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>1363</td>
+      <td>Equinor Energy AS</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>436</td>
+      <td>Lundin Norway AS</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>213</td>
+      <td>Repsol Exploration Norge AS</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>1002</td>
+      <td>Norsk Hydro Produksjon AS</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>1462</td>
+      <td>A/S Norske Shell</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 3 columns</p>
+</div></div>
+</div>
+<p>Sort by multiple columns:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[196]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;drilling_operator&#39;</span><span class="p">,</span> <span class="s2">&quot;drilling_days&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;drilling_operator&quot;</span><span class="p">,</span> <span class="s2">&quot;drilling_days&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[196]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>drilling_operator</th>
+      <th>drilling_days</th>
+      <th>total_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1478</td>
+      <td>Wintershall Norge ASA</td>
+      <td>112</td>
+      <td>4177.0</td>
+    </tr>
+    <tr>
+      <td>1447</td>
+      <td>Wintershall Norge ASA</td>
+      <td>87</td>
+      <td>4216.0</td>
+    </tr>
+    <tr>
+      <td>1368</td>
+      <td>Wintershall Norge ASA</td>
+      <td>66</td>
+      <td>3585.0</td>
+    </tr>
+    <tr>
+      <td>1366</td>
+      <td>Wintershall Norge ASA</td>
+      <td>55</td>
+      <td>2807.0</td>
+    </tr>
+    <tr>
+      <td>1317</td>
+      <td>Wintershall Norge ASA</td>
+      <td>47</td>
+      <td>3006.0</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>1538</td>
+      <td>A/S Norske Shell</td>
+      <td>13</td>
+      <td>1800.0</td>
+    </tr>
+    <tr>
+      <td>1534</td>
+      <td>A/S Norske Shell</td>
+      <td>12</td>
+      <td>1804.0</td>
+    </tr>
+    <tr>
+      <td>1546</td>
+      <td>A/S Norske Shell</td>
+      <td>10</td>
+      <td>1805.0</td>
+    </tr>
+    <tr>
+      <td>961</td>
+      <td>A/S Norske Shell</td>
+      <td>9</td>
+      <td>5035.0</td>
+    </tr>
+    <tr>
+      <td>1462</td>
+      <td>A/S Norske Shell</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1921 rows × 3 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;entry_year&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="Rename-column-names">
 <h3>Rename column names<a class="headerlink" href="#Rename-column-names" title="Permalink to this headline">¶</a></h3>
 <p>Before:</p>
@@ -1411,7 +1648,7 @@ results in a global environment charlie foxtrot!</p>
 <p>1921 rows × 3 columns</p>
 </div></div>
 </div>
-<p>Rename multiple columns by predefining a dictionary</p>
+<p>Rename multiple columns by predefining a dictionary.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
@@ -1529,63 +1766,6 @@ results in a global environment charlie foxtrot!</p>
   </tbody>
 </table>
 <p>1921 rows × 3 columns</p>
-</div></div>
-</div>
-<p>Filter dataframe by the elements from predefined list that is outside of the function’s scope. In this case you need to use &#64; before the list name.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">well_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1/2-1&quot;</span><span class="p">,</span> <span class="s2">&quot;7324/10-1&quot;</span><span class="p">]</span>
-
-<span class="p">(</span><span class="n">df</span>
-  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;well_type&quot;</span><span class="p">])</span>
-  <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;wellbore_name in @well_list&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>wellbore_name</th>
-      <th>well_type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1/2-1</td>
-      <td>EXPLORATION</td>
-    </tr>
-    <tr>
-      <td>1916</td>
-      <td>7324/10-1</td>
-      <td>EXPLORATION</td>
-    </tr>
-  </tbody>
-</table>
 </div></div>
 </div>
 </div>
@@ -1771,90 +1951,27 @@ results in a global environment charlie foxtrot!</p>
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[77]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Index([&#39;wellbore_name&#39;, &#39;well&#39;, &#39;drilling_operator&#39;, &#39;production_licence&#39;,
-       &#39;purpose&#39;, &#39;status&#39;, &#39;content&#39;, &#39;well_type&#39;, &#39;sub_sea&#39;, &#39;entry_date&#39;,
-       &#39;completion_date&#39;, &#39;field&#39;, &#39;drill_permit&#39;, &#39;discovery&#39;,
-       &#39;discovery_wellbore&#39;, &#39;bottom_hole_temperature&#39;, &#39;site_survey&#39;,
-       &#39;seismic_location&#39;, &#39;max_inclation&#39;, &#39;kelly_bush_elevation&#39;,
-       &#39;final_vertical_depth&#39;, &#39;total_depth&#39;, &#39;water_depth&#39;, &#39;kick_off_point&#39;,
-       &#39;age_at_td&#39;, &#39;formation_at_td&#39;, &#39;main_area&#39;, &#39;drilling_facility&#39;,
-       &#39;facility_type_drilling&#39;, &#39;drilling_facility_fixed_or_moveable&#39;,
-       &#39;licensing_activity&#39;, &#39;multilateral&#39;, &#39;purpose_planned&#39;, &#39;entry_year&#39;,
-       &#39;completion_year&#39;, &#39;reclass_from_wellbore&#39;,
-       &#39;reentry_exploration_activity&#39;, &#39;plot_symbol&#39;, &#39;formation_with_hc1&#39;,
-       &#39;age_with_hc1&#39;, &#39;formation_with_hc2&#39;, &#39;age_with_hc2&#39;,
-       &#39;formation_with_hc3&#39;, &#39;age_with_hc3&#39;, &#39;drilling_days&#39;, &#39;reentry&#39;,
-       &#39;licence_target_name&#39;, &#39;plugged_abandon_date&#39;, &#39;plugged_date&#39;,
-       &#39;geodetic_datum&#39;, &#39;ns_deg&#39;, &#39;ns_min&#39;, &#39;ns_sec&#39;, &#39;ns_code&#39;, &#39;ew_deg&#39;,
-       &#39;ew_min&#39;, &#39;ew_sec&#39;, &#39;ew_code&#39;, &#39;ns_dec_deg&#39;, &#39;ew_des_deg&#39;, &#39;ns_utm&#39;,
-       &#39;ew_utm&#39;, &#39;utm_zone&#39;, &#39;name_part1&#39;, &#39;name_part2&#39;, &#39;name_part3&#39;,
-       &#39;name_part4&#39;, &#39;name_part5&#39;, &#39;name_part6&#39;, &#39;press_release_url&#39;,
-       &#39;fact_page_url&#39;, &#39;fact_map_url&#39;, &#39;diskos_wellbore_type&#39;,
-       &#39;diskos_wellbore_parent&#39;, &#39;wdss_qc_date&#39;, &#39;released_date&#39;,
-       &#39;date_reclass&#39;, &#39;npdid_wellbore&#39;, &#39;dsc_npdid_discovery&#39;, &#39;npdid_field&#39;,
-       &#39;npdid_facility_drilling&#39;, &#39;npdid_wellbore_reclass&#39;,
-       &#39;prl_npdid_production_licence&#39;, &#39;npdid_site_survey&#39;, &#39;date_updated&#39;,
-       &#39;date_updated_max&#39;, &#39;datesync_npd&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;utm_zone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
-</pre></div>
-</div>
-<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>31    1423
-32     335
-34      64
-35      50
-33      43
-36       4
-37       2
-Name: utm_zone, dtype: int64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="Add-a-new-calculated-column">
 <h3>Add a new calculated column<a class="headerlink" href="#Add-a-new-calculated-column" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">assign</span></code> method returns a new object with all original columns in addition to new ones. Existing columns that are re-assigned will be overwritten.</p>
+<p><code class="docutils literal notranslate"><span class="pre">depth_flag</span></code> will be the new column that will have two values, if <code class="docutils literal notranslate"><span class="pre">total_depth</span></code> is larger or equal to 2000m, it will be classified as “deep”, otherwise it will be classified as “shallow”.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[103]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[199]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="p">(</span><span class="n">df</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;utm_zone&quot;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">depth_flag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;total_depth&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="s2">&quot;shallow&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">depth_flag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;total_depth&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="s2">&quot;shallow&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[103]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[199]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1944,7 +2061,7 @@ Name: utm_zone, dtype: int64
       <td>7325/4-1</td>
       <td>1210.0</td>
       <td>35</td>
-      <td>shallow</td>
+      <td>deep</td>
     </tr>
     <tr>
       <td>1919</td>
@@ -1958,7 +2075,7 @@ Name: utm_zone, dtype: int64
       <td>7435/12-1</td>
       <td>1540.0</td>
       <td>37</td>
-      <td>shallow</td>
+      <td>deep</td>
     </tr>
   </tbody>
 </table>
@@ -1968,7 +2085,12 @@ Name: utm_zone, dtype: int64
 </div>
 <div class="section" id="Add-calculated-columns-that-are-dependent-on-each-other">
 <h3>Add calculated columns that are dependent on each other<a class="headerlink" href="#Add-calculated-columns-that-are-dependent-on-each-other" title="Permalink to this headline">¶</a></h3>
-<p>In Python 3.6+, you can create multiple columns within the same assign where one of the columns depends on another one defined within the same assign:</p>
+<p>In Python 3.6+, you can create multiple columns within the same assign where one of the columns depends on another one defined within the same assign.</p>
+<p>We will calculate two new columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drilling_depth_flag</span></code> column which is when <code class="docutils literal notranslate"><span class="pre">total_depth</span></code> column has values larger or equal to 1000m, where they will be classified as “deep”, and otherwise as “shallow”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth_age_flag</span></code> column is dependent on the previously calculated column <code class="docutils literal notranslate"><span class="pre">drilling_depth_flag</span></code>. Output of the column is “deep_and_old” if “drilling_depth_flag” column is “deep”) AND if “completion_year” column is less and equal than 2010, otherwise it is “shallow_and_new”.</p></li>
+</ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[137]:
 </pre></div>
@@ -1977,7 +2099,7 @@ Name: utm_zone, dtype: int64
 <span></span><span class="p">(</span><span class="n">df</span>
     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;total_depth&quot;</span><span class="p">,</span> <span class="s2">&quot;utm_zone&quot;</span><span class="p">,</span> <span class="s2">&quot;completion_year&quot;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">drilling_depth_flag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;total_depth&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">,</span> <span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="s2">&quot;shallow&quot;</span><span class="p">),</span>
+        <span class="n">drilling_depth_flag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;total_depth&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="s2">&quot;shallow&quot;</span><span class="p">),</span>
         <span class="n">depth_age_flag</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
             <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;drilling_depth_flag&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;deep&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;completion_year&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">2010</span><span class="p">),</span>   <span class="c1"># drilling_depth_flag has been created in previous step</span>
             <span class="s2">&quot;deep_and_old&quot;</span><span class="p">,</span> <span class="s2">&quot;deep_and_new&quot;</span><span class="p">)</span>
