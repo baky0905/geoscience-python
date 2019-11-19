@@ -10,9 +10,12 @@ Create practical data analysis and data science online reproducible sphinx bookl
 * Personal automation
 * Consistent ways of writing code
 * Code that you are writing for yourself and you are the only person who is going to be using it
-:strike:`* Professional code`
-:strike:`* Checked in code`
-:strike:`* Reviewed code`
+.. role:: strike 
+* Professional code
+.. role:: strike* 
+Checked in code
+.. role:: strike
+* Reviewed code
 
 You can some cut corners, write some crappy code and do some things that questionable but all of it is just fine - no one will ever see it and no one will ever know.
 
