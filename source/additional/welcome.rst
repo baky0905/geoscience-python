@@ -12,6 +12,7 @@ Create practical data analysis and data science online reproducible sphinx bookl
 * Code that you are writing for yourself and you are the only person who is going to be using it
 
 **What kind of code will we NOT be using?**
+
 * Professional code
 * Checked in code
 * Reviewed code
