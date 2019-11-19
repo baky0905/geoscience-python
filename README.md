@@ -41,4 +41,77 @@ The libraries needed in these Jupyter notebooks are listed in file requirements.
 * nbsphinx (conda install -c conda-forge nbsphinx)
 * sphinx_rtd_theme (conda install sphinx_rtd_theme)
 
+After all has been installed and enabled do the following:
+
+1) clone this repository
+
+tree is looking like this:
+
+```
+├───docs
+│   ├───.doctrees
+│   │   ├───additional
+│   │   ├───nbsphinx
+│   │   └───notebooks
+│   │       └───.ipynb_checkpoints
+│   ├───additional
+│   ├───notebooks
+│   │   └───.ipynb_checkpoints
+│   ├───_images
+│   ├───_sources
+│   │   ├───additional
+│   │   └───notebooks
+│   │       └───.ipynb_checkpoints
+│   └───_static
+│       ├───css
+│       ├───fonts
+│       │   ├───Lato
+│       │   └───RobotoSlab
+│       └───js
+└───source
+    ├───additional
+    ├───data
+    ├───notebooks
+    │   └───.ipynb_checkpoints
+    ├───_static
+    └───_templates
+```
+
+2) Make a contribution by creating an:
+  * *.rst file and putting it to source/additional folder
+  * jupyter notebbok and putting it to source/notebook folder
+
+3) we need to discuss wether to put data in the data folder or url sourcing is also ok (could disseaper one day and then it is not reproducible)
+
+4) After you have created rst and jupyter notebok, you need to reference them in the index.rst file
+
+Example:
+
+```
+.. toctree::
+   :maxdepth: 2
+   :caption: Introduction:
+
+   additional/welcome.rst
+   notebooks/quick_introduction.ipynb
+```
+
+5) while in the root folder in anaconda prompt run a command `sphinx-build -b html source\ docs\` 
+which will compile the *.ipynb and *.rst files to html pages and create a sphinx website.
+In the command line source is the source\ folder where your files live and docs\ will be the folder where
+htmls and the tree will be compiled.
+
+\docs folder will be the folder that will be rendered on github pages as a static website.
+
+6) Go to your git bash 
+
+```
+git pull
+git add .
+git commit -m "Add ..."
+git push
+```
+
+7) Voila: https://baky0905.github.io/geoscience-python/
+
 
