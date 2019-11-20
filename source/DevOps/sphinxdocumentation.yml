@@ -37,7 +37,7 @@ steps:
   inputs:
 #    script: 'make html' 
      script: 'sphinx-build -b html source/ docs/'
-    workingDirectory: '$(Build.SourcesDirectory)/source/' 
+    workingDirectory: '$(Build.SourcesDirectory)' 
   displayName: 'Compile documentation'
 
 - task: CopyFiles@2
