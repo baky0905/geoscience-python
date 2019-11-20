@@ -81,7 +81,7 @@ pygments_style = 'sphinx'
 #
 #html_theme = 'alabaster'
 #html_theme = 'classic'
-import sphinx_press_theme
+#import sphinx_press_theme
 import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme" # "press" #'sphinx_rtd_theme'
