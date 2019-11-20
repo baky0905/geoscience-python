@@ -7,10 +7,10 @@ seaborn==0.9.0
 lxml==4.2.5
 statsmodels==0.10.1
 nbsphinx==0.4.2
-Sphinx==1.8.5 # too recent version breaks links to exercises
-sphinx_press_theme
+Sphinx # ==1.8.5 # too recent version breaks links to exercises
 sphinx_rtd_theme
 ipykernel
 beautifulsoup4
 pandoc
-
+jupyter
+nbconvert!=5.4   
