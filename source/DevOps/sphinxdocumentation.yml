@@ -37,12 +37,12 @@ steps:
   inputs:
 #    script: 'make html' 
      script: 'sphinx-build -b html source/ docs/'
-    workingDirectory: '$(Build.SourcesDirectory)/doc/' 
+    workingDirectory: '$(Build.SourcesDirectory)/source/' 
   displayName: 'Compile documentation'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/doc/docs/html'
+    SourceFolder: '$(Build.SourcesDirectory)/docs/'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     Contents: '**'
   displayName: 'Copy documentation files to artifact directory'
