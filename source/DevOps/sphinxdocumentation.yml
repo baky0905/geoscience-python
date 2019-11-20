@@ -49,8 +49,8 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/docs/'
-    #TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    TargetFolder: '$(Build.SourcesDirectory)/docs/'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    #TargetFolder: '$(Build.SourcesDirectory)/docs/'
     Contents: '**'
   displayName: 'Copy documentation files to artifact directory'
 
@@ -60,3 +60,15 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish documentation as artifact'
+
+# 3. Create our commit, merge into master, delete draft branch and push it
+- script: |
+    git add --all;
+    git commit -m"Pipelines-Bot: Updated site via $(Build.SourceVersion)";
+  workingDirectory: $(Build.StagingDirectory)
+  displayName: '[Git] Creating commit'
+
+- script: |
+    git push origin master;
+  workingDirectory: $(Build.StagingDirectory)
+  displayName: '[Git] Push changes to remote'
