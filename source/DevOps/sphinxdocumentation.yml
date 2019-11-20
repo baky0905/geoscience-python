@@ -33,6 +33,12 @@ steps:
 #    python setup.py install
 #  displayName: 'Setup python package.'
 
+- script: |
+    sudo apt-get install -y pandoc
+  displayName: "Install Pandoc on Ubuntu"
+    #condition: and(eq( variables['TOXENV'], 'docs' ), eq( variables['IMAGE_NAME'], 'ubuntu-16.04' ))
+    
+
 - task: CmdLine@2
   inputs:
 #    script: 'make html' 
