@@ -22,7 +22,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r Requirements.txt
+    pip install -r source/Requirements.txt
   displayName: 'Install dependencies'
 
 #- script: |
@@ -36,7 +36,7 @@ steps:
 - task: CmdLine@2
   inputs:
 #    script: 'make html' 
-     script: 'sphinx-build -b html source/ docs/'
+#     script: 'sphinx-build -b html source/ docs/'
     workingDirectory: '$(Build.SourcesDirectory)' 
   displayName: 'Compile documentation'
 
