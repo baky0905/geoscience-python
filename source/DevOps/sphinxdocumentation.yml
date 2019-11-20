@@ -22,7 +22,7 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r source/Requirements.txt
+    pip install -r source/requirements.txt
   displayName: 'Install dependencies'
 
 #- script: |
