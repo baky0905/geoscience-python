@@ -11,5 +11,4 @@ Sphinx==1.8.5 # too recent version breaks links to exercises
 sphinx_press_theme
 sphinx_rtd_theme
 ipykernel
-lxml
 beautifulsoup4
