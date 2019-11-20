@@ -50,7 +50,7 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/docs/'
     #TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    SourceFolder: '$(Build.SourcesDirectory)/docs/'
+    TargetFolder: '$(Build.SourcesDirectory)/docs/'
     Contents: '**'
   displayName: 'Copy documentation files to artifact directory'
 
