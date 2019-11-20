@@ -12,4 +12,5 @@ sphinx_press_theme
 sphinx_rtd_theme
 ipykernel
 beautifulsoup4
-pandoc==2.2.3
+pandoc
+
