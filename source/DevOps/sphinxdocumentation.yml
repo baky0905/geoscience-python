@@ -36,7 +36,7 @@ steps:
 - task: CmdLine@2
   inputs:
 #    script: 'make html' 
-#     script: 'sphinx-build -b html source/ docs/'
+    script: 'sphinx-build -b html source/ docs/'
     workingDirectory: '$(Build.SourcesDirectory)' 
   displayName: 'Compile documentation'
 
