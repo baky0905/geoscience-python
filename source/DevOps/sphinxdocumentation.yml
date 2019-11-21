@@ -61,14 +61,13 @@ steps:
     publishLocation: 'Container'
   displayName: 'Publish documentation as artifact'
 
-# 3. Create our commit, merge into master, delete draft branch and push it
-- script: |
-    git add --all;
-    git commit -m"Pipelines-Bot: Updated site via $(Build.SourceVersion)";
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: '[Git] Creating commit'
 
-- script: |
-    git push origin master;
-  workingDirectory: $(Build.StagingDirectory)
-  displayName: '[Git] Push changes to remote'
+- task: GitHubPagesPublish@1
+  inputs:
+    docPath: '$(Build.ArtifactStagingDirectory)' #'$(System.DefaultWorkingDirectory)\Documentation\site\*'
+    githubusername: 'baky0905'
+    githubemail: 'kbakaric1@gmail.com'
+    githubaccesstoken: '$(GITHUB_TOKEN)'
+    repositoryname: 'geoscience-python'
+    branchname: 'gh-pages'
+    commitmessage: 'Automated Release $(Release.ReleaseId)'
