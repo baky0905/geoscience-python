@@ -61,10 +61,9 @@ steps:
     publishLocation: 'Container'
   displayName: 'Publish documentation as artifact'
 
-
 - task: GitHubPagesPublish@1
   inputs:
-    docPath: '$(Build.ArtifactStagingDirectory)' #'$(System.DefaultWorkingDirectory)\Documentation\site\*'
+    docPath: '$(System.DefaultWorkingDirectory)\Documentation\site\*'
     githubusername: 'baky0905'
     githubemail: 'kbakaric1@gmail.com'
     githubaccesstoken: '$(GITHUB_TOKEN)'
