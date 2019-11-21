@@ -45,5 +45,4 @@ nbsphinx
 sphinx_rtd_theme
 beautifulsoup4    # used in add_html_anchors_to_exercises.py
 jupyter
-nbconvert  # does not work with nbsphinx
-pandoc
+nbconvert !=5.4   # does not work with nbsphinx
