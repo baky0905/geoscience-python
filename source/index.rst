@@ -28,13 +28,13 @@ Welcome to Geoscience with Python - the easy way!
    :maxdepth: 3
    :caption: Select columns and filter rows:
 
-   notebooks/select_and_query.ipynb
+   notebooks/select_and_query2.ipynb
 
 .. toctree::
    :maxdepth: 3
    :caption: Group By, Summary Statistic and New Columns:
 
-   notebooks/group_by_aggregate_assign.ipynb
+   notebooks/group_by_aggregate_assign2.ipynb
 
 .. toctree::
    :maxdepth: 3
