@@ -13,6 +13,12 @@ Welcome to Geoscience with Python - the easy way!
    additional/welcome.rst
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Data Sources:
+   
+   additional/data_sources.rst
+
+.. toctree::
    :maxdepth: 3
    :caption: Load CSV and clean column names :
 
