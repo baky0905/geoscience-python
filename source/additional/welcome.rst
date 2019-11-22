@@ -1,6 +1,12 @@
 Welcome to Geoscience with Python!
 ===================
 
+All the `jupyter notebooks <https://github.com/baky0905/geoscience-python/tree/master/source/notebooks>`_ 
+and data are located in `github repo <https://github.com/baky0905/geoscience-python/tree/master/source>`_
+
+This is also the `root folder <https://github.com/baky0905/geoscience-python/tree/master/source>`_ 
+for all relative paths in the notebooks.
+
 **Purpose**
 
 Create practical data analysis and data science online reproducible sphinx booklet for common Geoscience and Petroleum Engineering problems. Key is to enable people to solve their own problems.
