@@ -29,3 +29,9 @@ Welcome to Geoscience with Python - the easy way!
    :caption: Exploratory Data Analysis (EDA) case studies
 
 
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
