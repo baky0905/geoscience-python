@@ -8,7 +8,7 @@ Welcome to Geoscience with Python - the easy way!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction:
+   :caption: Introduction
 
    additional/welcome.rst
 
