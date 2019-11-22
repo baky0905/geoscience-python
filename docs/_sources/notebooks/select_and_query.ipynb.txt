@@ -186,7 +186,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Query by a predefined list."
+    "### Query by a predefined list"
    ]
   },
   {
