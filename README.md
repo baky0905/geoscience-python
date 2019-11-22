@@ -26,7 +26,6 @@ no one will ever see it and no one will ever know.
 ## Authors
 
 Kristijan Bakaric
-Peyman Kor
 ...
 
 ## Licence
