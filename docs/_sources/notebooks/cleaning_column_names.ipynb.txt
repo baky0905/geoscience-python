@@ -6,7 +6,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "## Load tabular data from *.csv"
+    "# Load tabular data from csv"
    ]
   },
   {
@@ -92,7 +92,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "## Clean column names"
+    "# Clean column names"
    ]
   },
   {
@@ -199,7 +199,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Clean column names even more [clean_names (janitor module)](https://pyjanitor.readthedocs.io/reference/janitor.functions/janitor.clean_names.html) "
+    "### Clean column names even more clean_names (janitor module)"
    ]
   },
   {
@@ -217,7 +217,7 @@
     }
    ],
    "source": [
-    "Method **clean_names**:\n",
+    "Method [clean_names (janitor module)](https://pyjanitor.readthedocs.io/reference/janitor.functions/janitor.clean_names.html):\n",
     "\n",
     "* takes all column names\n",
     "* converts them to lowercase\n",
@@ -271,7 +271,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "## Rename column names"
+    "# Rename column names"
    ]
   },
   {
