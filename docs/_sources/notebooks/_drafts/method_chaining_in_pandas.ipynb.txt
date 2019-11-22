@@ -1,0 +1,496 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# How method chaining in pandas is and can be super effective"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Method chaining is a programmatic style of invoking multiple method calls sequentially with each call performing an action on the same object and returning it. \n",
+    "\n",
+    "It eliminates the cognitive burden of naming variables at each intermediate step. \n",
+    "\n",
+    "Fluent Interface, a method of creating object-oriented API relies on method cascading (aka method chaining). \n",
+    "\n",
+    "Method chaining substantially increases the readability of the code. \n",
+    "\n",
+    "It is a top down approach.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "## Readable and understandable code - chaining"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": 32,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-32-9ad7718d27e9>, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  File \u001b[1;32m\"<ipython-input-32-9ad7718d27e9>\"\u001b[1;36m, line \u001b[1;32m1\u001b[0m\n\u001b[1;33m    I will always try to avoid the following two ways of writing code:\u001b[0m\n\u001b[1;37m         ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "I will always try to avoid the following two ways of writing code:\n",
+    "\n",
+    "**1) MUTLIPLE OBJECT OPTION**\n",
+    "\n",
+    "```\n",
+    "eat(\n",
+    "    \n",
+    "    slice(\n",
+    "\n",
+    "        bake(\n",
+    "            \n",
+    "            put(\n",
+    "                pour(\n",
+    "\n",
+    "                    mix(ingredients),\n",
+    "\n",
+    "                    into=baking_form),\n",
+    "\n",
+    "                    into=oven),\n",
+    "\n",
+    "                time=30),\n",
+    "                \n",
+    "            pieces=6),\n",
+    "        1)\n",
+    "```\n",
+    "\n",
+    "This first option is considered a “nested” option such that functions are nested \n",
+    "within one another. Historically, this has been the traditional way of\n",
+    "integrating code; however, it becomes extremely difficult to read what \n",
+    "exactly the code is doing and it also becomes easier to make mistakes when \n",
+    "making updates to your code. Although not in violation of the DRY principle1, \n",
+    "it definitely violates the basic principle of readability and clarity, \n",
+    "which makes communication of your analysis more difficult. To make things\n",
+    "more readable, people often move to the following approach…\n",
+    "\n",
+    "**2) NESTED OPTION**\n",
+    "\n",
+    "```\n",
+    "    it = mix(ingredients)\n",
+    "\n",
+    "    it = pour(it, into=baking_form)\n",
+    "\n",
+    "    it = put(it, into=oven)\n",
+    "\n",
+    "    it = bake(it, time=30)\n",
+    "\n",
+    "    it = slice(it, pieces=6)\n",
+    "\n",
+    "    it = eat(it, 1)\n",
+    "```\n",
+    "\n",
+    "This second option helps in making the data wrangling steps more explicit \n",
+    "and obvious but definitely violates the DRY principle. By sequencing \n",
+    "multiple functions in this way you are likely saving multiple outputs \n",
+    "that are not very informative to you or others; rather, the only reason \n",
+    "you save them is to insert them into the next function to eventually get the\n",
+    "final output you desire. This inevitably creates unnecessary copies and wrecks \n",
+    "havoc on properly managing your objects…basically it results in a global \n",
+    "environment charlie foxtrot! \n",
+    "\n",
+    "**I WILL INSIST ON METHODS CHAINING (if and when python and pandas allows you)**\n",
+    "\n",
+    "To provide the same readability (or even better), we can use chaining of methods to string \n",
+    "these arguments together without unnecessary object creation…\n",
+    "\n",
+    "The point of the chain is to help you write code in a way that is easier to read and understand. \n",
+    "It is powerful tool for clearly expressing a sequence of multiple operations. \n",
+    "\n",
+    "```\n",
+    "    (ingredients\n",
+    "\n",
+    "        .mix()\n",
+    "\n",
+    "        .pour(into=baking_form)\n",
+    "\n",
+    "        .put(into=oven)\n",
+    "\n",
+    "        .bake(time=30)\n",
+    "\n",
+    "        .slice(pieces=6)\n",
+    "    \n",
+    "        .ear(1)\n",
+    "    )\n",
+    "```\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import janitor"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_original = pd.read_csv(\"https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=82.102.27.246&CultureCode=en\")\n",
+    "\n",
+    "df = pd.read_csv(\"https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/wellbore_exploration_all&rs:Command=Render&rc:Toolbar=false&rc:Parameters=f&rs:Format=CSV&Top100=false&IpAddress=82.102.27.246&CultureCode=en\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# initial column name cleaning step\n",
+    "df.columns = (\n",
+    "    df.columns\n",
+    "        .str.replace(\"wlb\", \"\")\n",
+    "        .str.replace(\"fld\", \"\")\n",
+    "        .str.replace(\"fcl\", \"\")\n",
+    ")\n",
+    "df = df.clean_names(case_type=\"snake\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>production_licence</th>\n      <th>purpose</th>\n      <th>status</th>\n      <th>content</th>\n      <th>well_type</th>\n      <th>sub_sea</th>\n      <th>entry_date</th>\n      <th>...</th>\n      <th>npdid_wellbore</th>\n      <th>dsc_npdid_discovery</th>\n      <th>npdid_field</th>\n      <th>npdid_facility_drilling</th>\n      <th>npdid_wellbore_reclass</th>\n      <th>prl_npdid_production_licence</th>\n      <th>npdid_site_survey</th>\n      <th>date_updated</th>\n      <th>date_updated_max</th>\n      <th>datesync_npd</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>5 rows × 87 columns</p>\n</div>",
+      "text/plain": "  wellbore_name   well            drilling_operator production_licence  \\\n0         1/2-1  1/2-1  Phillips Petroleum Norsk AS               143    \n1         1/2-2  1/2-2   Paladin Resources Norge AS             143 CS   \n2         1/3-1  1/3-1             A/S Norske Shell               011    \n3         1/3-2  1/3-2             A/S Norske Shell               011    \n4         1/3-3  1/3-3       Elf Petroleum Norge AS               065    \n\n   purpose status    content    well_type sub_sea  entry_date  ...  \\\n0  WILDCAT    P&A        OIL  EXPLORATION      NO  20.03.1989  ...   \n1  WILDCAT    P&A  OIL SHOWS  EXPLORATION      NO  14.12.2005  ...   \n2  WILDCAT    P&A        GAS  EXPLORATION      NO  06.07.1968  ...   \n3  WILDCAT    P&A        DRY  EXPLORATION      NO  14.05.1969  ...   \n4  WILDCAT    P&A        OIL  EXPLORATION      NO  22.08.1982  ...   \n\n  npdid_wellbore dsc_npdid_discovery npdid_field npdid_facility_drilling  \\\n0           1382             43814.0   3437650.0                296245.0   \n1           5192                 NaN         NaN                278245.0   \n2            154             43820.0         NaN                288604.0   \n3            165                 NaN         NaN                288847.0   \n4             87             43826.0   1028599.0                288334.0   \n\n  npdid_wellbore_reclass  prl_npdid_production_licence npdid_site_survey  \\\n0                      0                       21956.0               NaN   \n1                      0                     2424919.0               NaN   \n2                      0                       20844.0               NaN   \n3                      0                       20844.0               NaN   \n4                      0                       21316.0               NaN   \n\n  date_updated  date_updated_max  datesync_npd  \n0   03.10.2019        03.10.2019    19.11.2019  \n1   03.10.2019        03.10.2019    19.11.2019  \n2   03.10.2019        03.10.2019    19.11.2019  \n3   03.10.2019        03.10.2019    19.11.2019  \n4   03.10.2019        03.10.2019    19.11.2019  \n\n[5 rows x 87 columns]"
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Pandas doesn’t have a comprehensible list of methods to use in method chaining. But to make up for it, Pandas introduced Pipe function starting from version 0.16.2. Pipe enables user-defined methods in method chains.\n",
+    "\n",
+    "With the introduction of pipe, you can almost write anything in a method chain which begets the question, How much chaining is too much?. This is an entirely subjective question and must be left to the discretion of the programmer. Most people find the sweet spot to be around 7 or 8 methods in a single chain. I don’t use any hard limits on the number of methods in a chain. Instead, I try to represent a single coherent thought in a single method chain."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (<ipython-input-13-2058d9517020>, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  File \u001b[1;32m\"<ipython-input-13-2058d9517020>\"\u001b[1;36m, line \u001b[1;32m1\u001b[0m\n\u001b[1;33m    Some of the staunch critics of method chaining accuse it of increasing code readability at the cost of making debugging tricky, which is true. Imagine a chain that’s ten methods long that you are debugging after a month. The data frame structure or the column names have changed since then and now your chain starts throwing errors. Its impossible to now debug through the chain and see the changes it makes to the data frame as you move along the chain, albeit you can easily find which method call is breaking the code. This needs to be addressed before starting to use long method chains in production or in notebooks.\u001b[0m\n\u001b[1;37m          ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "Some of the critics of method chaining accuse it of increasing code readability at the cost of making debugging tricky, which is true. Imagine a chain that’s ten methods long that you are debugging after a month. The data frame structure or the column names have changed since then and now your chain starts throwing errors. Its impossible to now debug through the chain and see the changes it makes to the data frame as you move along the chain, albeit you can easily find which method call is breaking the code. This needs to be addressed before starting to use long method chains in production or in notebooks."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "### How to track a changing of the dataframe shape along the chain?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Two things to note in this function are the:\n",
+    "\n",
+    "* fn argument that can take in a lambda function  \n",
+    "* display function call\n",
+    "\n",
+    "Lambda function lends flexibility and the display function call makes the display of data frames and plots pretty in a Jupyter lab or a notebook setting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def csnap(df, fn=lambda x: x.shape, msg=None):\n",
+    "    \"\"\" Custom Help function to print things in method chaining.\n",
+    "        Returns back the df to further use in chaining.\n",
+    "    \"\"\"\n",
+    "    if msg:\n",
+    "        print(msg)\n",
+    "    display(fn(df))\n",
+    "    return df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": "Before\nAfter\n"
+    },
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>production_licence</th>\n      <th>purpose</th>\n      <th>status</th>\n      <th>content</th>\n      <th>well_type</th>\n      <th>sub_sea</th>\n      <th>entry_date</th>\n      <th>...</th>\n      <th>npdid_wellbore</th>\n      <th>dsc_npdid_discovery</th>\n      <th>npdid_field</th>\n      <th>npdid_facility_drilling</th>\n      <th>npdid_wellbore_reclass</th>\n      <th>prl_npdid_production_licence</th>\n      <th>npdid_site_survey</th>\n      <th>date_updated</th>\n      <th>date_updated_max</th>\n      <th>datesync_npd</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>5 rows × 87 columns</p>\n</div>",
+      "text/plain": "  wellbore_name   well            drilling_operator production_licence  \\\n0         1/2-1  1/2-1  Phillips Petroleum Norsk AS               143    \n1         1/2-2  1/2-2   Paladin Resources Norge AS             143 CS   \n2         1/3-1  1/3-1             A/S Norske Shell               011    \n3         1/3-2  1/3-2             A/S Norske Shell               011    \n4         1/3-3  1/3-3       Elf Petroleum Norge AS               065    \n\n   purpose status    content    well_type sub_sea  entry_date  ...  \\\n0  WILDCAT    P&A        OIL  EXPLORATION      NO  20.03.1989  ...   \n1  WILDCAT    P&A  OIL SHOWS  EXPLORATION      NO  14.12.2005  ...   \n2  WILDCAT    P&A        GAS  EXPLORATION      NO  06.07.1968  ...   \n3  WILDCAT    P&A        DRY  EXPLORATION      NO  14.05.1969  ...   \n4  WILDCAT    P&A        OIL  EXPLORATION      NO  22.08.1982  ...   \n\n  npdid_wellbore dsc_npdid_discovery npdid_field npdid_facility_drilling  \\\n0           1382             43814.0   3437650.0                296245.0   \n1           5192                 NaN         NaN                278245.0   \n2            154             43820.0         NaN                288604.0   \n3            165                 NaN         NaN                288847.0   \n4             87             43826.0   1028599.0                288334.0   \n\n  npdid_wellbore_reclass  prl_npdid_production_licence npdid_site_survey  \\\n0                      0                       21956.0               NaN   \n1                      0                     2424919.0               NaN   \n2                      0                       20844.0               NaN   \n3                      0                       20844.0               NaN   \n4                      0                       21316.0               NaN   \n\n  date_updated  date_updated_max  datesync_npd  \n0   03.10.2019        03.10.2019    19.11.2019  \n1   03.10.2019        03.10.2019    19.11.2019  \n2   03.10.2019        03.10.2019    19.11.2019  \n3   03.10.2019        03.10.2019    19.11.2019  \n4   03.10.2019        03.10.2019    19.11.2019  \n\n[5 rows x 87 columns]"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/plain": "(1921, 5)"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>water_depth</th>\n      <th>total_depth</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1393</td>\n      <td>6302/6-1</td>\n      <td>6302/6-1</td>\n      <td>Statoil ASA (old)</td>\n      <td>1261.0</td>\n      <td>4234.0</td>\n    </tr>\n    <tr>\n      <td>1394</td>\n      <td>6304/3-1</td>\n      <td>6304/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>1235.3</td>\n      <td>3642.0</td>\n    </tr>\n    <tr>\n      <td>1396</td>\n      <td>6305/4-1</td>\n      <td>6305/4-1</td>\n      <td>Norsk Hydro Produksjon AS</td>\n      <td>1002.0</td>\n      <td>2975.0</td>\n    </tr>\n    <tr>\n      <td>1397</td>\n      <td>6305/4-2 S</td>\n      <td>6305/4-2</td>\n      <td>A/S Norske Shell</td>\n      <td>1086.0</td>\n      <td>2985.0</td>\n    </tr>\n    <tr>\n      <td>1413</td>\n      <td>6403/6-1</td>\n      <td>6403/6-1</td>\n      <td>Statoil ASA (old)</td>\n      <td>1721.0</td>\n      <td>4120.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "     wellbore_name      well          drilling_operator  water_depth  \\\n1393      6302/6-1  6302/6-1          Statoil ASA (old)       1261.0   \n1394      6304/3-1  6304/3-1           A/S Norske Shell       1235.3   \n1396      6305/4-1  6305/4-1  Norsk Hydro Produksjon AS       1002.0   \n1397    6305/4-2 S  6305/4-2           A/S Norske Shell       1086.0   \n1413      6403/6-1  6403/6-1          Statoil ASA (old)       1721.0   \n\n      total_depth  \n1393       4234.0  \n1394       3642.0  \n1396       2975.0  \n1397       2985.0  \n1413       4120.0  "
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellbore_name</th>\n      <th>well</th>\n      <th>drilling_operator</th>\n      <th>water_depth</th>\n      <th>total_depth</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>1393</td>\n      <td>6302/6-1</td>\n      <td>6302/6-1</td>\n      <td>Statoil ASA (old)</td>\n      <td>1261.0</td>\n      <td>4234.0</td>\n    </tr>\n    <tr>\n      <td>1394</td>\n      <td>6304/3-1</td>\n      <td>6304/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>1235.3</td>\n      <td>3642.0</td>\n    </tr>\n    <tr>\n      <td>1396</td>\n      <td>6305/4-1</td>\n      <td>6305/4-1</td>\n      <td>Norsk Hydro Produksjon AS</td>\n      <td>1002.0</td>\n      <td>2975.0</td>\n    </tr>\n    <tr>\n      <td>1397</td>\n      <td>6305/4-2 S</td>\n      <td>6305/4-2</td>\n      <td>A/S Norske Shell</td>\n      <td>1086.0</td>\n      <td>2985.0</td>\n    </tr>\n    <tr>\n      <td>1413</td>\n      <td>6403/6-1</td>\n      <td>6403/6-1</td>\n      <td>Statoil ASA (old)</td>\n      <td>1721.0</td>\n      <td>4120.0</td>\n    </tr>\n    <tr>\n      <td>1414</td>\n      <td>6403/10-1</td>\n      <td>6403/10-1</td>\n      <td>Norsk Hydro Produksjon AS</td>\n      <td>1717.0</td>\n      <td>3400.0</td>\n    </tr>\n    <tr>\n      <td>1415</td>\n      <td>6404/11-1</td>\n      <td>6404/11-1</td>\n      <td>BP Amoco Norge AS</td>\n      <td>1495.0</td>\n      <td>3650.0</td>\n    </tr>\n    <tr>\n      <td>1416</td>\n      <td>6405/7-1</td>\n      <td>6405/7-1</td>\n      <td>Statoil ASA (old)</td>\n      <td>1206.0</td>\n      <td>4300.0</td>\n    </tr>\n    <tr>\n      <td>1550</td>\n      <td>6504/5-1 S</td>\n      <td>6504/5-1</td>\n      <td>Eni Norge AS</td>\n      <td>1190.0</td>\n      <td>4193.0</td>\n    </tr>\n    <tr>\n      <td>1675</td>\n      <td>6603/5-1 S</td>\n      <td>6603/5-1</td>\n      <td>A/S Norske Shell</td>\n      <td>1452.0</td>\n      <td>5254.0</td>\n    </tr>\n    <tr>\n      <td>1676</td>\n      <td>6603/12-1</td>\n      <td>6603/12-1</td>\n      <td>A/S Norske Shell</td>\n      <td>1376.0</td>\n      <td>3830.0</td>\n    </tr>\n    <tr>\n      <td>1677</td>\n      <td>6604/2-1</td>\n      <td>6604/2-1</td>\n      <td>BG Norge AS</td>\n      <td>1262.0</td>\n      <td>3551.0</td>\n    </tr>\n    <tr>\n      <td>1678</td>\n      <td>6604/5-1</td>\n      <td>6604/5-1</td>\n      <td>Wintershall Norge AS</td>\n      <td>1219.0</td>\n      <td>3858.0</td>\n    </tr>\n    <tr>\n      <td>1679</td>\n      <td>6604/10-1</td>\n      <td>6604/10-1</td>\n      <td>A/S Norske Shell</td>\n      <td>1354.0</td>\n      <td>3715.0</td>\n    </tr>\n    <tr>\n      <td>1680</td>\n      <td>6605/1-1</td>\n      <td>6605/1-1</td>\n      <td>StatoilHydro ASA</td>\n      <td>1157.0</td>\n      <td>3947.0</td>\n    </tr>\n    <tr>\n      <td>1742</td>\n      <td>6704/12-1</td>\n      <td>6704/12-1</td>\n      <td>Saga Petroleum ASA</td>\n      <td>1352.0</td>\n      <td>4103.0</td>\n    </tr>\n    <tr>\n      <td>1743</td>\n      <td>6705/7-1</td>\n      <td>6705/7-1</td>\n      <td>Repsol Norge AS</td>\n      <td>1404.0</td>\n      <td>3290.0</td>\n    </tr>\n    <tr>\n      <td>1744</td>\n      <td>6705/10-1</td>\n      <td>6705/10-1</td>\n      <td>StatoilHydro Petroleum AS</td>\n      <td>1335.0</td>\n      <td>3775.0</td>\n    </tr>\n    <tr>\n      <td>1745</td>\n      <td>6706/6-1</td>\n      <td>6706/6-1</td>\n      <td>Esso Exploration and Production Norway A/S</td>\n      <td>1298.0</td>\n      <td>3451.0</td>\n    </tr>\n    <tr>\n      <td>1746</td>\n      <td>6706/6-2 S</td>\n      <td>6706/6-2</td>\n      <td>Wintershall Norge AS</td>\n      <td>1214.0</td>\n      <td>3916.0</td>\n    </tr>\n    <tr>\n      <td>1747</td>\n      <td>6706/11-1</td>\n      <td>6706/11-1</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>1238.0</td>\n      <td>4317.0</td>\n    </tr>\n    <tr>\n      <td>1748</td>\n      <td>6706/11-2</td>\n      <td>6706/11-2</td>\n      <td>Statoil Petroleum AS</td>\n      <td>1272.0</td>\n      <td>2596.0</td>\n    </tr>\n    <tr>\n      <td>1749</td>\n      <td>6706/12-1</td>\n      <td>6706/12-1</td>\n      <td>StatoilHydro ASA</td>\n      <td>1262.0</td>\n      <td>3950.0</td>\n    </tr>\n    <tr>\n      <td>1750</td>\n      <td>6706/12-2</td>\n      <td>6706/12-2</td>\n      <td>Statoil Petroleum AS</td>\n      <td>1312.0</td>\n      <td>2754.0</td>\n    </tr>\n    <tr>\n      <td>1751</td>\n      <td>6706/12-3</td>\n      <td>6706/12-3</td>\n      <td>Statoil Petroleum AS</td>\n      <td>1287.0</td>\n      <td>3336.0</td>\n    </tr>\n    <tr>\n      <td>1752</td>\n      <td>6707/10-1</td>\n      <td>6707/10-1</td>\n      <td>BP Norway Limited U.A.</td>\n      <td>1274.0</td>\n      <td>5039.0</td>\n    </tr>\n    <tr>\n      <td>1753</td>\n      <td>6707/10-2 A</td>\n      <td>6707/10-2</td>\n      <td>StatoilHydro ASA</td>\n      <td>1248.0</td>\n      <td>4850.0</td>\n    </tr>\n    <tr>\n      <td>1754</td>\n      <td>6707/10-2 S</td>\n      <td>6707/10-2</td>\n      <td>StatoilHydro ASA</td>\n      <td>1248.0</td>\n      <td>3365.0</td>\n    </tr>\n    <tr>\n      <td>1755</td>\n      <td>6707/10-3 S</td>\n      <td>6707/10-3</td>\n      <td>Centrica Resources (Norge) AS</td>\n      <td>1421.0</td>\n      <td>4789.0</td>\n    </tr>\n    <tr>\n      <td>1758</td>\n      <td>7016/2-1</td>\n      <td>7016/2-1</td>\n      <td>Eni Norge AS</td>\n      <td>1366.0</td>\n      <td>4061.0</td>\n    </tr>\n  </tbody>\n</table>\n</div>",
+      "text/plain": "     wellbore_name       well                           drilling_operator  \\\n1393      6302/6-1   6302/6-1                           Statoil ASA (old)   \n1394      6304/3-1   6304/3-1                            A/S Norske Shell   \n1396      6305/4-1   6305/4-1                   Norsk Hydro Produksjon AS   \n1397    6305/4-2 S   6305/4-2                            A/S Norske Shell   \n1413      6403/6-1   6403/6-1                           Statoil ASA (old)   \n1414     6403/10-1  6403/10-1                   Norsk Hydro Produksjon AS   \n1415     6404/11-1  6404/11-1                           BP Amoco Norge AS   \n1416      6405/7-1   6405/7-1                           Statoil ASA (old)   \n1550    6504/5-1 S   6504/5-1                                Eni Norge AS   \n1675    6603/5-1 S   6603/5-1                            A/S Norske Shell   \n1676     6603/12-1  6603/12-1                            A/S Norske Shell   \n1677      6604/2-1   6604/2-1                                 BG Norge AS   \n1678      6604/5-1   6604/5-1                        Wintershall Norge AS   \n1679     6604/10-1  6604/10-1                            A/S Norske Shell   \n1680      6605/1-1   6605/1-1                            StatoilHydro ASA   \n1742     6704/12-1  6704/12-1                          Saga Petroleum ASA   \n1743      6705/7-1   6705/7-1                             Repsol Norge AS   \n1744     6705/10-1  6705/10-1                   StatoilHydro Petroleum AS   \n1745      6706/6-1   6706/6-1  Esso Exploration and Production Norway A/S   \n1746    6706/6-2 S   6706/6-2                        Wintershall Norge AS   \n1747     6706/11-1  6706/11-1            Den norske stats oljeselskap a.s   \n1748     6706/11-2  6706/11-2                        Statoil Petroleum AS   \n1749     6706/12-1  6706/12-1                            StatoilHydro ASA   \n1750     6706/12-2  6706/12-2                        Statoil Petroleum AS   \n1751     6706/12-3  6706/12-3                        Statoil Petroleum AS   \n1752     6707/10-1  6707/10-1                      BP Norway Limited U.A.   \n1753   6707/10-2 A  6707/10-2                            StatoilHydro ASA   \n1754   6707/10-2 S  6707/10-2                            StatoilHydro ASA   \n1755   6707/10-3 S  6707/10-3               Centrica Resources (Norge) AS   \n1758      7016/2-1   7016/2-1                                Eni Norge AS   \n\n      water_depth  total_depth  \n1393       1261.0       4234.0  \n1394       1235.3       3642.0  \n1396       1002.0       2975.0  \n1397       1086.0       2985.0  \n1413       1721.0       4120.0  \n1414       1717.0       3400.0  \n1415       1495.0       3650.0  \n1416       1206.0       4300.0  \n1550       1190.0       4193.0  \n1675       1452.0       5254.0  \n1676       1376.0       3830.0  \n1677       1262.0       3551.0  \n1678       1219.0       3858.0  \n1679       1354.0       3715.0  \n1680       1157.0       3947.0  \n1742       1352.0       4103.0  \n1743       1404.0       3290.0  \n1744       1335.0       3775.0  \n1745       1298.0       3451.0  \n1746       1214.0       3916.0  \n1747       1238.0       4317.0  \n1748       1272.0       2596.0  \n1749       1262.0       3950.0  \n1750       1312.0       2754.0  \n1751       1287.0       3336.0  \n1752       1274.0       5039.0  \n1753       1248.0       4850.0  \n1754       1248.0       3365.0  \n1755       1421.0       4789.0  \n1758       1366.0       4061.0  "
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df\n",
+    "    .pipe(csnap) # check the dataframe shape\n",
+    "    .filter(items = [\"wellbore_name\", \"well\", \"drilling_operator\", \"water_depth\", \"total_depth\"]) # select only 5 columns\n",
+    "    .pipe(csnap) # check the dataframe shape\n",
+    "    .query(\"water_depth >= 1000\")\n",
+    "    .pipe(csnap) # check the dataframe shape\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "We can see how shape of the dataframe changed along the pipe in data processing pipeline:\n",
+    "\n",
+    "```\n",
+    "(1921, 87)\n",
+    "(1921, 5)\n",
+    "(30, 5)\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": 33,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid character in identifier (<ipython-input-33-4e0811f42182>, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  File \u001b[1;32m\"<ipython-input-33-4e0811f42182>\"\u001b[1;36m, line \u001b[1;32m1\u001b[0m\n\u001b[1;33m    Let’s look at the other custom pipe functions. setcols is used to set column names in a chain. Usually when we read data from an external source the column name will contain a mix of upper and lower cases along with space and special characters. These issues can be fixed like this,\u001b[0m\n\u001b[1;37m        ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid character in identifier\n"
+     ]
+    }
+   ],
+   "source": [
+    "Let’s look at the other custom pipe functions. setcols is used to set column names in a chain. Usually when we read data from an external source the column name will contain a mix of upper and lower cases along with space and special characters. These issues can be fixed like this,"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def setcols(data=df, fnc=lambda x: x.columns.map('_'.join), cols=None):\n",
+    "    \"\"\"\n",
+    "    Sets the column of the data frame to the passed column list.\n",
+    "    \"\"\"\n",
+    "    if cols:\n",
+    "        df.columns = cols\n",
+    "    else:\n",
+    "        df.columns = fnc(df)\n",
+    "    return df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "(1921, 87)"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/plain": "(1921, 87)"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    },
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellborename</th>\n      <th>well</th>\n      <th>drillingoperator</th>\n      <th>productionlicence</th>\n      <th>purpose</th>\n      <th>status</th>\n      <th>content</th>\n      <th>welltype</th>\n      <th>subsea</th>\n      <th>entrydate</th>\n      <th>...</th>\n      <th>npdidwellbore</th>\n      <th>dscnpdiddiscovery</th>\n      <th>npdidfield</th>\n      <th>fclnpdidfacilitydrilling</th>\n      <th>npdidwellborereclass</th>\n      <th>prlnpdidproductionlicence</th>\n      <th>npdidsitesurvey</th>\n      <th>dateupdated</th>\n      <th>dateupdatedmax</th>\n      <th>datesyncnpd</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>Phillips Petroleum Norsk AS</td>\n      <td>143</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>20.03.1989</td>\n      <td>...</td>\n      <td>1382</td>\n      <td>43814.0</td>\n      <td>3437650.0</td>\n      <td>296245.0</td>\n      <td>0</td>\n      <td>21956.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>Paladin Resources Norge AS</td>\n      <td>143 CS</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.12.2005</td>\n      <td>...</td>\n      <td>5192</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>278245.0</td>\n      <td>0</td>\n      <td>2424919.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>06.07.1968</td>\n      <td>...</td>\n      <td>154</td>\n      <td>43820.0</td>\n      <td>NaN</td>\n      <td>288604.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>A/S Norske Shell</td>\n      <td>011</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>14.05.1969</td>\n      <td>...</td>\n      <td>165</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>288847.0</td>\n      <td>0</td>\n      <td>20844.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>Elf Petroleum Norge AS</td>\n      <td>065</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>22.08.1982</td>\n      <td>...</td>\n      <td>87</td>\n      <td>43826.0</td>\n      <td>1028599.0</td>\n      <td>288334.0</td>\n      <td>0</td>\n      <td>21316.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>7324/10-1</td>\n      <td>Den norske stats oljeselskap a.s</td>\n      <td>162</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>SHOWS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>03.06.1989</td>\n      <td>...</td>\n      <td>1411</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>294382.0</td>\n      <td>0</td>\n      <td>22108.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>7325/1-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>615</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>23.06.2014</td>\n      <td>...</td>\n      <td>7501</td>\n      <td>24689817.0</td>\n      <td>NaN</td>\n      <td>404201.0</td>\n      <td>0</td>\n      <td>20429544.0</td>\n      <td>NaN</td>\n      <td>03.10.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>7325/4-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>855</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>OIL/GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>19.07.2017</td>\n      <td>...</td>\n      <td>8211</td>\n      <td>29469097.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28168828.0</td>\n      <td>NaN</td>\n      <td>13.11.2019</td>\n      <td>13.11.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>7335/3-1</td>\n      <td>Equinor Energy AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>DRY</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>13.05.2019</td>\n      <td>...</td>\n      <td>8735</td>\n      <td>NaN</td>\n      <td>NaN</td>\n      <td>415836.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>17.10.2019</td>\n      <td>NaN</td>\n      <td>19.11.2019</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>7435/12-1</td>\n      <td>Statoil Petroleum AS</td>\n      <td>859</td>\n      <td>WILDCAT</td>\n      <td>P&amp;A</td>\n      <td>GAS</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>09.08.2017</td>\n      <td>...</td>\n      <td>8228</td>\n      <td>29491696.0</td>\n      <td>NaN</td>\n      <td>439972.0</td>\n      <td>0</td>\n      <td>28169055.0</td>\n      <td>NaN</td>\n      <td>01.11.2019</td>\n      <td>03.10.2019</td>\n      <td>19.11.2019</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 87 columns</p>\n</div>",
+      "text/plain": "     wellborename       well                  drillingoperator  \\\n0           1/2-1      1/2-1       Phillips Petroleum Norsk AS   \n1           1/2-2      1/2-2        Paladin Resources Norge AS   \n2           1/3-1      1/3-1                  A/S Norske Shell   \n3           1/3-2      1/3-2                  A/S Norske Shell   \n4           1/3-3      1/3-3            Elf Petroleum Norge AS   \n...           ...        ...                               ...   \n1916    7324/10-1  7324/10-1  Den norske stats oljeselskap a.s   \n1917     7325/1-1   7325/1-1              Statoil Petroleum AS   \n1918     7325/4-1   7325/4-1              Statoil Petroleum AS   \n1919     7335/3-1   7335/3-1                 Equinor Energy AS   \n1920    7435/12-1  7435/12-1              Statoil Petroleum AS   \n\n     productionlicence  purpose status    content     welltype subsea  \\\n0                 143   WILDCAT    P&A        OIL  EXPLORATION     NO   \n1               143 CS  WILDCAT    P&A  OIL SHOWS  EXPLORATION     NO   \n2                 011   WILDCAT    P&A        GAS  EXPLORATION     NO   \n3                 011   WILDCAT    P&A        DRY  EXPLORATION     NO   \n4                 065   WILDCAT    P&A        OIL  EXPLORATION     NO   \n...                ...      ...    ...        ...          ...    ...   \n1916              162   WILDCAT    P&A      SHOWS  EXPLORATION     NO   \n1917              615   WILDCAT    P&A        GAS  EXPLORATION     NO   \n1918              855   WILDCAT    P&A    OIL/GAS  EXPLORATION     NO   \n1919              859   WILDCAT    P&A        DRY  EXPLORATION     NO   \n1920              859   WILDCAT    P&A        GAS  EXPLORATION     NO   \n\n       entrydate  ... npdidwellbore dscnpdiddiscovery npdidfield  \\\n0     20.03.1989  ...          1382           43814.0  3437650.0   \n1     14.12.2005  ...          5192               NaN        NaN   \n2     06.07.1968  ...           154           43820.0        NaN   \n3     14.05.1969  ...           165               NaN        NaN   \n4     22.08.1982  ...            87           43826.0  1028599.0   \n...          ...  ...           ...               ...        ...   \n1916  03.06.1989  ...          1411               NaN        NaN   \n1917  23.06.2014  ...          7501        24689817.0        NaN   \n1918  19.07.2017  ...          8211        29469097.0        NaN   \n1919  13.05.2019  ...          8735               NaN        NaN   \n1920  09.08.2017  ...          8228        29491696.0        NaN   \n\n     fclnpdidfacilitydrilling npdidwellborereclass  prlnpdidproductionlicence  \\\n0                    296245.0                    0                    21956.0   \n1                    278245.0                    0                  2424919.0   \n2                    288604.0                    0                    20844.0   \n3                    288847.0                    0                    20844.0   \n4                    288334.0                    0                    21316.0   \n...                       ...                  ...                        ...   \n1916                 294382.0                    0                    22108.0   \n1917                 404201.0                    0                 20429544.0   \n1918                 439972.0                    0                 28168828.0   \n1919                 415836.0                    0                 28169055.0   \n1920                 439972.0                    0                 28169055.0   \n\n     npdidsitesurvey dateupdated  dateupdatedmax  datesyncnpd  \n0                NaN  03.10.2019      03.10.2019   19.11.2019  \n1                NaN  03.10.2019      03.10.2019   19.11.2019  \n2                NaN  03.10.2019      03.10.2019   19.11.2019  \n3                NaN  03.10.2019      03.10.2019   19.11.2019  \n4                NaN  03.10.2019      03.10.2019   19.11.2019  \n...              ...         ...             ...          ...  \n1916             NaN  03.10.2019      03.10.2019   19.11.2019  \n1917             NaN  03.10.2019      03.10.2019   19.11.2019  \n1918             NaN  13.11.2019      13.11.2019   19.11.2019  \n1919             NaN  17.10.2019             NaN   19.11.2019  \n1920             NaN  01.11.2019      03.10.2019   19.11.2019  \n\n[1921 rows x 87 columns]"
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(df_original\n",
+    "    .pipe(csnap)\n",
+    "    .pipe(\n",
+    "        setcols,\n",
+    "        fnc=lambda x: x.columns.str.lower()\n",
+    "        .str.replace(r\"wlb\", \"\")\n",
+    "        .str.replace(r\"fld\", \"\")\n",
+    "        .str.strip()\n",
+    "        .str.replace(\" \", \"_\"),\n",
+    "    )\n",
+    "    .pipe(csnap)\n",
+    "\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Unlike the csnap function setcols function creates a copy of the data frame, which makes the function call costly. But this is necessary to make sure that we are not writing on the global copy of the data frame. Most of the pandas function works similarly with an in-place flag to either return the new data frame or reassign the top level reference.\n",
+    "\n",
+    "Jeff Reback says,\n",
+    "There is no guarantee that an in-place operation is actually faster. Often, they are the same operation that works on a copy, but the top-level reference is reassigned.\n",
+    "\n",
+    "Let's wrap this section with one final example. R has a versatile select function to select/deselect columns in a wide data frame instead of listing out everything. cfilter helps us achieve the same versatility using lambda function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>wellborename</th>\n      <th>well</th>\n      <th>welltype</th>\n      <th>discoverywellbore</th>\n      <th>reclassfromwellbore</th>\n      <th>diskoswellboretype</th>\n      <th>diskoswellboreparent</th>\n      <th>npdidwellbore</th>\n      <th>npdidwellborereclass</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>0</td>\n      <td>1/2-1</td>\n      <td>1/2-1</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>1382</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>1</td>\n      <td>1/2-2</td>\n      <td>1/2-2</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>5192</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>2</td>\n      <td>1/3-1</td>\n      <td>1/3-1</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>154</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>3</td>\n      <td>1/3-2</td>\n      <td>1/3-2</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>165</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>4</td>\n      <td>1/3-3</td>\n      <td>1/3-3</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>87</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n      <td>...</td>\n    </tr>\n    <tr>\n      <td>1916</td>\n      <td>7324/10-1</td>\n      <td>7324/10-1</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>1411</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>1917</td>\n      <td>7325/1-1</td>\n      <td>7325/1-1</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>7501</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>1918</td>\n      <td>7325/4-1</td>\n      <td>7325/4-1</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>8211</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>1919</td>\n      <td>7335/3-1</td>\n      <td>7335/3-1</td>\n      <td>EXPLORATION</td>\n      <td>NO</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>8735</td>\n      <td>0</td>\n    </tr>\n    <tr>\n      <td>1920</td>\n      <td>7435/12-1</td>\n      <td>7435/12-1</td>\n      <td>EXPLORATION</td>\n      <td>YES</td>\n      <td>NaN</td>\n      <td>initial</td>\n      <td></td>\n      <td>8228</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n<p>1921 rows × 9 columns</p>\n</div>",
+      "text/plain": "     wellborename       well     welltype discoverywellbore  \\\n0           1/2-1      1/2-1  EXPLORATION               YES   \n1           1/2-2      1/2-2  EXPLORATION                NO   \n2           1/3-1      1/3-1  EXPLORATION               YES   \n3           1/3-2      1/3-2  EXPLORATION                NO   \n4           1/3-3      1/3-3  EXPLORATION               YES   \n...           ...        ...          ...               ...   \n1916    7324/10-1  7324/10-1  EXPLORATION                NO   \n1917     7325/1-1   7325/1-1  EXPLORATION               YES   \n1918     7325/4-1   7325/4-1  EXPLORATION               YES   \n1919     7335/3-1   7335/3-1  EXPLORATION                NO   \n1920    7435/12-1  7435/12-1  EXPLORATION               YES   \n\n     reclassfromwellbore    diskoswellboretype  \\\n0                    NaN  initial                \n1                    NaN  initial                \n2                    NaN  initial                \n3                    NaN  initial                \n4                    NaN  initial                \n...                  ...                   ...   \n1916                 NaN  initial                \n1917                 NaN  initial                \n1918                 NaN  initial                \n1919                 NaN  initial                \n1920                 NaN  initial                \n\n                          diskoswellboreparent  npdidwellbore  \\\n0                                                        1382   \n1                                                        5192   \n2                                                         154   \n3                                                         165   \n4                                                          87   \n...                                        ...            ...   \n1916                                                     1411   \n1917                                                     7501   \n1918                                                     8211   \n1919                                                     8735   \n1920                                                     8228   \n\n      npdidwellborereclass  \n0                        0  \n1                        0  \n2                        0  \n3                        0  \n4                        0  \n...                    ...  \n1916                     0  \n1917                     0  \n1918                     0  \n1919                     0  \n1920                     0  \n\n[1921 rows x 9 columns]"
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "application/javascript": "\n            setTimeout(function() {\n                var nbb_cell_id = 61;\n                var nbb_formatted_code = \"def cfilter(df, fn, axis=\\\"rows\\\"):\\n    \\\"\\\"\\\" Custom Filters based on a condition and returns the df.\\n        function - a lambda function that returns a binary vector\\n        thats similar in shape to the dataframe\\n        axis = rows or columns to be filtered.\\n        A single level indexing\\n    \\\"\\\"\\\"\\n    if axis == \\\"rows\\\":\\n        return df[fn(df)]\\n    elif axis == \\\"columns\\\":\\n        return df.iloc[:, fn(df)]\\n\\n\\n(df.pipe(cfilter, lambda x: x.columns.str.contains(\\\"well\\\"), axis=\\\"columns\\\"))\";\n                var nbb_cells = Jupyter.notebook.get_cells();\n                for (var i = 0; i < nbb_cells.length; ++i) {\n                    if (nbb_cells[i].input_prompt_number == nbb_cell_id) {\n                        nbb_cells[i].set_text(nbb_formatted_code);\n                        break;\n                    }\n                }\n            }, 500);\n            ",
+      "text/plain": "<IPython.core.display.Javascript object>"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "def cfilter(df, fn, axis=\"rows\"):\n",
+    "    \"\"\" Custom Filters based on a condition and returns the df.\n",
+    "        function - a lambda function that returns a binary vector\n",
+    "        thats similar in shape to the dataframe\n",
+    "        axis = rows or columns to be filtered.\n",
+    "        A single level indexing\n",
+    "    \"\"\"\n",
+    "    if axis == \"rows\":\n",
+    "        return df[fn(df)]\n",
+    "    elif axis == \"columns\":\n",
+    "        return df.iloc[:, fn(df)]\n",
+    "    \n",
+    "(df\n",
+    "    .pipe(cfilter, lambda x: x.columns.str.contains(\"well\"), axis=\"columns\")\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
