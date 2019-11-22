@@ -22,7 +22,7 @@ Welcome to Geoscience with Python - the easy way!
    :maxdepth: 3
    :caption: Load CSV and clean column names :
 
-   notebooks/cleaning_column_names.ipynb
+   notebooks/cleaning_columns_names2.ipynb
 
 .. toctree::
    :maxdepth: 3
