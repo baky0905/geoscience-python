@@ -15,7 +15,7 @@ Welcome to Geoscience with Python - the easy way!
 .. toctree::
    :maxdepth: 2
    :caption: Data Sources:
-   
+
    additional/data_sources.rst
 
 .. toctree::
@@ -29,6 +29,12 @@ Welcome to Geoscience with Python - the easy way!
    :caption: Select columns and filter rows:
 
    notebooks/select_and_query.ipynb
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Group By, Summary Statistic and New Columns:
+
+   notebooks/group_by_aggregate_assign.ipynb
 
 .. toctree::
    :maxdepth: 3
