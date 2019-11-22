@@ -1,4 +1,4 @@
-Data sources used:
+Data sources used
 ===================
 
 Source no1:
