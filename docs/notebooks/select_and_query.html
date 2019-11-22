@@ -37,7 +37,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Calculate summary statistic (min, max, mean, count,…) per group" href="group_by_aggregate_assign.html" />
-    <link rel="prev" title="Load tabular data from csv" href="cleaning_column_names.html" /> 
+    <link rel="prev" title="Load Data From *.csv" href="cleaning_columns_names2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,26 +89,26 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html">Welcome to Geoscience with Python!</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data Sources:</span></p>
+<p class="caption"><span class="caption-text">Data Sources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/data_sources.html">Data sources used:</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Load CSV and clean column names :</span></p>
+<p class="caption"><span class="caption-text">Load *.csv and clean column names :</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html">Load tabular data from csv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html#Clean-column-names">Clean column names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html#Rename-column-names">Rename column names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html">Load Data From *.csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Clean-Column-Names">Clean Column Names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Rename-Column-Names">Rename Column Names</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Select columns with <strong>.filter</strong> method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Filter-the-dataframe">Filter the dataframe</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Filter-the-dataframe-with-.query-method">Filter the dataframe with <strong>.query</strong> method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Query-the-dataframe-by-multiple-conditions">Query the dataframe by multiple conditions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Query-the-dataframe-by-a-predefined-list.">Query the dataframe by a predefined list.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Filter-Dataframe">Filter Dataframe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Filter-with-.query-method">Filter with <strong>.query</strong> method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Query-by-multiple-conditions">Query by multiple conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Query-by-a-predefined-list.">Query by a predefined list.</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Sort-the-dataframe">Sort the dataframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Sort-Dataframe">Sort Dataframe</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Group By, Summary Statistic and New Columns:</span></p>
 <ul>
@@ -782,10 +782,10 @@ wellbore_exploration_all.head()
 </div></div>
 </div>
 </div>
-<div class="section" id="Filter-the-dataframe">
-<h1>Filter the dataframe<a class="headerlink" href="#Filter-the-dataframe" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Filter-the-dataframe-with-.query-method">
-<h2>Filter the dataframe with <strong>.query</strong> method<a class="headerlink" href="#Filter-the-dataframe-with-.query-method" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Filter-Dataframe">
+<h1>Filter Dataframe<a class="headerlink" href="#Filter-Dataframe" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Filter-with-.query-method">
+<h2>Filter with <strong>.query</strong> method<a class="headerlink" href="#Filter-with-.query-method" title="Permalink to this headline">¶</a></h2>
 <p>Filter the dataframe by the elements from the list which is defined as a part of the query argument.</p>
 <p><strong>REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.</strong></p>
 <p><strong>NOTE: for columns with spaces in their name, you can use backtick quoting.</strong></p>
@@ -846,8 +846,8 @@ wellbore_exploration_all.head()
 </div></div>
 </div>
 </div>
-<div class="section" id="Query-the-dataframe-by-multiple-conditions">
-<h2>Query the dataframe by multiple conditions<a class="headerlink" href="#Query-the-dataframe-by-multiple-conditions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Query-by-multiple-conditions">
+<h2>Query by multiple conditions<a class="headerlink" href="#Query-by-multiple-conditions" title="Permalink to this headline">¶</a></h2>
 <p>Here we just added three conditions to filter the dataframe by. Note that I had to use **** withing the .query’s expression just to make it a bit more readable, i.e. every condition was in its own separate line.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -980,8 +980,8 @@ wellbore_exploration_all.head()
 </div></div>
 </div>
 </div>
-<div class="section" id="Query-the-dataframe-by-a-predefined-list.">
-<h2>Query the dataframe by a predefined list.<a class="headerlink" href="#Query-the-dataframe-by-a-predefined-list." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Query-by-a-predefined-list.">
+<h2>Query by a predefined list.<a class="headerlink" href="#Query-by-a-predefined-list." title="Permalink to this headline">¶</a></h2>
 <p>Here we have a list of top 10 operators based on the amount wells drilled on the Norwegian continental shelf. Since the data contains historical records you will see some old names for the recent companies.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -1104,8 +1104,8 @@ wellbore_exploration_all.head()
 </div>
 </div>
 </div>
-<div class="section" id="Sort-the-dataframe">
-<h1>Sort the dataframe<a class="headerlink" href="#Sort-the-dataframe" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Sort-Dataframe">
+<h1>Sort Dataframe<a class="headerlink" href="#Sort-Dataframe" title="Permalink to this headline">¶</a></h1>
 <p>Sort based on values in a single column:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -1345,7 +1345,7 @@ wellbore_exploration_all.head()
         <a href="group_by_aggregate_assign.html" class="btn btn-neutral float-right" title="Calculate summary statistic (min, max, mean, count,…) per group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cleaning_column_names.html" class="btn btn-neutral float-left" title="Load tabular data from csv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cleaning_columns_names2.html" class="btn btn-neutral float-left" title="Load Data From *.csv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

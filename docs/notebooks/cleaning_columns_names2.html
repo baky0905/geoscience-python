@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Load tabular data from csv &mdash; Geoscience with Python 2019 documentation</title>
+  <title>Load Data From *.csv &mdash; Geoscience with Python 2019 documentation</title>
   
 
   
@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Select columns with .filter method" href="select_and_query.html" />
+    <link rel="prev" title="Data sources used:" href="../additional/data_sources.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,21 +89,34 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/welcome.html">Welcome to Geoscience with Python!</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data Sources:</span></p>
+<p class="caption"><span class="caption-text">Data Sources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/data_sources.html">Data sources used:</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Load CSV and clean column names :</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html">Load tabular data from csv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html#Clean-column-names">Clean column names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_column_names.html#Rename-column-names">Rename column names</a></li>
+<p class="caption"><span class="caption-text">Load *.csv and clean column names :</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Load Data From *.csv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Load-*.csv-from-URL">Load *.csv from URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-*.csv-from-local-file">Load *.csv from local file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Clean-Column-Names">Clean Column Names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Replace-something-with-something---str_replace">Replace something with something - str_replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Clean-column-names---even-more-clean_names-(janitor-module)">Clean column names - even more clean_names (janitor module)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Rename-Column-Names">Rename Column Names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Rename-columns-directly">Rename columns directly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Rename-multiple-columns-by-predefining-a-dictionary.">Rename multiple columns by predefining a dictionary.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-final-csv">export final csv</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="select_and_query.html">Select columns with <strong>.filter</strong> method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select_and_query.html#Filter-the-dataframe">Filter the dataframe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select_and_query.html#Sort-the-dataframe">Sort the dataframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="select_and_query.html#Filter-Dataframe">Filter Dataframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="select_and_query.html#Sort-Dataframe">Sort Dataframe</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Group By, Summary Statistic and New Columns:</span></p>
 <ul>
@@ -152,7 +167,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Load tabular data from csv</li>
+      <li>Load Data From *.csv</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -393,8 +408,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Load-tabular-data-from-csv">
-<h1>Load tabular data from csv<a class="headerlink" href="#Load-tabular-data-from-csv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Load-Data-From-*.csv">
+<h1>Load Data From *.csv<a class="headerlink" href="#Load-Data-From-*.csv" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -405,6 +420,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="section" id="Load-*.csv-from-URL">
+<h2>Load *.csv from URL<a class="headerlink" href="#Load-*.csv-from-URL" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -588,8 +605,9 @@ div.rendered_html tbody tr:hover {
 <p>5 rows × 87 columns</p>
 </div></div>
 </div>
-<div class="section" id="Load-csv-from-local-file">
-<h2>Load csv from local file<a class="headerlink" href="#Load-csv-from-local-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="Load-*.csv-from-local-file">
+<h2>Load *.csv from local file<a class="headerlink" href="#Load-*.csv-from-local-file" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -775,8 +793,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Clean-column-names">
-<h1>Clean column names<a class="headerlink" href="#Clean-column-names" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Clean-Column-Names">
+<h1>Clean Column Names<a class="headerlink" href="#Clean-Column-Names" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Replace-something-with-something---str_replace">
 <h2>Replace something with something - str_replace<a class="headerlink" href="#Replace-something-with-something---str_replace" title="Permalink to this headline">¶</a></h2>
 <p>First we List our columns names and we spot there parts of the column names we would like to get rid of.</p>
@@ -1066,8 +1084,8 @@ div.rendered_html tbody tr:hover {
 </div></div>
 </div>
 </div>
-<div class="section" id="Clean-column-names-even-more-clean_names-(janitor-module)">
-<h2>Clean column names even more clean_names (janitor module)<a class="headerlink" href="#Clean-column-names-even-more-clean_names-(janitor-module)" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Clean-column-names---even-more-clean_names-(janitor-module)">
+<h2>Clean column names - even more clean_names (janitor module)<a class="headerlink" href="#Clean-column-names---even-more-clean_names-(janitor-module)" title="Permalink to this headline">¶</a></h2>
 <p>Method <a class="reference external" href="https://pyjanitor.readthedocs.io/reference/janitor.functions/janitor.clean_names.html">clean_names (janitor module)</a>:</p>
 <ul class="simple">
 <li><p>takes all column names</p></li>
@@ -1278,8 +1296,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Rename-column-names">
-<h1>Rename column names<a class="headerlink" href="#Rename-column-names" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Rename-Column-Names">
+<h1>Rename Column Names<a class="headerlink" href="#Rename-Column-Names" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Rename-columns-directly">
 <h2>Rename columns directly<a class="headerlink" href="#Rename-columns-directly" title="Permalink to this headline">¶</a></h2>
 <p>Before:</p>
@@ -1612,6 +1630,15 @@ div.rendered_html tbody tr:hover {
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="select_and_query.html" class="btn btn-neutral float-right" title="Select columns with .filter method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../additional/data_sources.html" class="btn btn-neutral float-left" title="Data sources used:" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

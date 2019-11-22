@@ -14,13 +14,13 @@ Welcome to Geoscience with Python - the easy way!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Data Sources:
+   :caption: Data Sources
 
    additional/data_sources.rst
 
 .. toctree::
    :maxdepth: 3
-   :caption: Load CSV and clean column names :
+   :caption: Load *.csv and clean column names :
 
    notebooks/cleaning_columns_names2.ipynb
 

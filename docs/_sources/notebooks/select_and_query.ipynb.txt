@@ -88,7 +88,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "## Filter the dataframe"
+    "## Filter Dataframe"
    ]
   },
   {
@@ -97,7 +97,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Filter the dataframe with **.query** method"
+    "### Filter with **.query** method"
    ]
   },
   {
@@ -144,7 +144,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Query the dataframe by multiple conditions"
+    "### Query by multiple conditions"
    ]
   },
   {
@@ -186,7 +186,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "### Query the dataframe by a predefined list."
+    "### Query by a predefined list."
    ]
   },
   {
@@ -264,7 +264,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "## Sort the dataframe "
+    "## Sort Dataframe"
    ]
   },
   {
