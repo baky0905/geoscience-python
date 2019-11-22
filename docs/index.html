@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Welcome!!" href="additional/welcome.html" /> 
+    <link rel="next" title="Welcome to Geoscience with Python!" href="additional/welcome.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,22 +86,19 @@
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="additional/welcome.html">Welcome!!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional/tips_and_tricks.html">Tips and Tricks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional/tips_and_tricks.html#jupyter-notebook-keyboard-shortcuts">Jupyter Notebook keyboard shortcuts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/quick_introduction.html">Quick introduction on the approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional/welcome.html">Welcome to Geoscience with Python!</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Method chaining concept:</span></p>
+<p class="caption"><span class="caption-text">Load CSV and clean column names :</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/method_chaining_in_pandas.html">How method chaining in pandas is and can be super effective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html">Load tabular data from *.csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html#Clean-column-names">Clean column names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html#Rename-column-names">Rename column names</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data Cleaning:</span></p>
+<p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html">Dataframe Cleaning and Transformation</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Data Visualization:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/data_visualisation_dataframes.html">Data Visualization - Dataframes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html">Select columns with <strong>.filter</strong> method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html#Filter-the-dataframe">Filter the dataframe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html#Sort-the-dataframe">Sort the dataframe</a></li>
 </ul>
 
             
@@ -171,13 +168,13 @@
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
+.nbinput.nblast,
+.nboutput.nblast {
     margin-bottom: 19px;  /* padding has already 5px */
 }
 
 /* ... except between code cells! */
-.nblast.container + .nbinput.container {
+.nblast + .nbinput {
     margin-top: -19px;
 }
 
@@ -195,76 +192,45 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="additional/welcome.html">Welcome!!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional/tips_and_tricks.html">Tips and Tricks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="additional/tips_and_tricks.html#jupyter-notebook-keyboard-shortcuts">Jupyter Notebook keyboard shortcuts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/quick_introduction.html">Quick introduction on the approach</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/quick_introduction.html#Data-visualisation-using-plotly_express-library">Data visualisation using plotly_express library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/quick_introduction.html#Data-cleaning-using-pyjanitor-library">Data cleaning using pyjanitor library</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="additional/welcome.html">Welcome to Geoscience with Python!</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Method chaining concept:</span></p>
+<p class="caption"><span class="caption-text">Load CSV and clean column names :</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/method_chaining_in_pandas.html">How method chaining in pandas is and can be super effective</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/method_chaining_in_pandas.html#Readable-and-understandable-code---chaining">Readable and understandable code - chaining</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/method_chaining_in_pandas.html#How-to-track-a-changing-of-the-dataframe-shape-along-the-chain?">How to track a changing of the dataframe shape along the chain?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html">Load tabular data from *.csv</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Load-csv-via-url">Load csv via url</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Load-csv-from-local-file">Load csv from local file</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html#Clean-column-names">Clean column names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Replace-something-with-something---str_replace">Replace something with something - str_replace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Clean-column-names-even-more-clean_names-(janitor-module)">Clean column names even more clean_names (janitor module)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/cleaning_column_names.html#Rename-column-names">Rename column names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Rename-columns-directly">Rename columns directly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#Rename-multiple-columns-by-predefining-a-dictionary.">Rename multiple columns by predefining a dictionary.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/cleaning_column_names.html#export-final-csv">export final csv</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Data Cleaning:</span></p>
+<p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html">Dataframe Cleaning and Transformation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Tabular-Dataset---NPD-well-data">Tabular Dataset - NPD well data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Cleaning-the-dataframe">Cleaning the dataframe</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#str_replace---replace-something-with-something">str_replace - replace something with something</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#clean_names-(janitor-module)---unification-of-column-names">clean_names (janitor module) - unification of column names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Select-columns-with-regex">Select columns with regex</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Select-columns-and-query-a-dataframe">Select columns and query a dataframe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Query-dataframe-by-multiple-conditions">Query dataframe by multiple conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Sort-dataframe-by-values-in-a-column-or-columns">Sort dataframe by values in a column or columns</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Rename-column-names">Rename column names</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group">Calculate summary statistic (min, max, mean, count,…) per group</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#What-is-a-named-function?">What is a named function?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#What-is-lambda-or-anonymus-function?">What is lambda or anonymus function?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Add-a-new-calculated-column">Add a new calculated column</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Add-calculated-columns-that-are-dependent-on-each-other">Add calculated columns that are dependent on each other</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Calculated-column---define-multiple-cases-with-np.select">Calculated column - define multiple cases with np.select</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Converting-columns-to-date-and-time,-and-calculating-difference">Converting columns to date and time, and calculating difference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#pivot_table-from-long-to-wide-dataframe-format">pivot_table from long to wide dataframe format</a></li>
-<li class="toctree-l3"><a class="reference internal" href="notebooks/data_cleaning_dataframes.html#Melt-from-wide-to-long-dataframe-format">Melt from wide to long dataframe format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html">Select columns with <strong>.filter</strong> method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html#Filter-the-dataframe">Filter the dataframe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/select_and_query.html#Filter-the-dataframe-with-.query-method">Filter the dataframe with <strong>.query</strong> method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/select_and_query.html#Query-the-dataframe-by-multiple-conditions">Query the dataframe by multiple conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/select_and_query.html#Query-the-dataframe-by-a-predefined-list.">Query the dataframe by a predefined list.</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Data Visualization:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/data_visualisation_dataframes.html">Data Visualization - Dataframes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/data_visualisation_dataframes.html#Scatter-plot---Seaborn">Scatter plot - Seaborn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/data_visualisation_dataframes.html#Histogram---Seaborn">Histogram - Seaborn</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/select_and_query.html#Sort-the-dataframe">Sort the dataframe</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
 </div>
 
 
@@ -275,7 +241,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="additional/welcome.html" class="btn btn-neutral float-right" title="Welcome!!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="additional/welcome.html" class="btn btn-neutral float-right" title="Welcome to Geoscience with Python!" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

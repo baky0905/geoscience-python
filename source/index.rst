@@ -11,35 +11,21 @@ Welcome to Geoscience with Python - the easy way!
    :caption: Introduction:
 
    additional/welcome.rst
-   additional/tips_and_tricks.rst
-   notebooks/quick_introduction.ipynb
 
 .. toctree::
    :maxdepth: 3
-   :caption: Method chaining concept:
+   :caption: Load CSV and clean column names :
 
-   notebooks/method_chaining_in_pandas.ipynb
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Data Cleaning:
-
-   notebooks/data_cleaning_dataframes.ipynb
+   notebooks/cleaning_column_names.ipynb
 
 .. toctree::
    :maxdepth: 3
-   :caption: Data Visualization:
+   :caption: Select columns and filter rows:
 
-   notebooks/data_visualisation_dataframes.ipynb
+   notebooks/select_and_query.ipynb
 
 .. toctree::
    :maxdepth: 3
    :caption: Exploratory Data Analysis (EDA) case studies
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
