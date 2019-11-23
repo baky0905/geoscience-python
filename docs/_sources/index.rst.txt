@@ -20,6 +20,12 @@ Welcome to Geoscience with Python - the easy way!
 
 .. toctree::
    :maxdepth: 3
+   :caption: Easy Plotting:
+   
+   notebooks/plotly_express_intro.ipynb
+
+.. toctree::
+   :maxdepth: 3
    :caption: Pandas Basics:
 
    notebooks/cleaning_columns_names2.ipynb
