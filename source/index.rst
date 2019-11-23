@@ -28,7 +28,19 @@ Welcome to Geoscience with Python - the easy way!
 
 .. toctree::
    :maxdepth: 3
-   :caption: Exploratory Data Analysis (EDA) case studies
+   :caption: Exploratory Data Analysis (EDA) case studies - IN PROGRESS
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Well Data - IN PROGRESS
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Seismic Data - IN PROGRESS
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Spatial Data - IN PROGRESS
 
 
 Indices and tables
