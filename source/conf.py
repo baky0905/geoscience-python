@@ -71,7 +71,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.ipynb_checkpoints',
                     "testing.ipynb", "todo.ipynb"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'default'
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -81,7 +81,7 @@ pygments_style = 'sphinx'
 #
 #html_theme = 'alabaster'
 #html_theme = 'classic'
-#import sphinx_press_theme
+import sphinx_press_theme
 import sphinx_rtd_theme
 
 # extensions = [
@@ -89,7 +89,8 @@ import sphinx_rtd_theme
 # ]
 
 
-html_theme = 'sphinx_rtd_theme'  # "press" #'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'  # "press" #'sphinx_rtd_theme'
+html_theme = 'press'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
