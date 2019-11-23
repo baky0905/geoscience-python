@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Calculate summary statistic (min, max, mean, count,…) per group &mdash; Geoscience with Python 2019 documentation</title>
+  <title>Group By, Summary Statistic and New Columns &mdash; Geoscience with Python 2019 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Select columns with .filter method" href="select_and_query2.html" /> 
+    <link rel="prev" title="Select columns and filter rows" href="select_and_query2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,27 +92,20 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/data_sources.html">Data sources used</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Load *.csv and clean column names :</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html">Load Data From *.csv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Clean-Column-Names">Clean Column Names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Rename-Column-Names">Rename Column Names</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="select_and_query2.html">Select columns with <strong>.filter</strong> method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select_and_query2.html#Filter-Dataframe">Filter Dataframe</a></li>
-<li class="toctree-l1"><a class="reference internal" href="select_and_query2.html#Sort-Dataframe">Sort Dataframe</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Group By, Summary Statistic and New Columns:</span></p>
+<p class="caption"><span class="caption-text">Pandas Basics:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate summary statistic (min, max, mean, count,…) per group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Add-a-new-calculated-column">Add a new calculated column</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#What-is-lambda-or-anonymus-function?">What is lambda or anonymus function?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#New-calculated-column">New calculated column</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Add-calculated-columns-that-are-dependent-on-each-othe">Add calculated columns that are dependent on each othe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Calculated-column---define-multiple-cases-with-np.select">Calculated column - define multiple cases with np.select</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Converting-columns-to-date-and-time,-and-calculating-difference">Converting columns to date and time, and calculating difference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html">Load *.csv and clean column names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="select_and_query2.html">Select columns and filter rows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Group By, Summary Statistic and New Columns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group">Calculate summary statistic (min, max, mean, count,…) per group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Add-a-new-calculated-column">Add a new calculated column</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#What-is-lambda-or-anonymus-function?">What is lambda or anonymus function?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#New-calculated-column">New calculated column</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Add-calculated-columns-that-are-dependent-on-each-othe">Add calculated columns that are dependent on each othe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Calculated-column---define-multiple-cases-with-np.select">Calculated column - define multiple cases with np.select</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Converting-columns-to-date-and-time,-and-calculating-difference">Converting columns to date and time, and calculating difference</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -160,7 +153,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Calculate summary statistic (min, max, mean, count,…) per group</li>
+      <li>Group By, Summary Statistic and New Columns</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -401,8 +394,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
+<div class="section" id="Group-By,-Summary-Statistic-and-New-Columns">
+<h1>Group By, Summary Statistic and New Columns<a class="headerlink" href="#Group-By,-Summary-Statistic-and-New-Columns" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group">
-<h1>Calculate summary statistic (min, max, mean, count,…) per group<a class="headerlink" href="#Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group" title="Permalink to this headline">¶</a></h1>
+<h2>Calculate summary statistic (min, max, mean, count,…) per group<a class="headerlink" href="#Calculate-summary-statistic-(min,-max,-mean,-count,…)-per-group" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -711,9 +706,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Add-a-new-calculated-column">
-<h1>Add a new calculated column<a class="headerlink" href="#Add-a-new-calculated-column" title="Permalink to this headline">¶</a></h1>
+<h2>Add a new calculated column<a class="headerlink" href="#Add-a-new-calculated-column" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="What-is-lambda-or-anonymus-function?">
-<h2>What is lambda or anonymus function?<a class="headerlink" href="#What-is-lambda-or-anonymus-function?" title="Permalink to this headline">¶</a></h2>
+<h3>What is lambda or anonymus function?<a class="headerlink" href="#What-is-lambda-or-anonymus-function?" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -743,7 +738,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="New-calculated-column">
-<h2>New calculated column<a class="headerlink" href="#New-calculated-column" title="Permalink to this headline">¶</a></h2>
+<h3>New calculated column<a class="headerlink" href="#New-calculated-column" title="Permalink to this headline">¶</a></h3>
 <p>assign method returns a new object with all original columns in addition to new ones. Existing columns that are re-assigned will be overwritten. For adding new columns to a DataFrame in a chain (inspired by dplyr’s mutate)</p>
 <p>depth_flag will be the new column that will have two values, if total_depth is larger or equal to 2000m, it will be classified as “deep”, otherwise it will be classified as “shallow”.</p>
 <div class="nbinput docutils container">
@@ -874,7 +869,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Add-calculated-columns-that-are-dependent-on-each-othe">
-<h2>Add calculated columns that are dependent on each othe<a class="headerlink" href="#Add-calculated-columns-that-are-dependent-on-each-othe" title="Permalink to this headline">¶</a></h2>
+<h3>Add calculated columns that are dependent on each othe<a class="headerlink" href="#Add-calculated-columns-that-are-dependent-on-each-othe" title="Permalink to this headline">¶</a></h3>
 <p>In Python 3.6+, you can create multiple columns within the same assign where one of the columns depends on another one defined within the same assign.</p>
 <p>We will calculate two new columns:</p>
 <ul class="simple">
@@ -1036,7 +1031,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Calculated-column---define-multiple-cases-with-np.select">
-<h2>Calculated column - define multiple cases with np.select<a class="headerlink" href="#Calculated-column---define-multiple-cases-with-np.select" title="Permalink to this headline">¶</a></h2>
+<h3>Calculated column - define multiple cases with np.select<a class="headerlink" href="#Calculated-column---define-multiple-cases-with-np.select" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -1194,7 +1189,7 @@ Name: water_depth_category, dtype: int64
 </div>
 </div>
 <div class="section" id="Converting-columns-to-date-and-time,-and-calculating-difference">
-<h2>Converting columns to date and time, and calculating difference<a class="headerlink" href="#Converting-columns-to-date-and-time,-and-calculating-difference" title="Permalink to this headline">¶</a></h2>
+<h3>Converting columns to date and time, and calculating difference<a class="headerlink" href="#Converting-columns-to-date-and-time,-and-calculating-difference" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -1285,6 +1280,7 @@ Name: water_depth_category, dtype: int64
 </div>
 </div>
 </div>
+</div>
 
 
            </div>
@@ -1295,7 +1291,7 @@ Name: water_depth_category, dtype: int64
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="select_and_query2.html" class="btn btn-neutral float-left" title="Select columns with .filter method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="select_and_query2.html" class="btn btn-neutral float-left" title="Select columns and filter rows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

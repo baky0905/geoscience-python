@@ -20,20 +20,10 @@ Welcome to Geoscience with Python - the easy way!
 
 .. toctree::
    :maxdepth: 3
-   :caption: Load *.csv and clean column names :
+   :caption: Pandas Basics:
 
    notebooks/cleaning_columns_names2.ipynb
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Select columns and filter rows:
-
    notebooks/select_and_query2.ipynb
-
-.. toctree::
-   :maxdepth: 3
-   :caption: Group By, Summary Statistic and New Columns:
-
    notebooks/group_by_aggregate_assign2.ipynb
 
 .. toctree::

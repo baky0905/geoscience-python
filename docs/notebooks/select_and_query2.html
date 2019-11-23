@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Select columns with .filter method &mdash; Geoscience with Python 2019 documentation</title>
+  <title>Select columns and filter rows &mdash; Geoscience with Python 2019 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculate summary statistic (min, max, mean, count,…) per group" href="group_by_aggregate_assign2.html" />
-    <link rel="prev" title="Load Data From *.csv" href="cleaning_columns_names2.html" /> 
+    <link rel="next" title="Group By, Summary Statistic and New Columns" href="group_by_aggregate_assign2.html" />
+    <link rel="prev" title="Load *.csv and clean column names" href="cleaning_columns_names2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,26 +93,20 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../additional/data_sources.html">Data sources used</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Load *.csv and clean column names :</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html">Load Data From *.csv</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Clean-Column-Names">Clean Column Names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html#Rename-Column-Names">Rename Column Names</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Select columns and filter rows:</span></p>
+<p class="caption"><span class="caption-text">Pandas Basics:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Select columns with <strong>.filter</strong> method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Filter-Dataframe">Filter Dataframe</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Filter-with-.query-method">Filter with <strong>.query</strong> method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Query-by-multiple-conditions">Query by multiple conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleaning_columns_names2.html">Load *.csv and clean column names</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Select columns and filter rows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Select-columns-with-.filter-method">Select columns with <strong>.filter</strong> method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Filter-Dataframe">Filter Dataframe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Filter-with-.query-method">Filter with <strong>.query</strong> method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Query-by-multiple-conditions">Query by multiple conditions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Sort-Dataframe">Sort Dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Sort-Dataframe">Sort Dataframe</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Group By, Summary Statistic and New Columns:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="group_by_aggregate_assign2.html">Calculate summary statistic (min, max, mean, count,…) per group</a></li>
-<li class="toctree-l1"><a class="reference internal" href="group_by_aggregate_assign2.html#Add-a-new-calculated-column">Add a new calculated column</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="group_by_aggregate_assign2.html">Group By, Summary Statistic and New Columns</a></li>
 </ul>
 
             
@@ -158,7 +152,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Select columns with <strong>.filter</strong> method</li>
+      <li>Select columns and filter rows</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -399,8 +393,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
+<div class="section" id="Select-columns-and-filter-rows">
+<h1>Select columns and filter rows<a class="headerlink" href="#Select-columns-and-filter-rows" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Select-columns-with-.filter-method">
-<h1>Select columns with <strong>.filter</strong> method<a class="headerlink" href="#Select-columns-with-.filter-method" title="Permalink to this headline">¶</a></h1>
+<h2>Select columns with <strong>.filter</strong> method<a class="headerlink" href="#Select-columns-with-.filter-method" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -781,9 +777,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Filter-Dataframe">
-<h1>Filter Dataframe<a class="headerlink" href="#Filter-Dataframe" title="Permalink to this headline">¶</a></h1>
+<h2>Filter Dataframe<a class="headerlink" href="#Filter-Dataframe" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="Filter-with-.query-method">
-<h2>Filter with <strong>.query</strong> method<a class="headerlink" href="#Filter-with-.query-method" title="Permalink to this headline">¶</a></h2>
+<h3>Filter with <strong>.query</strong> method<a class="headerlink" href="#Filter-with-.query-method" title="Permalink to this headline">¶</a></h3>
 <p>Filter the dataframe by the elements from the list which is defined as a part of the query argument.</p>
 <p><strong>REMEMBER SINGLE QUOTES WITHIN DOUBLE QUOTES.</strong></p>
 <p><strong>NOTE: for columns with spaces in their name, you can use backtick quoting.</strong></p>
@@ -844,7 +840,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Query-by-multiple-conditions">
-<h2>Query by multiple conditions<a class="headerlink" href="#Query-by-multiple-conditions" title="Permalink to this headline">¶</a></h2>
+<h3>Query by multiple conditions<a class="headerlink" href="#Query-by-multiple-conditions" title="Permalink to this headline">¶</a></h3>
 <p>Here we just added three conditions to filter the dataframe by. Note that I had to use **** withing the .query’s expression just to make it a bit more readable, i.e. every condition was in its own separate line.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -1108,7 +1104,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="section" id="Sort-Dataframe">
-<h1>Sort Dataframe<a class="headerlink" href="#Sort-Dataframe" title="Permalink to this headline">¶</a></h1>
+<h2>Sort Dataframe<a class="headerlink" href="#Sort-Dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Sort based on values in a single column:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
@@ -1334,14 +1330,6 @@ div.rendered_html tbody tr:hover {
 <p>1922 rows × 3 columns</p>
 </div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -1353,10 +1341,10 @@ div.rendered_html tbody tr:hover {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="group_by_aggregate_assign2.html" class="btn btn-neutral float-right" title="Calculate summary statistic (min, max, mean, count,…) per group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="group_by_aggregate_assign2.html" class="btn btn-neutral float-right" title="Group By, Summary Statistic and New Columns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cleaning_columns_names2.html" class="btn btn-neutral float-left" title="Load Data From *.csv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cleaning_columns_names2.html" class="btn btn-neutral float-left" title="Load *.csv and clean column names" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
