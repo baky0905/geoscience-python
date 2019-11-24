@@ -2,7 +2,8 @@ Welcome to Geoscience with Python!
 ===================
 
 All the `jupyter notebooks <https://github.com/baky0905/geoscience-python/tree/master/source/notebooks>`_ 
-and data are located in `github repo <https://github.com/baky0905/geoscience-python/tree/master/source>`_
+and data are located in `github repo <https://github.com/baky0905/geoscience-python/tree/master/source>`_ 
+.
 
 This is also the `root folder <https://github.com/baky0905/geoscience-python/tree/master/source>`_ 
 for all relative paths in the notebooks.
@@ -29,3 +30,4 @@ You can some cut corners, write some crappy code and do some things that questio
 
 **Motivate you to maybe dive in deeper and become semi-professional one day!**
 
+Inspired by [Larry Hastings - Solve Your Problem With Sloppy Python - PyCon 2018](https://www.youtube.com/watch?v=Jd8ulMb6_ls&t=680s).
