@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Reshape your dataframe to wide and long formats</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="prev" title="Group By, Summary Statistic and New Columns" href="group_by_aggregate_assign.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Geoscience with Python</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link  router-link-active">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Exploratory Data Analysis (EDA) case studies - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link  router-link-active">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Exploratory Data Analysis (EDA) case studies - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../additional/welcome.html" class="reference internal ">Welcome to Geoscience with Python!</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Data Sources</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../additional/data_sources.html" class="reference internal ">Data sources used</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Easy Plotting:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="plotly_express_intro.html" class="reference internal ">Intro to Interactive Plotting with plotly_express</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Pandas Basics:</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="cleaning_columns_names.html" class="reference internal ">Load *.csv and clean column names</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="select_and_query.html" class="reference internal ">Select columns and filter rows</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="group_by_aggregate_assign.html" class="reference internal ">Group By, Summary Statistic and New Columns</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Reshape your dataframe to wide and long formats</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#Long-to-wide-dataframe-format-with-pivot_table" class="reference internal">Long to wide dataframe format with pivot_table</a></li>
+                
+                  <li class="toctree-l2"><a href="#Wide-to-long-dataframe-format-with-melt" class="reference internal">Wide to long dataframe format with melt</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Exploratory Data Analysis (EDA) case studies - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Well Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Seismic Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Spatial Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Reshape your dataframe to wide and long formats</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="group_by_aggregate_assign.html"
+       title="previous chapter">← Group By, Summary Statistic and New Columns</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Reshape-your-dataframe-to-wide-and-long-formats">
+<h1>Reshape your dataframe to wide and long formats<a class="headerlink" href="#Reshape-your-dataframe-to-wide-and-long-formats" title="Permalink to this headline">¶</a></h1>
+<p>Driven by <a class="reference external" href="https://medium.com/dunder-data/minimally-sufficient-pandas-a8e67f2a2428">Ted Petrou’s Minimally Sufficient Pandas</a> approach I will also preach that I as well feel strongly that Minimally Sufficient Pandas is a useful guide for those wanting to increase their effectiveness at data analysis without getting lost in the syntax.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">local_relative_path</span> <span class="o">=</span> <span class="s2">&quot;./source/data_processed/wellbore_exploration_all_clean_names.csv&quot;</span>
+<span class="n">wellbore_exploration_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">local_relative_path</span><span class="p">)</span>
+<span class="n">wellbore_exploration_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>well</th>
+      <th>drilling_operator</th>
+      <th>production_licence</th>
+      <th>purpose</th>
+      <th>status</th>
+      <th>content</th>
+      <th>well_type</th>
+      <th>sub_sea</th>
+      <th>entry_date</th>
+      <th>...</th>
+      <th>npdid_wellbore</th>
+      <th>dsc_npdid_discovery</th>
+      <th>npdid_field</th>
+      <th>npdid_facility_drilling</th>
+      <th>npdid_wellbore_reclass</th>
+      <th>l_npdid_production_licence</th>
+      <th>npdid_site_survey</th>
+      <th>date_updated</th>
+      <th>date_updated_max</th>
+      <th>datesync_npd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>1/2-1</td>
+      <td>Phillips Petroleum Norsk AS</td>
+      <td>143</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>20.03.1989</td>
+      <td>...</td>
+      <td>1382</td>
+      <td>43814.0</td>
+      <td>3437650.0</td>
+      <td>296245.0</td>
+      <td>0</td>
+      <td>21956.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>22.11.2019</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>1/2-2</td>
+      <td>Paladin Resources Norge AS</td>
+      <td>143 CS</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL SHOWS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.12.2005</td>
+      <td>...</td>
+      <td>5192</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>278245.0</td>
+      <td>0</td>
+      <td>2424919.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>22.11.2019</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>1/3-1</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>GAS</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>06.07.1968</td>
+      <td>...</td>
+      <td>154</td>
+      <td>43820.0</td>
+      <td>NaN</td>
+      <td>288604.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>22.11.2019</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-2</td>
+      <td>1/3-2</td>
+      <td>A/S Norske Shell</td>
+      <td>011</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>DRY</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>14.05.1969</td>
+      <td>...</td>
+      <td>165</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>288847.0</td>
+      <td>0</td>
+      <td>20844.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>22.11.2019</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-3</td>
+      <td>1/3-3</td>
+      <td>Elf Petroleum Norge AS</td>
+      <td>065</td>
+      <td>WILDCAT</td>
+      <td>P&amp;A</td>
+      <td>OIL</td>
+      <td>EXPLORATION</td>
+      <td>NO</td>
+      <td>22.08.1982</td>
+      <td>...</td>
+      <td>87</td>
+      <td>43826.0</td>
+      <td>1028599.0</td>
+      <td>288334.0</td>
+      <td>0</td>
+      <td>21316.0</td>
+      <td>NaN</td>
+      <td>03.10.2019</td>
+      <td>03.10.2019</td>
+      <td>22.11.2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 87 columns</p>
+</div></div>
+</div>
+<div class="section" id="Long-to-wide-dataframe-format-with-pivot_table">
+<h2>Long to wide dataframe format with <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code><a class="headerlink" href="#Long-to-wide-dataframe-format-with-pivot_table" title="Permalink to this headline">¶</a></h2>
+<p>Let’s use the pivot method to reshape this data so that the <code class="docutils literal notranslate"><span class="pre">purpose</span></code> of the wells become columns names and the <code class="docutils literal notranslate"><span class="pre">water_depth</span></code> becomes their respective values.</p>
+<p>Guidance — Consider using only <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> and not <code class="docutils literal notranslate"><span class="pre">pivot</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> can accomplish all of what <code class="docutils literal notranslate"><span class="pre">pivot</span></code> can do. In the case that you do not need to perform an aggregation, you still must provide an aggregation function.</p>
+<p><strong>Before:</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">wellbore_exploration_all</span>
+     <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth&quot;</span><span class="p">])</span>
+     <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>purpose</th>
+      <th>water_depth</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>771</td>
+      <td>25/11-14 S</td>
+      <td>APPRAISAL</td>
+      <td>127.0</td>
+    </tr>
+    <tr>
+      <td>1773</td>
+      <td>7120/1-3</td>
+      <td>WILDCAT</td>
+      <td>342.0</td>
+    </tr>
+    <tr>
+      <td>246</td>
+      <td>7/11-12 A</td>
+      <td>WILDCAT</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <td>1292</td>
+      <td>35/3-3</td>
+      <td>WILDCAT</td>
+      <td>259.0</td>
+    </tr>
+    <tr>
+      <td>1683</td>
+      <td>6605/8-2</td>
+      <td>WILDCAT</td>
+      <td>818.0</td>
+    </tr>
+    <tr>
+      <td>1341</td>
+      <td>35/11-7</td>
+      <td>WILDCAT</td>
+      <td>355.0</td>
+    </tr>
+    <tr>
+      <td>1848</td>
+      <td>7219/12-2 S</td>
+      <td>WILDCAT</td>
+      <td>338.0</td>
+    </tr>
+    <tr>
+      <td>1246</td>
+      <td>34/10-37</td>
+      <td>WILDCAT</td>
+      <td>140.0</td>
+    </tr>
+    <tr>
+      <td>778</td>
+      <td>25/11-19 SR</td>
+      <td>APPRAISAL</td>
+      <td>129.0</td>
+    </tr>
+    <tr>
+      <td>1638</td>
+      <td>6507/7-13</td>
+      <td>WILDCAT</td>
+      <td>381.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Column <code class="docutils literal notranslate"><span class="pre">purpose</span></code> has 3 values - WILDCAT, APPRAISAL and WILDCAT-CCS so we are expecting 3 new columns after applying <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">wellbore_exploration_all</span><span class="p">[</span><span class="s2">&quot;purpose&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>WILDCAT        1226
+APPRAISAL       695
+WILDCAT-CCS       1
+Name: purpose, dtype: int64
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="s2">&quot;Dataframe has </span><span class="si">{wellbore_exploration_all.shape[0]}</span><span class="s2"> rows and </span><span class="si">{wellbore_exploration_all.shape[1]}</span><span class="s2"> columns&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;Dataframe has 1922 rows and 87 columns&#39;
+</pre></div>
+</div>
+</div>
+<p><strong>After:</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_pivoted</span> <span class="o">=</span> <span class="p">(</span><span class="n">wellbore_exploration_all</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">,</span> <span class="s2">&quot;water_depth&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;wellbore_name&quot;</span><span class="p">,</span>
+        <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;purpose&quot;</span><span class="p">,</span> <span class="c1"># Column(s) we want to pivot.</span>
+        <span class="n">values</span><span class="o">=</span><span class="s2">&quot;water_depth&quot;</span><span class="p">,</span> <span class="c1"># Column with values that we want to have in our new pivoted columns.</span>
+        <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span> <span class="c1"># Even if there is not aggregation we need to provide aggregation funciton.</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="p">)</span>
+
+<span class="c1">#df_pivoted.rename_axis(&quot;&quot;, axis=&quot;columns&quot;, inplace=True)</span>
+
+<span class="n">df_pivoted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>purpose</th>
+      <th>wellbore_name</th>
+      <th>APPRAISAL</th>
+      <th>WILDCAT</th>
+      <th>WILDCAT-CCS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1/2-1</td>
+      <td>NaN</td>
+      <td>72.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1/2-2</td>
+      <td>NaN</td>
+      <td>74.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1/3-1</td>
+      <td>NaN</td>
+      <td>71.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1/3-10</td>
+      <td>72.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-10 A</td>
+      <td>72.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="s2">&quot;Dataframe has </span><span class="si">{df_pivoted.shape[0]}</span><span class="s2"> rows and </span><span class="si">{df_pivoted.shape[1]}</span><span class="s2"> columns&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;Dataframe has 1922 rows and 4 columns&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Wide-to-long-dataframe-format-with-melt">
+<h2>Wide to long dataframe format with <code class="docutils literal notranslate"><span class="pre">melt</span></code><a class="headerlink" href="#Wide-to-long-dataframe-format-with-melt" title="Permalink to this headline">¶</a></h2>
+<p>Now we will go back to the original <strong>long</strong> format. In addition we will drop values where <code class="docutils literal notranslate"><span class="pre">water_depth_m</span></code> is <code class="docutils literal notranslate"><span class="pre">na</span></code> with <code class="docutils literal notranslate"><span class="pre">.dropna</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">df_pivoted</span>
+    <span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;wellbore_name&#39;</span><span class="p">,</span>                            <span class="c1"># Column(s) to use as identifier variables.</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;APPRAISAL&#39;</span><span class="p">,</span> <span class="s1">&#39;WILDCAT&#39;</span><span class="p">,</span> <span class="s1">&#39;WILDCAT-CCS&#39;</span><span class="p">],</span> <span class="c1"># Column(s) to unpivot.</span>
+    <span class="n">var_name</span> <span class="o">=</span> <span class="s2">&quot;purpose&quot;</span><span class="p">,</span>                               <span class="c1"># Name to use for the ‘variable’ column</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;water_depth_m&#39;</span>                          <span class="c1"># Name to use for the ‘value’ column</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;water_depth_m&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wellbore_name</th>
+      <th>purpose</th>
+      <th>water_depth_m</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3</td>
+      <td>1/3-10</td>
+      <td>APPRAISAL</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1/3-10 A</td>
+      <td>APPRAISAL</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>1/3-7</td>
+      <td>APPRAISAL</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>1/3-9 S</td>
+      <td>APPRAISAL</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>1/6-3</td>
+      <td>APPRAISAL</td>
+      <td>69.0</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>3840</td>
+      <td>9/4-3</td>
+      <td>WILDCAT</td>
+      <td>72.0</td>
+    </tr>
+    <tr>
+      <td>3841</td>
+      <td>9/4-4</td>
+      <td>WILDCAT</td>
+      <td>78.0</td>
+    </tr>
+    <tr>
+      <td>3842</td>
+      <td>9/4-5</td>
+      <td>WILDCAT</td>
+      <td>77.0</td>
+    </tr>
+    <tr>
+      <td>3843</td>
+      <td>9/8-1</td>
+      <td>WILDCAT</td>
+      <td>68.0</td>
+    </tr>
+    <tr>
+      <td>4762</td>
+      <td>31/5-7</td>
+      <td>WILDCAT-CCS</td>
+      <td>307.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1922 rows × 3 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="s2">&quot;Dataframe has </span><span class="si">{df_pivoted.shape[0]}</span><span class="s2"> rows and </span><span class="si">{df_pivoted.shape[1]}</span><span class="s2"> columns&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&#39;Dataframe has 1922 rows and 4 columns&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="group_by_aggregate_assign.html"
+       title="previous chapter">← Group By, Summary Statistic and New Columns</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright Kristijan Bakaric.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

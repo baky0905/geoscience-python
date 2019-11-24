@@ -31,6 +31,7 @@ Welcome to Geoscience with Python - the easy way!
    notebooks/cleaning_columns_names.ipynb
    notebooks/select_and_query.ipynb
    notebooks/group_by_aggregate_assign.ipynb
+   notebooks/melt_and_pivot_table.ipynb
 
 .. toctree::
    :maxdepth: 3
