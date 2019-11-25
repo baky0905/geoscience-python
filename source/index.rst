@@ -44,6 +44,7 @@ Welcome to Geoscience with Python - the easy way!
 .. toctree::
    :maxdepth: 3
    :caption: Exploratory Data Analysis (EDA) case studies - IN PROGRESS
+   notebooks/annual_hydrocarbon_production_NCS.ipynb
 
 .. toctree::
    :maxdepth: 3

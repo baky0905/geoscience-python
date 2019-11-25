@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Annual Hydrocarebon Production</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Geoscience with Python</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Crash Course on Python Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Crash Course on Python Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../additional/welcome.html" class="reference internal ">Welcome to Geoscience with Python!</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Data Sources</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../additional/data_sources.html" class="reference internal ">Data sources used</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Crash Course on Python Basics:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="crash.html" class="reference internal ">Crash Course on Python Basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Easy Plotting:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="plotly_express_intro.html" class="reference internal ">Intro to Interactive Plotting with plotly_express</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Pandas Basics:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="cleaning_columns_names.html" class="reference internal ">Load *.csv and clean column names</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="select_and_query.html" class="reference internal ">Select columns and filter rows</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="group_by_aggregate_assign.html" class="reference internal ">Group By, Summary Statistic and New Columns</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="melt_and_pivot_table.html" class="reference internal ">Reshape your dataframe to wide and long formats</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="method_chaining_pandas.html" class="reference internal ">How method chaining in pandas is and can be super effective</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Well Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Seismic Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Spatial Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Annual Hydrocarebon Production</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 7ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Annual-Hydrocarebon-Production">
+<h1>Annual Hydrocarebon Production<a class="headerlink" href="#Annual-Hydrocarebon-Production" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Question:">
+<h2>Question:<a class="headerlink" href="#Question:" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is the gross annual produced hydrocarbons on Norwegian Continental Shelf through time?</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">janitor</span>
+</pre></div>
+</div>
+</div>
+<p>Table name = Sub level - Production , sum wellbores</p>
+<p>Below you have a dictionary of the columns that are describing the table and its columns.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#data_dictionary = pd.read_clipboard() # pasted from https://factpages.npd.no/factpages/Default.aspx?culture=en</span>
+
+<span class="n">data_dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Heading</th>
+      <th>Description</th>
+      <th>Tag</th>
+      <th>Data type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Year</td>
+      <td>Year for figure in the profile</td>
+      <td>prfYear</td>
+      <td>int</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Month</td>
+      <td>Month for figure in the profile</td>
+      <td>prfMonth</td>
+      <td>int</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Field (Discovery)</td>
+      <td>Name of field or discovery</td>
+      <td>prfInformationCarrier</td>
+      <td>varchar(40)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>NPDID information carrier</td>
+      <td>NPD's unique id for information carrier ('Fiel...</td>
+      <td>prfNpdidInformationCarrier</td>
+      <td>int</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Gross - oil [mill Sm3]</td>
+      <td>Production for Oil, gross [mill Sm3]</td>
+      <td>prfPrdOilGrossMillSm3</td>
+      <td>numeric</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Gross - gas [bill Sm3]</td>
+      <td>Production for Gas, gross [bill Sm3]</td>
+      <td>prfPrdGasGrossBillSm3</td>
+      <td>numeric</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Gross - condensate [mill Sm3]</td>
+      <td>Production for Condensate, gross [mill Sm3]</td>
+      <td>prfPrdCondensateGrossMillSm3</td>
+      <td>numeric</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Gross - oil equivalents [mill Sm3]</td>
+      <td>Production for Oil equivalent, gross [mill Sm3]</td>
+      <td>prfPrdOeGrossMillSm3</td>
+      <td>numeric</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Produced water in field [mill Sm3]</td>
+      <td>Production for Produced water in field [mill Sm3]</td>
+      <td>prfPrdProducedWaterInFieldMillSm3</td>
+      <td>numeric</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://factpages.npd.no/ReportServer_npdpublic?/FactPages/TableView/field_production_gross_monthly&amp;rs:Command=Render&amp;rc:Toolbar=false&amp;rc:Parameters=f&amp;rs:Format=CSV&amp;Top100=false&amp;IpAddress=82.102.27.204&amp;CultureCode=en&quot;</span><span class="p">)</span>
+<span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prfInformationCarrier</th>
+      <th>prfYear</th>
+      <th>prfMonth</th>
+      <th>prfPrdOilGrossMillSm3</th>
+      <th>prfPrdGasGrossBillSm3</th>
+      <th>prfPrdCondensateGrossMillSm3</th>
+      <th>prfPrdOeGrossMillSm3</th>
+      <th>prfPrdProducedWaterInFieldMillSm3</th>
+      <th>prfNpdidInformationCarrier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>7</td>
+      <td>0.00070</td>
+      <td>0.00011</td>
+      <td>0.0</td>
+      <td>0.00081</td>
+      <td>0.00051</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>8</td>
+      <td>0.00292</td>
+      <td>0.00047</td>
+      <td>0.0</td>
+      <td>0.00339</td>
+      <td>0.00063</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>9</td>
+      <td>0.00338</td>
+      <td>0.00054</td>
+      <td>0.0</td>
+      <td>0.00392</td>
+      <td>0.00316</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>10</td>
+      <td>0.00312</td>
+      <td>0.00050</td>
+      <td>0.0</td>
+      <td>0.00362</td>
+      <td>0.00535</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>11</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>44576</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 20504 entries, 0 to 20503
+Data columns (total 9 columns):
+information_carrier                     20504 non-null object
+year                                    20504 non-null int64
+month                                   20504 non-null int64
+prd_oil_gross_mill_sm3                  20504 non-null float64
+prd_gas_gross_bill_sm3                  20504 non-null float64
+prd_condensate_gross_mill_sm3           20504 non-null float64
+prd_oe_gross_mill_sm3                   20504 non-null float64
+prd_produced_water_in_field_mill_sm3    20504 non-null float64
+npdid_information_carrier               20504 non-null int64
+dtypes: float64(5), int64(3), object(1)
+memory usage: 1.4+ MB
+</pre></div></div>
+</div>
+<p>Lets make column names a bit nicer.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;prf&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">production_wellbores_monthly</span> <span class="o">=</span> <span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">clean_names</span><span class="p">(</span><span class="n">case_type</span><span class="o">=</span><span class="s2">&quot;snake&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index([&#39;information_carrier&#39;, &#39;year&#39;, &#39;month&#39;, &#39;prd_oil_gross_mill_sm3&#39;,
+       &#39;prd_gas_gross_bill_sm3&#39;, &#39;prd_condensate_gross_mill_sm3&#39;,
+       &#39;prd_oe_gross_mill_sm3&#39;, &#39;prd_produced_water_in_field_mill_sm3&#39;,
+       &#39;npdid_information_carrier&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+<p>Next we are going to do is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">)</span> <span class="n">drop</span> <span class="n">columns</span> <span class="n">we</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">need</span> <span class="p">[</span><span class="s2">&quot;information_carrier&quot;</span><span class="p">,</span> <span class="s2">&quot;npdid_information_carrier&quot;</span><span class="p">,</span> <span class="s2">&quot;prd_oe_gross_mill_sm3&quot;</span><span class="p">]</span>
+<span class="mi">2</span><span class="p">)</span> <span class="n">reshape</span> <span class="n">wide</span> <span class="n">to</span> <span class="n">long</span> <span class="n">table</span>
+<span class="mi">3</span><span class="p">)</span> <span class="n">group</span> <span class="n">by</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;hc_phase&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">aggregate</span> <span class="n">it</span> <span class="n">by</span> <span class="n">summarizing</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly_LONG</span> <span class="o">=</span> <span class="p">(</span><span class="n">production_wellbores_monthly</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;information_carrier&quot;</span><span class="p">,</span> <span class="s2">&quot;npdid_information_carrier&quot;</span><span class="p">,</span> <span class="s2">&quot;prd_oe_gross_mill_sm3&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+        <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span><span class="p">],</span>
+        <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;hc_phase&quot;</span><span class="p">,</span>
+        <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;prd_gross_mill_sm3&quot;</span>
+        <span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;hc_phase&quot;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">prd_gross_mill_sm3_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;prd_gross_mill_sm3&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;hc_phase&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Voila - a LONG table.</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly_LONG</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>hc_phase</th>
+      <th>prd_gross_mill_sm3_year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1971</td>
+      <td>prd_condensate_gross_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1971</td>
+      <td>prd_gas_gross_bill_sm3</td>
+      <td>0.10294</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1971</td>
+      <td>prd_oil_gross_mill_sm3</td>
+      <td>0.35712</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1971</td>
+      <td>prd_produced_water_in_field_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1972</td>
+      <td>prd_condensate_gross_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>I am listing unique values within hc_phase column which I will color it based on geostandard colors.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">production_wellbores_monthly_LONG</span><span class="p">[</span><span class="s2">&quot;hc_phase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;prd_condensate_gross_mill_sm3&#39;, &#39;prd_gas_gross_bill_sm3&#39;,
+       &#39;prd_oil_gross_mill_sm3&#39;, &#39;prd_produced_water_in_field_mill_sm3&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Altair---Exploratory-Data-Analyis">
+<h2><a class="reference external" href="https://altair-viz.github.io/index.html">Altair</a> - Exploratory Data Analyis<a class="headerlink" href="#Altair---Exploratory-Data-Analyis" title="Permalink to this headline">¶</a></h2>
+<p>**Why Altair library you are probably asking your self?*’</p>
+<p><a class="reference external" href="http://fernandoi.cl/blog/posts/altair/">Sadly, in Python, we do not have a ggplot2.</a></p>
+<p><strong>As Fernando Irarrázaval nicely summarized it: Main reason for personally using it is:</strong></p>
+<p>“Python’s go to visualization library, matplotlib, is very powerfulmatplotlib recently came into the spotlight again for being attributed the first black hole image.</p>
+<p>but has severe limitations. At times its flexibility is a blessing, but it is easy to get frustrated adding a small feature to your graph. Also, matplotlib dual object oriented and state-based interface is confusing. I still don’t completely grasp it even though I have been using matplotlib for years. Lastly, it is not easy to make interactive charts</p>
+<p><strong>Altair and the grammar of graphics</strong></p>
+<p>Enter Altair. Altair is a wrapper for Vega-Lite, a JavaScript high-level visualization library. One of Vega-LiteIn the rest of the article, I will mainly refer to Altair, but Vega-Lite deserves as much (or more) credit.</p>
+<p>most important features is that its API is based in the grammar of graphics.</p>
+<p>Grammar of graphics may sound like an abstract feature, but it is the main difference between Altair and other Python visualization libraries. Altair matches the way we reason about visualizing data.”</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=ms29ZPUKxbU">Useful video from Jake VanderPlas - Exploratory Data Visualization with Vega, Vega-Lite, and Altair - PyCon 2018</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">disable_max_rows</span><span class="p">()</span> <span class="c1"># default is 5000 rows warning</span>
+
+<span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;prd_condensate_gross_mill_sm3&#39;</span><span class="p">,</span> <span class="s1">&#39;prd_gas_gross_bill_sm3&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;prd_oil_gross_mill_sm3&#39;</span><span class="p">,</span> <span class="s1">&#39;prd_produced_water_in_field_mill_sm3&#39;</span><span class="p">]</span>
+<span class="n">range_</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="n">annual_production_plot</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span>
+    <span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">production_wellbores_monthly_LONG</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mark_bar</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;year:Q&quot;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;prd_gross_mill_sm3_year:Q&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;hc_phase&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">range_</span><span class="p">)),</span>
+        <span class="n">row</span><span class="o">=</span><span class="s2">&quot;hc_phase:N&quot;</span>
+        <span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">annual_production_plot</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;VegaLite 3 object&gt;
+
+If you see this message, it means the renderer has not been properly enabled
+for the frontend that you are using. For more information, see
+https://altair-viz.github.io/user_guide/troubleshooting.html
+
+</pre></div>
+</div>
+</div>
+<p><strong>What about making it interactive?</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">annual_production_plot</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;prd_gross_mill_sm3_year&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;hc_phase&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">interactive</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;VegaLite 3 object&gt;
+
+If you see this message, it means the renderer has not been properly enabled
+for the frontend that you are using. For more information, see
+https://altair-viz.github.io/user_guide/troubleshooting.html
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright Kristijan Bakaric.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>
