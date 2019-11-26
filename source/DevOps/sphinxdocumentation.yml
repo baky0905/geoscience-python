@@ -64,12 +64,12 @@ steps:
   displayName: 'Publish documentation as artifact'
 
 
-- task: GitHubPagesPublish@1
-  inputs:
-    docPath: '$(Build.ArtifactStagingDirectory)' # '$(System.DefaultWorkingDirectory)\Documentation\site\*'
-    githubusername: 'baky0905'
-    githubemail: 'kbakaric1@gmail.com'
-    githubaccesstoken: '$(GITHUB_TOKEN)'
-    repositoryname: 'geoscience-python'
-    branchname: 'gh-pages'
-    commitmessage: 'Automated Release $(Release.ReleaseId)
+#- task: GitHubPagesPublish@1
+#  inputs:
+#    docPath: '$(Build.ArtifactStagingDirectory)' # '$(System.DefaultWorkingDirectory)\Documentation\site\*'
+#    githubusername: 'baky0905'
+#    githubemail: 'kbakaric1@gmail.com'
+#    githubaccesstoken: '$(GITHUB_TOKEN)'
+#    repositoryname: 'geoscience-python'
+#    branchname: 'gh-pages'
+#    commitmessage: 'Automated Release $(Release.ReleaseId)
