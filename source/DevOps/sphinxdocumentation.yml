@@ -66,10 +66,10 @@ steps:
 
 - task: GitHubPagesPublish@1
   inputs:
-    docPath: '$(Build.SourcesDirectory)' # '$(Build.SourcesDirectory)/docs/*' #'$(Build.ArtifactStagingDirectory)' # '$(System.DefaultWorkingDirectory)\Documentation\site\*'
+    docPath: '$(Build.ArtifactStagingDirectory)\drop\*' # '$(Build.SourcesDirectory)/docs/*' #'$(Build.ArtifactStagingDirectory)' # '$(System.DefaultWorkingDirectory)\Documentation\site\*'
     githubusername: 'baky0905'
     githubemail: 'kbakaric1@gmail.com'
     githubaccesstoken: '$(GITHUB_TOKEN)'
     repositoryname: 'geoscience-python'
-    branchname: 'master'
+    branchname: 'gh-pages'
     commitmessage: 'Automated Release $(Release.ReleaseId)'
