@@ -24,7 +24,7 @@
     
   <link rel="index" title="Index" href="../genindex.html" />
   <link rel="search" title="Search" href="../search.html" />
-  <link rel="prev" title="How method chaining in pandas is and can be super effective" href="method_chaining_pandas.html" /> 
+  <link rel="prev" title="Split dataframe into multiple csv’s and load multiple csv’s into a single dataframe" href="split_data_into_files_and_viceverse.html" /> 
   </head>
 
   <body>
@@ -294,6 +294,12 @@
           </li>
 
         
+          <li class="toctree-l1 "><a href="split_data_into_files_and_viceverse.html" class="reference internal ">Split dataframe into multiple csv’s and load multiple csv’s into a single dataframe</a>
+
+            
+          </li>
+
+        
       </ul>
     </div>
   
@@ -362,8 +368,8 @@
 
   <ul class="page-nav">
   <li class="prev">
-    <a href="method_chaining_pandas.html"
-       title="previous chapter">← How method chaining in pandas is and can be super effective</a>
+    <a href="split_data_into_files_and_viceverse.html"
+       title="previous chapter">← Split dataframe into multiple csv’s and load multiple csv’s into a single dataframe</a>
   </li>
 </ul>
   
@@ -615,8 +621,8 @@ div.rendered_html tbody tr:hover {
 <span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;data_dictionary&#39; is not defined
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -625,8 +631,107 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prfInformationCarrier</th>
+      <th>prfYear</th>
+      <th>prfMonth</th>
+      <th>prfPrdOilGrossMillSm3</th>
+      <th>prfPrdGasGrossBillSm3</th>
+      <th>prfPrdCondensateGrossMillSm3</th>
+      <th>prfPrdOeGrossMillSm3</th>
+      <th>prfPrdProducedWaterInFieldMillSm3</th>
+      <th>prfNpdidInformationCarrier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>7</td>
+      <td>0.00070</td>
+      <td>0.00011</td>
+      <td>0.0</td>
+      <td>0.00081</td>
+      <td>0.00051</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>8</td>
+      <td>0.00292</td>
+      <td>0.00047</td>
+      <td>0.0</td>
+      <td>0.00339</td>
+      <td>0.00063</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>9</td>
+      <td>0.00338</td>
+      <td>0.00054</td>
+      <td>0.0</td>
+      <td>0.00392</td>
+      <td>0.00316</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>10</td>
+      <td>0.00312</td>
+      <td>0.00050</td>
+      <td>0.0</td>
+      <td>0.00362</td>
+      <td>0.00535</td>
+      <td>44576</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>33/9-6 DELTA</td>
+      <td>2009</td>
+      <td>11</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>0.00000</td>
+      <td>0.00000</td>
+      <td>44576</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -634,9 +739,30 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 20504 entries, 0 to 20503
+Data columns (total 9 columns):
+prfInformationCarrier                20504 non-null object
+prfYear                              20504 non-null int64
+prfMonth                             20504 non-null int64
+prfPrdOilGrossMillSm3                20504 non-null float64
+prfPrdGasGrossBillSm3                20504 non-null float64
+prfPrdCondensateGrossMillSm3         20504 non-null float64
+prfPrdOeGrossMillSm3                 20504 non-null float64
+prfPrdProducedWaterInFieldMillSm3    20504 non-null float64
+prfNpdidInformationCarrier           20504 non-null int64
+dtypes: float64(5), int64(3), object(1)
+memory usage: 1.4+ MB
+</pre></div></div>
+</div>
 <p>Lets make column names a bit nicer.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -646,12 +772,25 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">production_wellbores_monthly</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>Index([&#39;information_carrier&#39;, &#39;year&#39;, &#39;month&#39;, &#39;prd_oil_gross_mill_sm3&#39;,
+       &#39;prd_gas_gross_bill_sm3&#39;, &#39;prd_condensate_gross_mill_sm3&#39;,
+       &#39;prd_oe_gross_mill_sm3&#39;, &#39;prd_produced_water_in_field_mill_sm3&#39;,
+       &#39;npdid_information_carrier&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -662,7 +801,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -681,8 +820,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p><strong>Voila - a LONG table.</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -690,13 +829,87 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>hc_phase</th>
+      <th>prd_gross_mill_sm3_year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1971</td>
+      <td>prd_condensate_gross_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1971</td>
+      <td>prd_gas_gross_bill_sm3</td>
+      <td>0.10294</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1971</td>
+      <td>prd_oil_gross_mill_sm3</td>
+      <td>0.35712</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1971</td>
+      <td>prd_produced_water_in_field_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1972</td>
+      <td>prd_condensate_gross_mill_sm3</td>
+      <td>0.00000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
 <p>I am listing unique values within hc_phase column which I will color it based on geostandard colors.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">production_wellbores_monthly_LONG</span><span class="p">[</span><span class="s2">&quot;hc_phase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>array([&#39;prd_condensate_gross_mill_sm3&#39;, &#39;prd_gas_gross_bill_sm3&#39;,
+       &#39;prd_oil_gross_mill_sm3&#39;, &#39;prd_produced_water_in_field_mill_sm3&#39;],
+      dtype=object)
 </pre></div>
 </div>
 </div>
@@ -758,7 +971,7 @@ https://altair-viz.github.io/user_guide/troubleshooting.html
 </div>
 <p><strong>What about making it interactive?</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -769,7 +982,7 @@ https://altair-viz.github.io/user_guide/troubleshooting.html
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -799,8 +1012,8 @@ https://altair-viz.github.io/user_guide/troubleshooting.html
           <div class="page-nav">
             <div class="inner"><ul class="page-nav">
   <li class="prev">
-    <a href="method_chaining_pandas.html"
-       title="previous chapter">← How method chaining in pandas is and can be super effective</a>
+    <a href="split_data_into_files_and_viceverse.html"
+       title="previous chapter">← Split dataframe into multiple csv’s and load multiple csv’s into a single dataframe</a>
   </li>
 </ul><div class="footer" role="contentinfo">
       &#169; Copyright Kristijan Bakaric.
