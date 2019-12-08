@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Welcome to Geoscience with Python!</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Data sources used" href="data_sources.html" />
+  <link rel="prev" title="Welcome to Geoscience with Python - the easy way!" href="../index.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Geoscience with Python</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link  router-link-active">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Crash Course on Python Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Exploratory Data Analysis (EDA) case studies - IN PROGRESS:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link  router-link-active">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Data Sources
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Crash Course on Python Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Easy Plotting:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Pandas Basics:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Exploratory Data Analysis (EDA) case studies - IN PROGRESS:
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Well Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Seismic Data - IN PROGRESS
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-geoscience-with-python-the-easy-way"
+         class="nav-link ">
+         Spatial Data - IN PROGRESS
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Introduction</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Welcome to Geoscience with Python!</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#welcome-to-geoscience-with-python" class="reference internal">Welcome to Geoscience with Python!</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Data Sources</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="data_sources.html" class="reference internal ">Data sources used</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Crash Course on Python Basics:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../notebooks/crash.html" class="reference internal ">Crash Course on Python Basics</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Easy Plotting:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../notebooks/plotly_express_intro.html" class="reference internal ">Intro to Interactive Plotting with plotly_express</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Pandas Basics:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../notebooks/cleaning_columns_names.html" class="reference internal ">Load *.csv and clean column names</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../notebooks/select_and_query.html" class="reference internal ">Select columns and filter rows</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../notebooks/group_by_aggregate_assign.html" class="reference internal ">Group By, Summary Statistic and New Columns</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../notebooks/melt_and_pivot_table.html" class="reference internal ">Reshape your dataframe to wide and long formats</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../notebooks/method_chaining_pandas.html" class="reference internal ">How method chaining in pandas is and can be super effective</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Exploratory Data Analysis (EDA) case studies - IN PROGRESS:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../notebooks/annual_hydrocarbon_production_NCS.html" class="reference internal ">Annual Hydrocarebon Production</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Well Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Seismic Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-geoscience-with-python-the-easy-way">Spatial Data - IN PROGRESS</a></span>
+      </p>
+      <ul class="">
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Welcome to Geoscience with Python!</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← Welcome to Geoscience with Python - the easy way!</a>
+  </li>
+  <li class="next">
+    <a href="data_sources.html"
+       title="next chapter">Data sources used →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <div class="section" id="welcome-to-geoscience-with-python">
+<h1>Welcome to Geoscience with Python!<a class="headerlink" href="#welcome-to-geoscience-with-python" title="Permalink to this headline">¶</a></h1>
+<p>All the <a class="reference external" href="https://github.com/baky0905/geoscience-python/tree/master/source/notebooks">jupyter notebooks</a>
+and data are located in <a class="reference external" href="https://github.com/baky0905/geoscience-python/tree/master/source">github repo</a>
+.</p>
+<p>This is also the <a class="reference external" href="https://github.com/baky0905/geoscience-python/tree/master/source">root folder</a>
+for all relative paths in the notebooks.</p>
+<p><strong>Purpose</strong></p>
+<p>Create practical data analysis and data science online reproducible sphinx booklet for common Geoscience and Petroleum Engineering problems. Key is to enable people to solve their own problems.</p>
+<p><strong>What kind of code will we be using?</strong></p>
+<ul class="simple">
+<li><p>Personal automation</p></li>
+<li><p>Consistent ways of writing code</p></li>
+<li><p>Code that you are writing for yourself and you are the only person who is going to be using it</p></li>
+</ul>
+<p><strong>What kind of code will we NOT be using?</strong></p>
+<ul class="simple">
+<li><p>Professional code</p></li>
+<li><p>Checked in code</p></li>
+<li><p>Reviewed code</p></li>
+</ul>
+<p>You can some cut corners, write some crappy code and do some things that questionable but all of it is just fine - no one will ever see it and no one will ever know.</p>
+<p><strong>Main goal - solve your problem!</strong></p>
+<p><strong>Motivate you to maybe dive in deeper and become semi-professional one day!</strong></p>
+<p>Inspired by [Larry Hastings - Solve Your Problem With Sloppy Python - PyCon 2018](<a class="reference external" href="https://www.youtube.com/watch?v=Jd8ulMb6_ls&amp;t=680s">https://www.youtube.com/watch?v=Jd8ulMb6_ls&amp;t=680s</a>).</p>
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../index.html"
+       title="previous chapter">← Welcome to Geoscience with Python - the easy way!</a>
+  </li>
+  <li class="next">
+    <a href="data_sources.html"
+       title="next chapter">Data sources used →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright Kristijan Bakaric.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>
